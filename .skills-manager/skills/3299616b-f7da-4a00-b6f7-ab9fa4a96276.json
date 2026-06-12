@@ -4,7 +4,9 @@
   "path": "pdf",
   "path_key": "pdf",
   "enabled": true,
-  "tags": [],
+  "tags": [
+    "office"
+  ],
   "source": {
     "type": "git",
     "ref": "anthropics/skills",

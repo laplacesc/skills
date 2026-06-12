@@ -4,7 +4,9 @@
   "path": "article-frontmatter",
   "path_key": "article-frontmatter",
   "enabled": true,
-  "tags": [],
+  "tags": [
+    "obsidian"
+  ],
   "source": {
     "type": "local",
     "ref": null,

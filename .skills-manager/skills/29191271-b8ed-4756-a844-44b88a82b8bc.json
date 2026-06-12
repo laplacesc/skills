@@ -4,7 +4,9 @@
   "path": "defuddle",
   "path_key": "defuddle",
   "enabled": true,
-  "tags": [],
+  "tags": [
+    "obsidian"
+  ],
   "source": {
     "type": "git",
     "ref": "kepano/obsidian-skills",

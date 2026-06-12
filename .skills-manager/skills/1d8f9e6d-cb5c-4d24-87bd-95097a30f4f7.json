@@ -4,7 +4,9 @@
   "path": "docx",
   "path_key": "docx",
   "enabled": true,
-  "tags": [],
+  "tags": [
+    "office"
+  ],
   "source": {
     "type": "git",
     "ref": "anthropics/skills",

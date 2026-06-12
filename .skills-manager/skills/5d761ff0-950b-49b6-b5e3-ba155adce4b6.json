@@ -4,7 +4,9 @@
   "path": "pptx",
   "path_key": "pptx",
   "enabled": true,
-  "tags": [],
+  "tags": [
+    "office"
+  ],
   "source": {
     "type": "git",
     "ref": "anthropics/skills",

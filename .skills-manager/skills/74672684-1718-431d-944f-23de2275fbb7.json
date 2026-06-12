@@ -4,7 +4,9 @@
   "path": "xlsx",
   "path_key": "xlsx",
   "enabled": true,
-  "tags": [],
+  "tags": [
+    "office"
+  ],
   "source": {
     "type": "git",
     "ref": "anthropics/skills",
