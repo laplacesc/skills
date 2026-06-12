@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    addresses: 10.185.236.63:5672
+    username: hillstone
+    password: hillstone
+    virtual-host: /

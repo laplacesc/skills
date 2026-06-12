@@ -1,0 +1,108 @@
+{
+  "type": "record",
+  "namespace": "iot_monitor_icloud",
+  "name": "device_info_upload",
+  "fields": [
+    {
+      "type": "string",
+      "name": "format_ver",
+      "doc": "通信格式版本字符串（最大长度8）"
+    },
+    {
+      "type": "string",
+      "name": "rule_engine_ver",
+      "doc": "规则识别引擎版本字符串（最大长度16）"
+    },
+    {
+      "type": "string",
+      "name": "algo_engine_ver",
+      "doc": "算法识别引擎版本字符串（最大长度16）"
+    },
+    {
+      "type": "string",
+      "name": "device_id",
+      "doc": "设备ID字符串，用于唯一标识一台设备（最大长度64）"
+    },
+    {
+      "type": "int",
+      "name": "detect_method",
+      "doc": "设备信息识别的方式（1:手动修改 2:规则(包含SDK) 3:算法或其他）"
+    },
+    {
+      "type": "string",
+      "name": "ip",
+      "doc": "设备的ip字符串（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "mac",
+      "doc": "设备的mac地址字符串（最大长度16）"
+    },
+    {
+      "type": "int",
+      "name": "is_mac_referrible",
+      "doc": "设备的mac地址是否具有参考性（1是0否）"
+    },
+    {
+      "type": "string",
+      "name": "mfr",
+      "doc": "设备厂商字符串（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "type",
+      "doc": "设备类型字符串（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "model",
+      "doc": "设备型号字符串（最大长度32）"
+    },
+    {
+      "type": "string",
+      "name": "os_version",
+      "doc": "设备操作系统版本字符串（最大长度128）"
+    },
+    {
+      "type": "string",
+      "name": "os_family",
+      "doc": "设备操作系统族字符串（最大长度64）"
+    },
+    {
+      "type": "int",
+      "name": "sess_proto",
+      "doc": "设备通信session的协议ID，（范围0-200）"
+    },
+    {
+      "type": "string",
+      "name": "sess_proto_name",
+      "doc": "设备通信session的协议名称字符串（最大长度32）"
+    },
+    {
+      "type": "string",
+      "name": "sess_app_name",
+      "doc": "设备通信session的应用名称字符串（最大长度96）"
+    },
+    {
+      "type": "string",
+      "name": "sess_user_server_name",
+      "doc": "设备通信session的用户配置服务信息字符串（最大长度96）"
+    },
+    {
+      "type": "int",
+      "name": "payload_num",
+      "doc": "收集到报文payload的数量（范围0-100）"
+    },
+    {
+      "type": "int",
+      "name": "payload_size",
+      "doc": "收集到报文payload的大小（范围0-1500）"
+    },
+    {
+      "type" : "bytes",
+      "name": "payloads",
+      "doc": "payload收集数据"
+    }
+  ],
+  "doc": "Converted from 'iot_monitor_icloud.xml' by xml2json.py"
+}

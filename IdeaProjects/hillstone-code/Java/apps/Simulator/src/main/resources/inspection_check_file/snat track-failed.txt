@@ -1,0 +1,3 @@
+SG-6000# show snat track-failed
+
+Device: max 450512, alloc 1, deny session 0, free 450511, tunnel 0, long life 0, alloc failed 0, rampup 0

@@ -1,0 +1,39 @@
+    # show version
+Hillstone Networks StoneOS software, Version 5.5
+Copyright (c) 2009-2024 by Hillstone Networks
+
+Product name: SG-6000-F1000 S/N: 5823210215025844 Assembly number: C013
+Boot file is SG6000-A-1-YD-5.5R10F5.5-v6 from flash
+Update magic: 0043003305002302e93
+Built by buildmaster8 2024/06/27 06:20:05
+
+Uptime is 4 days 23 hours 24 minutes 9 seconds
+System language is "en"
+
+VRouter feature: enabled
+
+IPS feature: enabled
+IPS magic: b5ac2cbc79f1792b90a1dd8d615671a07e8a
+
+AV feature: enabled
+AV magic: 8326b91c73a6033327c1cba2ce44224a5efc
+AV-signature engine version: 2
+
+AV file engine feature: disabled
+AV file engine magic: 8326b91c73a6033327c1cba2ce44224a5efc
+
+IP reputation feature: enabled
+IP reputation magic: 8327bc1f70a7003d27c1cba2ce44224a5efc
+
+URLDB feature: enabled
+URLDB magic: ccf93e2cd8d41b15647e05ca0ca9ebdbdca5
+
+APP feature: enabled
+APP magic: 014899c40ca8de6a107598438e1aa7668ee7
+
+SANDBOX magic: 8327bc1f70a7003d27c1cba2ce44224a5efc
+
+Botnet Prevention feature: enabled
+Botnet Prevention magic: 8326b91c73a6033327c1cba2ce44224a5efc
+
+geolocation-IP-signature engine version: 3

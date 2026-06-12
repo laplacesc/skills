@@ -1,0 +1,113 @@
+{
+  "type": "record",
+  "name": "session",
+  "namespace": "com.hillstone.simulator.entity.avro.model.logd_session.logd_session",
+  "doc": "traffic session日志schema,定义日期2023/2/13",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "时间戳"
+    },
+    {
+      "name": "syslog_id",
+      "type": "int",
+      "doc": "日志id,uint32型"
+    },
+    {
+      "name": "srcip_a3user",
+      "type": "string",
+      "doc": "AAA用户,字段长度：1-64"
+    },
+    {
+      "name": "policy_id",
+      "type": "long",
+      "doc": "策略id,uint32"
+    },
+    {
+      "name": "sip",
+      "doc": "源ip",
+      "type": {
+        "type": "record",
+        "name": "ip_record",
+        "fields": [
+          {
+            "name": "ip_addr",
+            "type": "string",
+            "doc": "ip地址信息,字段长度：1-128"
+          },
+          {
+            "name": "ip_family",
+            "type": "int",
+            "doc": "ip 类型 1 ipv4,2ipv6"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sport",
+      "type": "int",
+      "doc": "源端口,uint16"
+    },
+    {
+      "name": "dip",
+      "type": "ip_record",
+      "doc": "目的ip地址信息"
+    },
+    {
+      "name": "dport",
+      "type": "int",
+      "doc": "目的端口,uint16"
+    },
+    {
+      "name": "protocol_id",
+      "type": "int",
+      "doc": "协议,uint16"
+    },
+    {
+      "name": "action_id",
+      "type": "int",
+      "doc": "行为,uint16, 1 policy deny, 2 session start, 3 session end, 4 policy default permit, 5 policy default deny, 6 policy default, 7 long lifetime session end, 8 acl profile pass, 9 acl profile drop"
+    },
+    {
+      "name": "app_name",
+      "type": "string",
+      "doc": "应用,最大长度96"
+    },
+    {
+      "name": "lifetime",
+      "type": "long",
+      "doc": "生存时间,uint64"
+    },
+    {
+      "name": "interface",
+      "type": "string",
+      "doc": "源接口,字段长度：1-32"
+    },
+    {
+      "name": "send_bytes",
+      "type": "long",
+      "doc": "发送流量,单位bytes,uint64"
+    },
+    {
+      "name": "recv_bytes",
+      "type": "long",
+      "doc": "接收流量,单位bytes,uint64"
+    },
+    {
+      "name": "session_close_reason",
+      "type": "string",
+      "doc": "会话结束原因,字段长度：1-256"
+    },
+    {
+      "name": "policy_type",
+      "type": "int",
+      "doc": "策略类型,int型"
+    },
+    {
+      "name": "policy_name",
+      "type": "string",
+      "doc": "策略名称,最大长度96"
+    }
+  ]
+}

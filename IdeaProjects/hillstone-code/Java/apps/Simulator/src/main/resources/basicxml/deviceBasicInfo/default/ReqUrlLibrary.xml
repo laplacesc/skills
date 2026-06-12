@@ -1,0 +1,12 @@
+<msg category="Register" type="ReqUrlLibrary" neId="23" result="ok">
+    <body>
+        <information>
+            <signature>
+                <url-library-response>
+                    <version>2.0.18</version>
+                    <release-time>2015-03-12 10:48:52</release-time>
+                </url-library-response>
+            </signature>
+        </information>
+    </body>
+</msg>

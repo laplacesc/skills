@@ -1,0 +1,5 @@
+# show app info
+
+Application identification engine version:      03.86
+Application identification signature version:   3.0.230627(Professional)
+Release time:   2023-06-27 16:54

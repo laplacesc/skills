@@ -1,0 +1,19 @@
+SG-6000# show ips signature update
+
+IPS signature update options:
+protocol: HTTP
+server1: update1.hillstonenet.com, 80, trust-vr
+server2: update2.hillstonenet.com, 80, trust-vr
+server3:
+proxy server status: disable
+main proxy server:
+backup proxy server:
+mode: auto
+state report: disable
+pcre signature: disable
+full signature: disable
+schedule: daily 15:15
+current status: normal
+last update result: Failed to update the signatures, the license is expired or not worked
+
+last update time: Wed Jul 26 15:15:54 2023

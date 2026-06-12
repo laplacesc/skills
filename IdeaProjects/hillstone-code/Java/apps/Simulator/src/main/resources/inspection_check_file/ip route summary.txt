@@ -1,0 +1,29 @@
+SG-6000# show ip route summary
+
+Notes: The capacity only limit the route number of RIP OSPF BGP ISIS static and ISP route
+       Route number statistics according to prefix type and distance
+
+Routing Table Summary for Virtual Router <trust-vr>
+==============================================================================
+Routing Table       Route Source           Count       Active       Select
+------------------------------------------------------------------------------
+Destination         total                      9            5            5
+Interface           total                      0            0            0
+Source              total                      0            0            0
+Source Interface    total                      0            0            0
+ISP                 total                      0            0            0
+Destination         ospf                       2            2            2
+Destination         bgp                        5            1            1
+Destination         rip                        2            2            2
+==============================================================================
+
+Routing Table Summary for Virtual Router <mgt-vr>
+==============================================================================
+Routing Table       Route Source           Count       Active       Select
+------------------------------------------------------------------------------
+Destination         total                      0            0            0
+Interface           total                      0            0            0
+Source              total                      0            0            0
+Source Interface    total                      0            0            0
+ISP                 total                      0            0            0
+==============================================================================

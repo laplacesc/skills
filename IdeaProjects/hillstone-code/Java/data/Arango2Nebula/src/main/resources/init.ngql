@@ -1,0 +1,201 @@
+DROP SPACE IF EXISTS threat_intelligence;
+
+# Create space
+CREATE SPACE IF NOT EXISTS threat_intelligence ( \
+  partition_num = 24, \
+  replica_factor = 3, \
+  vid_type = fixed_string(64) \
+) COMMENT = '威胁情报知识库';
+
+# Use space
+USE threat_intelligence;
+
+# ===================================================================
+# Tags (Vertices)
+# ===================================================================
+
+CREATE TAG IF NOT EXISTS ioc ( \
+  `create_time` INT64 NOT NULL COMMENT '创建时间（Unix 时间戳）', \
+  `update_time` INT64 NOT NULL COMMENT '上次更新时间（Unix 时间戳）', \
+  `type` FIXED_STRING(16) NOT NULL COMMENT '威胁类型（标识情报的具体类别）：ip/domain/file/url', \
+  `result` INT8 NOT NULL DEFAULT 0 COMMENT '鉴定结果：0-Unknown, 1-White, 2-Suspicious, 3-Black', \
+  `credibility` INT8 COMMENT '置信度', \
+  `lifecycle_status` INT8 COMMENT '生命周期', \
+  `flow_direction` INT8 NOT NULL DEFAULT 0 COMMENT '出入站', \
+  `first_seen` INT64 COMMENT '首次发现时间', \
+  `last_seen` INT64 COMMENT '最后一次发现时间', \
+  `malicious_level` INT8 NOT NULL DEFAULT 0 COMMENT 'IOC的恶意程度，0-5，未知/无风险/低危/中危/高危/严重' \
+);
+
+CREATE TAG IF NOT EXISTS ipv4 ( \
+  `ip_address` FIXED_STRING(64) NOT NULL COMMENT 'Ip地址', \
+  `certificate` STRING COMMENT '证书' \
+);
+
+CREATE TAG IF NOT EXISTS domain ( \
+  `domain_name` FIXED_STRING(256) NOT NULL COMMENT '域名', \
+  `detail_type` FIXED_STRING(16) NOT NULL DEFAULT 'FQDN' COMMENT '详细类型', \
+  `top_domain_name` FIXED_STRING(256) COMMENT '可注册域名', \
+  `certificate` STRING COMMENT 'HTTPS证书' \
+);
+
+CREATE TAG IF NOT EXISTS file ( \
+  `file_type` STRING COMMENT '文件类型', \
+  `file_size` INT64 COMMENT '文件大小' \
+);
+
+CREATE TAG IF NOT EXISTS hash_md5 ( \
+  `hash_md5` FIXED_STRING(32) NOT NULL COMMENT 'MD5' \
+);
+
+CREATE TAG IF NOT EXISTS hash_sha1 ( \
+  `hash_sha1` FIXED_STRING(40) NOT NULL COMMENT 'SHA1' \
+);
+
+CREATE TAG IF NOT EXISTS hash_sha256 ( \
+  `hash_sha256` FIXED_STRING(64) NOT NULL COMMENT 'SHA256' \
+);
+
+CREATE TAG IF NOT EXISTS hash_sha512 ( \
+  `hash_sha512` FIXED_STRING(128) NOT NULL COMMENT 'SHA512' \
+);
+
+CREATE TAG IF NOT EXISTS url ( \
+  `url` STRING NOT NULL COMMENT 'URL路径' \
+);
+
+CREATE TAG IF NOT EXISTS `tag` ( \
+  `id` INT64 NOT NULL COMMENT 'id', \
+  `type` INT8 NOT NULL COMMENT '一级分类', \
+  `subtype` INT8 NOT NULL COMMENT '二级分类', \
+  `name_cn` FIXED_STRING(256) COMMENT '名称(中文)', \
+  `name_en` FIXED_STRING(256) NOT NULL COMMENT '名称(英文)', \
+  `description_cn` STRING COMMENT '描述(中文)', \
+  `description_en` STRING COMMENT '描述(英文)', \
+  `visibility` INT8 NOT NULL DEFAULT 0 COMMENT '可视性（0:public , 1:private）', \
+  `severity` INT8 NOT NULL DEFAULT 0 COMMENT '严重级别' \
+);
+
+# ===================================================================
+# Indexes
+# ===================================================================
+
+CREATE TAG INDEX IF NOT EXISTS idx_ioc ON ioc();
+CREATE TAG INDEX IF NOT EXISTS idx_ipv4 ON ipv4();
+CREATE TAG INDEX IF NOT EXISTS idx_domain ON domain();
+CREATE TAG INDEX IF NOT EXISTS idx_file ON file();
+CREATE TAG INDEX IF NOT EXISTS idx_hash_md5 ON hash_md5();
+CREATE TAG INDEX IF NOT EXISTS idx_hash_sha1 ON hash_sha1();
+CREATE TAG INDEX IF NOT EXISTS idx_hash_sha256 ON hash_sha256();
+CREATE TAG INDEX IF NOT EXISTS idx_hash_sha512 ON hash_sha512();
+CREATE TAG INDEX IF NOT EXISTS idx_url ON url();
+CREATE TAG INDEX IF NOT EXISTS idx_tag ON `tag`();
+
+REBUILD TAG INDEX idx_ioc;
+REBUILD TAG INDEX idx_ipv4;
+REBUILD TAG INDEX idx_domain;
+REBUILD TAG INDEX idx_file;
+REBUILD TAG INDEX idx_hash_md5;
+REBUILD TAG INDEX idx_hash_sha1;
+REBUILD TAG INDEX idx_hash_sha256;
+REBUILD TAG INDEX idx_hash_sha512;
+REBUILD TAG INDEX idx_url;
+REBUILD TAG INDEX idx_tag;
+
+# ===================================================================
+# Edges 基础关联边（无属性，仅靠 rank 区分时间）
+# ===================================================================
+
+# ===================================================================
+# Edges for ip
+# ===================================================================
+
+# ip 端口（rank 为端口保证唯一性）
+CREATE EDGE IF NOT EXISTS ip_open_port ();
+# 反查 RDNS 域名
+CREATE EDGE IF NOT EXISTS ip_resolve_domain ();
+# 下载的 file
+CREATE EDGE IF NOT EXISTS ip_download_file ();
+# 关联的 url
+CREATE EDGE IF NOT EXISTS ip_connect_url ();
+# 关联的 tag
+CREATE EDGE IF NOT EXISTS ip_has_tag ();
+
+# ===================================================================
+# Edges for domain
+# ===================================================================
+
+# domain 解析到的当前 IP（A 记录）
+CREATE EDGE IF NOT EXISTS domain_resolve_ip ();
+# domain 的子域名
+CREATE EDGE IF NOT EXISTS domain_include_subdomain ();
+# domain 下载的 file
+CREATE EDGE IF NOT EXISTS domain_download_file ();
+# domain 关联的 url
+CREATE EDGE IF NOT EXISTS domain_connect_url ();
+# domain 关联的 tag
+CREATE EDGE IF NOT EXISTS domain_has_tag ();
+
+# ===================================================================
+# Edges for file
+# ===================================================================
+
+# file 连接通信的 ip
+CREATE EDGE IF NOT EXISTS file_connect_ip ();
+# file 引用的 ip
+CREATE EDGE IF NOT EXISTS file_refer_ip ();
+# file 连接通信的 domain
+CREATE EDGE IF NOT EXISTS file_connect_domain ();
+# file 引用的 domain
+CREATE EDGE IF NOT EXISTS file_refer_domain ();
+# file 关联的 url
+CREATE EDGE IF NOT EXISTS file_connect_url ();
+# hash 指向 file
+CREATE EDGE IF NOT EXISTS hash_of_file ();
+# file 关联的 tag
+CREATE EDGE IF NOT EXISTS file_has_tag ();
+
+# ===================================================================
+# Edges for url
+# ===================================================================
+
+# url 关联的 tag
+CREATE EDGE IF NOT EXISTS url_has_tag ();
+
+CREATE EDGE INDEX IF NOT EXISTS idx_ip_open_port ON ip_open_port();
+CREATE EDGE INDEX IF NOT EXISTS idx_ip_resolve_domain ON ip_resolve_domain();
+CREATE EDGE INDEX IF NOT EXISTS idx_ip_download_file ON ip_download_file();
+CREATE EDGE INDEX IF NOT EXISTS idx_ip_connect_url ON ip_connect_url();
+CREATE EDGE INDEX IF NOT EXISTS idx_ip_has_tag ON ip_has_tag();
+CREATE EDGE INDEX IF NOT EXISTS idx_domain_resolve_ip ON domain_resolve_ip();
+CREATE EDGE INDEX IF NOT EXISTS idx_domain_include_subdomain ON domain_include_subdomain();
+CREATE EDGE INDEX IF NOT EXISTS idx_domain_download_file ON domain_download_file();
+CREATE EDGE INDEX IF NOT EXISTS idx_domain_connect_url ON domain_connect_url();
+CREATE EDGE INDEX IF NOT EXISTS idx_domain_has_tag ON domain_has_tag();
+CREATE EDGE INDEX IF NOT EXISTS idx_file_connect_ip ON file_connect_ip();
+CREATE EDGE INDEX IF NOT EXISTS idx_file_refer_ip ON file_refer_ip();
+CREATE EDGE INDEX IF NOT EXISTS idx_file_connect_domain ON file_connect_domain();
+CREATE EDGE INDEX IF NOT EXISTS idx_file_refer_domain ON file_refer_domain();
+CREATE EDGE INDEX IF NOT EXISTS idx_file_connect_url ON file_connect_url();
+CREATE EDGE INDEX IF NOT EXISTS idx_hash_of_file ON hash_of_file();
+CREATE EDGE INDEX IF NOT EXISTS idx_file_has_tag ON file_has_tag();
+CREATE EDGE INDEX IF NOT EXISTS idx_url_has_tag ON url_has_tag();
+
+REBUILD EDGE INDEX idx_ip_open_port;
+REBUILD EDGE INDEX idx_ip_resolve_domain;
+REBUILD EDGE INDEX idx_ip_download_file;
+REBUILD EDGE INDEX idx_ip_connect_url;
+REBUILD EDGE INDEX idx_ip_has_tag;
+REBUILD EDGE INDEX idx_domain_resolve_ip;
+REBUILD EDGE INDEX idx_domain_include_subdomain;
+REBUILD EDGE INDEX idx_domain_download_file;
+REBUILD EDGE INDEX idx_domain_connect_url;
+REBUILD EDGE INDEX idx_domain_has_tag;
+REBUILD EDGE INDEX idx_file_connect_ip;
+REBUILD EDGE INDEX idx_file_refer_ip;
+REBUILD EDGE INDEX idx_file_connect_domain;
+REBUILD EDGE INDEX idx_file_refer_domain;
+REBUILD EDGE INDEX idx_file_connect_url;
+REBUILD EDGE INDEX idx_hash_of_file;
+REBUILD EDGE INDEX idx_file_has_tag;
+REBUILD EDGE INDEX idx_url_has_tag;

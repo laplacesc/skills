@@ -1,0 +1,3 @@
+# show config | include snatrule id|statistics-set|network-manager|dpd interval|update schedule|expanded-port-pool
+
+snatrule id 1 from ip 192.168.10.2 to address-book "Any" service "Any" trans-to ip 10.182.138.103 mode static

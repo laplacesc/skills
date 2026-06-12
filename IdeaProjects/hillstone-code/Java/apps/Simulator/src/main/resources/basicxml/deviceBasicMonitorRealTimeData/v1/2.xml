@@ -1,0 +1,26 @@
+<msg category="Monitor" type="basicRealTimeMonitor">
+    <traffic>
+        <entity>
+            <up-bandwidth>480000000</up-bandwidth>
+            <down-bandwidth>480000000</down-bandwidth>
+            <rampup-rate>999999</rampup-rate>
+            <session>1200000</session>
+        </entity>
+    </traffic>
+    <cpu>
+        <entity>
+            <average>8</average>
+            <current>8</current>
+            <last-1min>8</last-1min>
+            <last-5min>8</last-5min>
+            <last-15min>8</last-15min>
+        </entity>
+    </cpu>
+    <memory>
+        <entity>
+            <total>2394304</total>
+            <used>322558</used>
+            <free>3371746</free>
+        </entity>
+    </memory>
+</msg>

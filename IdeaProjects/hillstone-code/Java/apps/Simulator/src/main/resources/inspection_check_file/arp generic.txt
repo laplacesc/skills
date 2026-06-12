@@ -1,0 +1,8 @@
+SG-6000# show arp generic
+
+Total ARP entries: 8192
+     Free entries: 8191
+  Dynamic entries: 1
+   Static entries: 0
+     Wait entries: 0
+  Timeout entries: 0

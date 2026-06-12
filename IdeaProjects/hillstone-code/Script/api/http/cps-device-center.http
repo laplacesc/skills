@@ -1,0 +1,3 @@
+### 从cps-device-center获取sns、licenseKeys的license信息
+GET http://10.108.251.236/device-center/batch/sns/licenses?
+    sns=WASD382354820500&licenseKeys=57&licenseKeys=91

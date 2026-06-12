@@ -1,0 +1,26 @@
+device:
+  connect:
+    info:
+      username: rtzhang
+      sn: WASD382354820500
+      ## 无特殊情况，建议默认使用https与wss
+      http_link_mode: https
+      ws_link_mode: wss
+      # server_ip: 10.182.139.97
+      server_ip: 10.185.222.23
+      server_port: 443
+      ## 防火墙名称
+      fw_name: ADC_Monitor
+      ## 产品类型会通过 platform生成
+      platform: SG-6000-AX1000
+      protocol_version: 1.0
+      ## 镜像版本
+      boot_file: SG6000-M-3-YD-5.5R9F1.4-v6.bin
+      ## 心跳版本，如果需要使用不同版本的心跳，需要在在 basicxml.deviceBasicMonitorRealTimeData 下创建对应的文件夹，并添加xml，建议添加4个xml，命名方式为 1.xml 2.xml
+      real_time_monitor_version: v1
+      ## 基础信息版本，protocol_version=1.0的时候使用版本为指定版本，其余情况下可以自定义，上送数据存放在 basicxml.deviceBasicInfo下
+      basic_info_version: default
+      ## 是否是云堤设备，默认是否
+      is_yd_device: false
+      ## 数据上送接口版本 默认1.0 可改为1.1
+      data_upload_version: 1.1

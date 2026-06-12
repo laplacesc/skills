@@ -1,0 +1,64 @@
+SG-6000# show controller packet-drop clear
+
+Bridge-drop-packet occurs in slot 0, index 0:
+======================= Bridge Counters =======================
+      Ingress Drop Packet Counter:                      0
+      Global Security Breach Filter Counter:            0
+      Port/VLAN Security Breach Filter Counter:         0
+
+=== Bridge Port/VLAN/Device Ingress Counters(clear-on-read) ===
+      Incoming Packet Counter:                 3007601379
+      VLAN Ingress Filtered Packet Counter:             0
+      Security Filtered Packet Counter:                 0
+      Bridge Filtered Packet Counter:                   0
+
+============ Bridge Egress Counters(clear-on-read) ============
+      Outgoing Unicast Packet Counter:         3013267425
+      Outgoing Multicast Packet Counter:                0
+      Outgoing Broadcast Packet Counter:          4154516
+      Bridge Egress Filtered Packet Counter:         8473
+      Tail Dropped Packet Counter:                      0
+      Control Packet Counter:                     7244487
+
+Port-drop-packet occurs in slot 0, cpuindex 0, index 0:
+ethernet0/1, physical port 1:
+    InGoodOctets:       96858154718        InBadOctets:                114
+    InGoodPkts:         1498137863        InBadPkts:                    2
+    InUnicastPkts:          101891        InBroadcastPkts:     1497998149
+    InMulticastPkts:         37823        InControlPkts:                0
+    InUndersizePkts:             0        InOversizePkts:               0
+    InFragments:                 1        InJabbers:                    0
+    InMACRcvErrors:              0        InCRCAlignErrors:             1
+    DropEvents:                  0
+    OutGoodOctets:        15847765        OutGoodPkts:              96749
+    OutUnicastPkts:          96253        OutBroadcastPkts:           496
+    OutMulticastPkts:            0        OutControlPkts:               0
+    Collisions:                  0        OutDropDeferrals:             0
+    SingleCollisions:            0        MultipleCollisions:           0
+    ExcessiveCollisions:         0        LateCollisions:               0
+    Pkts64Octets:       1336977620        Pkts65to127Octets:    161226304
+    Pkts128to255Octets:        580        Pkts256to511Octets:       16955
+    Pkts512to1023Octets:      6106        Pkts1024toMaxOctets:       7048
+
+Bridge-drop-packet occurs in slot 0, index 1:
+======================= Bridge Counters =======================
+      Ingress Drop Packet Counter:                      0
+      Global Security Breach Filter Counter:            0
+      Port/VLAN Security Breach Filter Counter:         0
+
+=== Bridge Port/VLAN/Device Ingress Counters(clear-on-read) ===
+      Incoming Packet Counter:                    3863194
+      VLAN Ingress Filtered Packet Counter:             0
+      Security Filtered Packet Counter:                 0
+      Bridge Filtered Packet Counter:                   0
+
+============ Bridge Egress Counters(clear-on-read) ============
+      Outgoing Unicast Packet Counter:           11602182
+      Outgoing Multicast Packet Counter:                0
+      Outgoing Broadcast Packet Counter:          2102914
+      Bridge Egress Filtered Packet Counter:          638
+      Tail Dropped Packet Counter:                      0
+      Control Packet Counter:                     4920338
+
+
+

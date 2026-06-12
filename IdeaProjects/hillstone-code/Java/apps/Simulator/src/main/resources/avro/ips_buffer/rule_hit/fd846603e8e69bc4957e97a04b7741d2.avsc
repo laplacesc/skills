@@ -1,0 +1,62 @@
+{
+  "type": "record",
+  "namespace": "ips_icloud",
+  "name": "ips_buffer_report",
+  "fields": [
+    {
+      "default": 0,
+      "doc": "matched signature id",
+      "type": "long",
+      "name": "signature_id"
+    },
+    {
+      "default": 0,
+      "doc": "signature id matched times",
+      "type": "long",
+      "name": "hit_time"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "doc": "protocol",
+              "type": "string",
+              "name": "proto"
+            },
+            {
+              "doc": "src ip",
+              "type": "string",
+              "name": "src_ip"
+            },
+            {
+              "doc": "dst ip",
+              "type": "string",
+              "name": "dst_ip"
+            },
+            {
+              "doc": "src port",
+              "type": "int",
+              "name": "src_port"
+            },
+            {
+              "doc": "dst port",
+              "type": "int",
+              "name": "dst_port"
+            },
+            {
+              "doc": "attack data",
+              "type": "string",
+              "name": "buffer"
+            }
+          ],
+          "type": "record",
+          "name": "ips_buffer_report.ips_buffer_stats"
+        },
+        "type": "array"
+      },
+      "name": "ips_buffer_stats"
+    }
+  ],
+  "doc": "Converted from 'ips_icloud.xml' by xml2json.py"
+}

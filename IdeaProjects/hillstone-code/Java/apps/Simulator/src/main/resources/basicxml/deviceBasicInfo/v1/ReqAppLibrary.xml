@@ -1,0 +1,13 @@
+<msg category="ReqDeviceInfo" type="ReqAppLibrary" result="ok">
+    <body>
+        <information>
+            <signature>
+                <app-library-response>
+                    <version>3.0.220739</version>
+                    <release-time>2015-03-24 18:09</release-time>
+                    <edition-type>1</edition-type>
+                </app-library-response>
+            </signature>
+        </information>
+    </body>
+</msg>

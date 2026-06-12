@@ -1,0 +1,16 @@
+{
+  "type": "record",
+  "namespace": "tifd_icloud",
+  "name": "license_info",
+  "fields": [
+    {
+      "type": "long",
+      "name": "license_due"
+    },
+    {
+      "type": "int",
+      "name": "license_type"
+    }
+  ],
+  "doc": "Converted from 'tifd_icloud.xml' by xml2json.py"
+}

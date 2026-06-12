@@ -1,0 +1,56 @@
+{
+  "type": "record",
+  "namespace": "caturl_icloud",
+  "name": "url_status",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "license_expire_time"
+    },
+    {
+      "type": "string",
+      "name": "database_version"
+    },
+    {
+      "type": "int",
+      "name": "feature_status"
+    },
+    {
+      "type": "long",
+      "name": "url_number"
+    },
+    {
+      "type": "long",
+      "name": "url_mem_size"
+    },
+    {
+      "type": "long",
+      "name": "flash_memory_size"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "type"
+            },
+            {
+              "type": "long",
+              "name": "using_mem"
+            }
+          ],
+          "type": "record",
+          "name": "url_status.url_scan_algor"
+        },
+        "type": "array"
+      },
+      "name": "url_scan_algor"
+    }
+  ],
+  "doc": "Converted from 'caturl_icloud.xml' by xml2json.py"
+}

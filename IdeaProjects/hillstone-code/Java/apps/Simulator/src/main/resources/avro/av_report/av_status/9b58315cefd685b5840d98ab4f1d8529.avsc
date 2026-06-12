@@ -1,0 +1,34 @@
+{
+  "type": "record",
+  "namespace": "av_icloud",
+  "name": "av_status",
+  "fields": [
+    {"type": "string", "name": "device_sn"},
+    {"type": "string", "name": "license_expire_time"},
+    {"type": "int", "name": "feature_status"},
+    {"type": "string", "name": "database_version"},
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {"type": "int", "name": "type"},
+            {"type": "int", "name": "sig_type"},
+            {"type": "int", "name": "using_mem"}
+          ],
+          "type": "record",
+          "name": "av_status.av_scan_algor"
+        },
+        "type": "array"
+      },
+      "name": "av_scan_algor"
+    },
+    {"type": "int", "name": "malware_number"},
+    {"type": "int", "name": "malware_mem_size"},
+    {"type": "int", "name": "ant_signature_name_mem_size"},
+    {"type": "int", "name": "malicious_url_number"},
+    {"type": "int", "name": "malicious_url_mem_size"},
+    {"type": "int", "name": "ant_url_name_mem_size"},
+    {"type": "int", "name": "flash_memory_size"}
+  ],
+  "doc": "Converted from 'av.xml' by xml2json.py"
+}

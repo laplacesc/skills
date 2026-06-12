@@ -1,0 +1,22 @@
+<cmds code="1">
+insert_after_cmd: cmd->sib is not none, insert failed
+# show zone
+Total zone count: 14
+=============================================================================
+ Name                             Type  VR/Vswitch            If-count Shared
+-----------------------------------------------------------------------------
+ mgt                              L3     mgt-vr                     0     N
+ trust                            L3     trust-vr                   1     N
+ untrust                          L3     trust-vr                   1     N
+ dmz                              L3     trust-vr                   0     N
+ l2-trust                         L2     vswitch1                   0     N
+ l2-untrust                       L2     vswitch1                   0     N
+ l2-dmz                           L2     vswitch1                   0     N
+ VPNHub                           L3     trust-vr                   0     N
+ HA                               L3     trust-vr                   0     N
+ effrreg                          L3     trust-vr                   0     N
+ 111111111                        L3     trust-vr                   0     N
+ 88888                            L3     trust-vr                   0     N
+ ().[]\{|}*$~/^/.                 TAP     trust-vr                   0     N
+ tap                              TAP     trust-vr                  1     N
+=============================================================================

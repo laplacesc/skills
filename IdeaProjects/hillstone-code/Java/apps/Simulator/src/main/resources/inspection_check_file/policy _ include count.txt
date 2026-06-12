@@ -1,0 +1,3 @@
+SG-6000# show policy | include count
+
+Total rules count: 0

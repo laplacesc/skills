@@ -1,0 +1,27 @@
+<cmds code="1">
+insert_after_cmd: cmd->sib is not none, insert failed
+# show logging threat
+2023-01-11 15:11:05, WARNING@FLOW(1185190931): From 192.168.244.142:53024(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Botnet C&C IP, threat type: Malware, threat subtype: Trojan, App/P
+rotocol: HTTP, action: log-only, defender: BOTNET DETECT, CC server: 192.168.244.1, botnet tag: -, malware family: -, APT group: -, profile: log, threat severity: High, policy id: 1
+2023-01-11 15:11:00, CRIT@IPS(1208521239): CRITICAL! From 192.168.244.142:53010(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: SQL Injection Detected, threat type: Attack, threat subtype:
+ Web Attack, App/Protocol: HTTP, action: log-only, defender: IPS, signature ID: 336950, profile: ips_all_reset, threat severity: Critical, policy id: 1
+2023-01-11 15:11:00, WARNING@IPS(1208521734): Warning: From 192.168.244.142:53010(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Generic XML External Entity Injection Vulnerability, threa
+t type: Attack, threat subtype: Web Attack, App/Protocol: HTTP, action: log-only, defender: IPS, signature ID: 334138, profile: ips_all_reset, threat severity: Low, policy id: 1
+2023-01-11 15:11:00, WARNING@FLOW(1185190931): From 192.168.244.142:53010(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Botnet C&C IP, threat type: Malware, threat subtype: Trojan, App/P
+rotocol: HTTP, action: log-only, defender: BOTNET DETECT, CC server: 192.168.244.1, botnet tag: -, malware family: -, APT group: -, profile: log, threat severity: High, policy id: 1
+2023-01-11 15:11:00, WARNING@FLOW(1185190931): From 192.168.244.142:53010(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Botnet C&C IP, threat type: Malware, threat subtype: Trojan, App/P
+rotocol: HTTP, action: log-only, defender: BOTNET DETECT, CC server: 192.168.244.1, botnet tag: -, malware family: -, APT group: -, profile: log, threat severity: High, policy id: 1
+2023-01-11 15:10:59, CRIT@IPS(1208521239): CRITICAL! From 192.168.244.142:53006(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Tool Fscan Detected, threat type: Malware, threat subtype: H
+acking Tool, App/Protocol: HTTP, action: log-only, defender: IPS, signature ID: 336909, profile: ips_all_reset, threat severity: High, policy id: 1
+2023-01-11 15:10:59, WARNING@FLOW(1185190931): From 192.168.244.142:53006(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Botnet C&C IP, threat type: Malware, threat subtype: Trojan, App/P
+rotocol: HTTP, action: log-only, defender: BOTNET DETECT, CC server: 192.168.244.1, botnet tag: -, malware family: -, APT group: -, profile: log, threat severity: High, policy id: 1
+2023-01-11 15:10:59, WARNING@FLOW(1185190931): From 192.168.244.142:53006(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Botnet C&C IP, threat type: Malware, threat subtype: Trojan, App/P
+rotocol: HTTP, action: log-only, defender: BOTNET DETECT, CC server: 192.168.244.1, botnet tag: -, malware family: -, APT group: -, profile: log, threat severity: High, policy id: 1
+2023-01-11 15:10:59, CRIT@IPS(1208521239): CRITICAL! From 192.168.244.142:52986(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Tool Fscan Detected, threat type: Malware, threat subtype: H
+acking Tool, App/Protocol: HTTP, action: log-only, defender: IPS, signature ID: 336909, profile: ips_all_reset, threat severity: High, policy id: 1
+2023-01-11 15:10:59, WARNING@FLOW(1185190931): From 192.168.244.142:52986(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Botnet C&C IP, threat type: Malware, threat subtype: Trojan, App/P
+rotocol: HTTP, action: log-only, defender: BOTNET DETECT, CC server: 192.168.244.1, botnet tag: -, malware family: -, APT group: -, profile: log, threat severity: High, policy id: 1
+2023-01-11 15:10:59, WARNING@FLOW(1185190931): From 192.168.244.142:52986(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Botnet C&C IP, threat type: Malware, threat subtype: Trojan, App/P
+rotocol: HTTP, action: log-only, defender: BOTNET DETECT, CC server: 192.168.244.1, botnet tag: -, malware family: -, APT group: -, profile: log, threat severity: High, policy id: 1
+2023-01-11 15:10:58, WARNING@FLOW(1185190931): From 192.168.244.142:52548(ethernet0/1) to 192.168.244.1:80(ethernet0/1), threat name: Botnet C&C IP, threat type: Malware, threat subtype: Trojan, App/P
+rotocol: HTTP, action: log-only, defender: AV, CC server: 192.168.244.1, botnet tag: -, malware family: -, APT group: -, profile: log, threat severity: High, policy id: 1

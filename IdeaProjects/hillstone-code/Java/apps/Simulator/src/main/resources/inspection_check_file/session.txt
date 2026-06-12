@@ -1,0 +1,17 @@
+Device: max 50000, alloc 9, deny session 0, free 49991, tunnel 0, long life 0, alloc failed 0
+======================================================================
+session: id 2, proto 6, flag 0, flag1 20000, flag2 0, flag3 0, created 674, life 1798, policy default,app 3(TCP-ANY) flag 0x0, auth_user_id 0, reverse_auth_user_id 0
+  flow0(30(ethernet0/0)/40000818): 10.182.139.7:55546->1.1.1.1:11443
+  flow1(30(ethernet0/1)/200810): 1.1.1.1:11443->10.182.139.7:55546
+
+session: id 4, proto 17, flag 0, flag1 0, flag2 0, flag3 0, created 152129, life 20, policy default,app 7(DNS) flag 0x0, auth_user_id 0, reverse_auth_user_id 0
+  flow0(30(ethernet0/0)/40000818): 10.182.139.7:54443->1.1.1.1:53
+  flow1(30(ethernet0/0)/200810): 1.1.1.1:53->10.182.139.7:54443
+
+session: id 5, proto 17, flag 0, flag1 0, flag2 0, flag3 0, created 152159, life 51, policy default,app 7(DNS) flag 0x0, auth_user_id 0, reverse_auth_user_id 0
+  flow0(30(ethernet0/0)/40000818): 10.182.139.7:58802->1.1.1.1:53
+  flow1(30(ethernet0/0)/200810): 1.1.1.1:53->10.182.139.7:58802
+
+session: id 6, proto 17, flag 0, flag1 0, flag2 0, flag3 0, created 152149, life 41, policy default,app 7(DNS) flag 0x0, auth_user_id 0, reverse_auth_user_id 0
+  flow0(30(ethernet0/0)/40000818): 10.182.139.7:43491->1.1.1.1:53
+  flow1(30(ethernet0/0)/200810): 1.1.1.1:53->10.182.139.7:43491

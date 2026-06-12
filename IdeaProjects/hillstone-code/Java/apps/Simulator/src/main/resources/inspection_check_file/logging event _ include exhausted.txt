@@ -1,0 +1,7 @@
+SG-6000# show logging event | include exhausted
+
+event log：
+2023-07-05 16:09:20, WARNING@FLOW(1174930441): SNAT rule ID 20 resource exhausted (protocol=17). Reason: out of SNAT resource
+
+ilog：
+2020-09-13 05:17:45 NAT: snat resource has been exhausted 2 times last 240454 second. vr id:1, trans ip:119.6.88.32, proto:6

@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    include: common,device,connect
+# 关闭不对外暴露接口
+#  main:
+#    web-application-type: none
+
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %clr(%5p) [%thread] %clr(%c){cyan}[%clr(%L)] : %msg%n"
+server:
+  port: 8080

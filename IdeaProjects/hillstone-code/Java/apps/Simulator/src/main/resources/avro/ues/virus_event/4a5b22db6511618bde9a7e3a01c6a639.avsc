@@ -1,0 +1,91 @@
+{
+  "type": "record",
+  "name": "VirusEvent",
+  "doc": "病毒事件，定义日期2022/11/14",
+  "fields": [
+    {
+      "name": "fileName",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "带有路径的文件名，array类型，每个字段长度1-1024，array size limit 100"
+    },
+    {
+      "name": "fileSize",
+      "type": "long",
+      "doc": "文件大小,取值范围1-2^31"
+    },
+    {
+      "name": "fileType",
+      "type": "string",
+      "doc": "文件类型，目前只能根据文件后缀名做简单的识别，字段长度1-32"
+    },
+    {
+      "name": "fileRealName",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "文件名，不带路径，与fileName作区分，字段长度1-255"
+    },
+    {
+      "name": "threatType",
+      "type": "string",
+      "doc": "病毒类型，字段长度1-255"
+    },
+    {
+      "name": "threatName",
+      "type": "string",
+      "doc": "病毒名称，不带路径，与fileName作区分，字段长度1-255"
+    },
+    {
+      "name": "md5",
+      "type": "string",
+      "doc": "文件MD5值，字段长度32，小写"
+    },
+    {
+      "name": "hashSha1",
+      "type": "string",
+      "doc": "SHA1，字段长度40"
+    },
+    {
+      "name": "hashSha256",
+      "type": "string",
+      "doc": "SHA256，字段长度64"
+    },
+    {
+      "name": "hashSha512",
+      "type": "string",
+      "doc": "SHA1，字段长度128"
+    },
+    {
+      "name": "crc32",
+      "type": "string",
+      "doc": "crc32，字段长度1-32"
+    },
+    {
+      "name": "ssdeep",
+      "type": "string",
+      "doc": "ssdeep，字段长度1-32"
+    },
+    {
+      "name": "vhash",
+      "type": "string",
+      "doc": "VirusTotal vhash,1-128"
+    },
+    {
+      "name": "tags",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "TAG，对病毒事件的标记,每个字段长度1-255"
+    },
+    {
+      "name": "engine",
+      "type": "int",
+      "doc": "杀毒引擎，从1开始，1表示BD，后续再增加，取值范围1-64"
+    }
+  ]
+}

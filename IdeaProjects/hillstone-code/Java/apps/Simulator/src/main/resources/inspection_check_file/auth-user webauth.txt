@@ -1,0 +1,8 @@
+SG-6000# show auth-user webauth
+Total count: 1
+Server: authentication server
+Ref: reference session count
+=====================================================================================
+IP/MAC          Interface/VR  Username      Server    Role/Group  Ref   Live(s) ID
+-------------------------------------------------------------------------------------
+=====================================================================================

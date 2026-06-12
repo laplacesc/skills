@@ -1,0 +1,40 @@
+{
+  "type": "record",
+  "namespace": "botnet_icloud",
+  "name": "report_grey",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "engine"
+    },
+    {
+      "type": "string",
+      "name": "database"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "sig"
+            },
+            {
+              "type": "long",
+              "name": "hits"
+            }
+          ],
+          "type": "record",
+          "name": "report_grey.grey_info"
+        },
+        "type": "array"
+      },
+      "name": "grey_info"
+    }
+  ],
+  "doc": "Converted from 'botnet_icloud.xml' by xml2json.py"
+}

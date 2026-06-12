@@ -1,0 +1,31 @@
+{
+	"type": "record",
+	"namespace": "com.hillstone.simulator.entity.avro.model.sandbox.md5.v3",
+	"name": "md5_query",
+	"fields": [{
+		"type": {
+			"items": {
+				"fields": [{
+					"type": "string",
+					"name": "md5",
+					"doc": "MD5值"
+				},
+				{
+					"type": "string",
+					"name": "file_type",
+					"doc": "文件类型"
+				},
+				{
+					"type": "string",
+					"name": "protocol",
+					"doc": "网络协议"
+				}],
+				"type": "record",
+				"name": "sandbox_icloud_md5_query"
+			},
+			"type": "array"
+		},
+		"name": "md5_query"
+	}],
+	"doc": "Converted from 'sandbox_icloud.xml' by xml2json.py"
+}

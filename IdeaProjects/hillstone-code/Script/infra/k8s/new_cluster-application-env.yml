@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: application-env
+  namespace: cloud-vod
+data:
+  application-env.yml: |
+    cloud:
+      foundation:
+        vod-mysql-cluster:
+          url: 10.182.220.101:3306
+          username: root
+          password: hillstone
+        vod-clickhouse-cluster:
+          url: 10.182.220.101:8223
+          username: hillstone
+          password: hillstone
+        capture-monitoredIps: 10.182.220.101,10.180.139.97,10.180.139.98,10.182.220.101,10.185.224.41,10.185.232.21,10.185.232.22,10.185.232.23,10.185.236.61,10.185.236.62,10.185.238.84,10.185.238.85
+    spring:
+      profiles:
+        active: china,test

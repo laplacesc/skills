@@ -1,0 +1,44 @@
+### 初始化核心库恶意数据的全量文件
+POST http://localhost:8080/internal/features/initial
+
+### 下载AV全量库
+GET https://ti.hillstonenet.com.cn/api/library/av?
+    date=20241009
+X-Auth-Token: 37c647396c30fba38dc8a99a94386777ac08c572bfd78ce8fd921cb33ace7d20
+
+>> {{Downloads}}/av.zip
+
+### 下载AV定制库
+GET https://ti.hillstonenet.com.cn/api/library/customized_av?
+    date=20241009
+X-Auth-Token: 37c647396c30fba38dc8a99a94386777ac08c572bfd78ce8fd921cb33ace7d20
+
+>> {{Downloads}}/customized_av.zip
+
+### 上传AV各维度权重映射，Pod内执行
+POST http://localhost:8080/internal/signature/av/ioc-weight-mapping/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="weight_table.csv"
+
+< ./malware_weight.csv
+--WebAppBoundary--
+
+### 下载特征库文件
+GET https://ti.hillstonenet.com.cn/management/library/signature/download?
+    id=281&type=library
+Cookie: {{Cookie}}
+
+>> {{Downloads}}/library.zip
+
+### 下载特征库数据源文件
+GET https://ti.hillstonenet.com.cn/management/library/signature/download?
+    id=650&type=source&index=0
+Cookie: {{Cookie}}
+
+>> {{Downloads}}/source.txt
+
+### 获取各种特征库的最新版本号
+GET https://ti.hillstonenet.com.cn/api/library/signature-version
+X-Auth-Token: f162b3cc9512f8cf193acc61771eb3fde3a2e5b4a94fb7a1f2c960678a4220c7

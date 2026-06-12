@@ -1,0 +1,31 @@
+@startuml Superset SDK 服务拓扑图
+!include <C4/C4_Container>
+!include <C4/C4_Context>
+
+LAYOUT_WITH_LEGEND()
+
+title Superset SDK Demo — 服务拓扑
+
+Person(user, "你", "开发人员 / 运维")
+
+System_Boundary(dev_machine, "开发机器") {
+    Container(demo, "DemoApplication", "Java / Spring Boot", "CommandLineRunner 演示\n6 个 Service + SupersetClient")
+}
+
+System_Boundary(superset, "Apache Superset (Docker)") {
+    Container(flask, "Gunicorn / Flask", "Python", "Web Server + REST API")
+    ContainerDb(sqlalchemy, "SQLAlchemy", "Python ORM", "数据库抽象层")
+}
+
+System_Boundary(databases, "目标数据库") {
+    ContainerDb(mysql97, "MySQL 97", "MySQL / 行存 OLTP", "10.182.139.130:3306\ntip_db")
+    ContainerDb(ck97, "ClickHouse 97", "ClickHouse / 列存 OLAP", "10.182.139.129:9000\ntip_db")
+}
+
+Rel(user, demo, "运行 Demo")
+Rel(demo, flask, "HTTP REST\nPOST /api/v1/security/login\nGET /api/v1/database/\nPOST /api/v1/sqllab/execute/\netc.", "JWT Bearer Auth")
+Rel(flask, sqlalchemy, "SQL 查询")
+Rel(sqlalchemy, mysql97, "mysql+pymysql://", "tip_db 行存")
+Rel(sqlalchemy, ck97, "clickhouse+native://", "tip_db 列存")
+
+@enduml

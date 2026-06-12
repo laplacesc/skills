@@ -1,0 +1,4 @@
+SG-6000# show snat id 1 resource detail
+
+snat rule id:1
+resource usage: 80%

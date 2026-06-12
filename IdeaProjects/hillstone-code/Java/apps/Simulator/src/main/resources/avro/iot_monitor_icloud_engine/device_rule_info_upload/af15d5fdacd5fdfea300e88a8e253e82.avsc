@@ -1,0 +1,105 @@
+{
+  "type": "record",
+  "namespace": "iot_monitor_icloud_engine",
+  "name": "device_rule_info_upload",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_id",
+      "doc": "设备ID字符串，用于唯一标识一台设备（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "ip_addr",
+      "doc": "设备的ip字符串（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "mac",
+      "doc": "设备的mac地址字符串（最大长度16）"
+    },
+    {
+      "type": "int",
+      "name": "vr_vs_id",
+      "doc": "vr_vs_id（范围0-2）"
+    },
+    {
+      "type": "int",
+      "name": "is_l2",
+      "doc": "设备是否是二层（范围0-1）"
+    },
+    {
+      "type": "int",
+      "name": "is_tap",
+      "doc": "设备是否是tap（范围0-1）"
+    },
+    {
+      "type": "string",
+      "name": "app_id",
+      "doc": "设备对应的应用ID（最大长度64）"
+    },
+    {
+      "type": "int",
+      "name": "cur_sess_num",
+      "doc": "设备当前并发会话通信的数量"
+    },
+    {
+      "type": "int",
+      "name": "total_sess_num",
+      "doc": "设备总共会话通信的数量"
+    },
+    {
+      "type": "string",
+      "name": "port",
+      "doc": "会话目的端口号（最大长度64）"
+    },
+    {
+      "type": "int",
+      "name": "protocol_num",
+      "doc": "协议总数"
+    },
+    {
+      "type": "string",
+      "name": "protocol",
+      "doc": "协议类型（最大长度64）"
+    },
+    {
+      "type": "int",
+      "name": "proto_sess_num",
+      "doc": "协议会话数量"
+    },
+    {
+      "type": "int",
+      "name": "proto_payload_len",
+      "doc": "协议解析长度"
+    },
+    {
+      "type":{
+        "items": {
+          "fields":[
+            {
+              "type":"int",
+              "name":"protocol_id",
+              "doc":"协议id,8代表dhcp 10代表http"
+            },
+            {
+              "type":"int",
+              "name":"protocol_len",
+              "doc":"协议内容长度"
+            },
+            {
+              "type":"string",
+              "name":"protocol_content",
+              "doc":"协议内容"
+            }
+          ],
+          "type":"record",
+          "name":"protocol_network"
+        },
+        "type":"array"
+      },
+      "name":"protocols"
+    }
+  ],
+  "doc": "Converted from 'iot_monitor_icloud.xml' by xml2json.py"
+}

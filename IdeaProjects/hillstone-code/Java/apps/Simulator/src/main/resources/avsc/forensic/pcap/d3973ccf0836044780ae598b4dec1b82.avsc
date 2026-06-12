@@ -1,0 +1,29 @@
+{
+  "type": "record",
+  "name": "forensic_pcap",
+  "namespace": "com.hillstone.simulator.entity.avro.model.forensic.pcap",
+  "doc": "威胁报文schema, 定义日期2024/03/08, 增加抓包模式",
+  "fields": [
+      {
+        "name": "pcap_id",
+        "type": "long",
+        "doc": "报文id"
+      },
+      {
+        "name": "pcap_mode",
+        "type": "int",
+        "doc": "抓包模式 0：轻量级抓包 1：重量级抓包",
+        "default": -1
+      },
+      {
+        "name": "timestamp",
+        "type": "long",
+        "doc": "时间戳"
+      },
+      {
+        "name": "content",
+        "type": "string",
+        "doc": "威胁报文内容,字段长度：1-1500"
+      }
+    ]
+}

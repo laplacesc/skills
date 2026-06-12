@@ -1,0 +1,32 @@
+{
+	"type": "record",
+	"namespace": "com.hillstone.simulator.entity.avro.model.stats_session.session_rank",
+	"name": "session_rank",
+	"fields": [{
+		"type": "long",
+		"name": "total_session",
+		"doc": "session总数"
+	},
+	{
+		"type": {
+			"items": {
+				"fields": [{
+					"type": "string",
+					"name": "user",
+					"doc": "用户名"
+				},
+				{
+					"type": "long",
+					"name": "session_num",
+					"doc": "创建的session数量"
+				}],
+				"type": "record",
+				"name": "sess_user_top",
+				"doc": "用户创建的session排名"
+			},
+			"type": "array"
+		},
+		"name": "sess_user_top"
+	}],
+	"doc": "Converted from 'session_icloud.xml' by xml2json.py"
+}

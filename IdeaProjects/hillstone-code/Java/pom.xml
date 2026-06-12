@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>sc.laplace.test</groupId>
+    <artifactId>Java</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <packaging>pom</packaging>
+    <modules>
+        <module>apps/Simulator</module>
+        <module>apps/HillstoneTest</module>
+        <module>apps/PingTest</module>
+        <module>apps/AiIocAnalyzer</module>
+        <module>data/HbaseQuery</module>
+        <module>labs/CompletableFutureTest</module>
+        <module>integration/TencentQuery</module>
+        <module>integration/RabbitMq</module>
+        <module>data/HbaseFilter</module>
+        <module>data/Arango2Nebula</module>
+        <module>integration/SupersetSdk</module>
+        <module>integration/SupersetSdk-demo</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>sc.laplace.test.dsgp.plugin</groupId>
+                <artifactId>DsgpPluginTest</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

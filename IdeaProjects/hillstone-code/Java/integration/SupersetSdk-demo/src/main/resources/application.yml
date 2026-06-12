@@ -1,0 +1,15 @@
+server:
+  port: 8089
+
+superset:
+  # === Superset 实例地址（必填）===
+  base-url: http://test-dap1:18088
+  # === 用户名密码认证（二选一）===
+  username: admin
+  password: admin
+  # === 或使用已获取的 JWT Token（优先级高于 username/password）===
+  # access-token: eyJhbGciOiJIUzI1NiIs...
+
+  # === 超时配置（毫秒，可选）===
+  # connect-timeout: 10000
+  # read-timeout: 30000

@@ -1,0 +1,21 @@
+SG-6000# show fib summary
+
+IPv4 Forwarding Table Summary for Virutal Router <trust-vr>
+=========================================================
+Routing Table                    Count
+---------------------------------------------------------
+Destination                          4
+Source                               0
+Source Interface                     0
+Destination Interface                 0
+=========================================================
+
+IPv4 Forwarding Table Summary for Virutal Router <mgt-vr>
+=========================================================
+Routing Table                    Count
+---------------------------------------------------------
+Destination                          0
+Source                               0
+Source Interface                     0
+Destination Interface                 0
+=========================================================

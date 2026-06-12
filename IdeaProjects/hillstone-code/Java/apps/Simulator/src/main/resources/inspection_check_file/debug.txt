@@ -1,0 +1,15 @@
+SG-6000# show debug
+strmengine:
+  decoder:
+    http-clt:
+      basic, enabled
+      error, enabled
+      ips, enabled
+      url, enabled
+      bhv, enabled
+strmengine:
+  decoder:
+    http-cnt:
+      basic, enabled
+      error, enabled
+      ips, enabled

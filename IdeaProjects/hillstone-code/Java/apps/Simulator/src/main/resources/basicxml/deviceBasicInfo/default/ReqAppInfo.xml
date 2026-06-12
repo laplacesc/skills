@@ -1,0 +1,20 @@
+<msg category="Register" type="ReqAppInfo" result="ok">
+    <body>
+        <configuration>
+            <object>
+                <application>
+                    <application-entry>
+                        <application-id>1</application-id>
+                        <en-name>ICMP</en-name>
+                        <cn-name>ICMP</cn-name>
+                    </application-entry>
+                    <application-entry>
+                        <application-id>2</application-id>
+                        <en-name>UDP-ANY</en-name>
+                        <cn-name>UDP</cn-name>
+                    </application-entry>
+                </application>
+            </object>
+        </configuration>
+    </body>
+</msg>

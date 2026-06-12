@@ -1,0 +1,10 @@
+1 1 amnsreiuojy.ru Trojan,CnC 115,2843 - - - -
+1 1 anam0rph.su APT,Malware,Backdoor 113 - - - -
+1 1 bdcrqgonzmwuehky.nl Trojan 115 - - - -
+1 1 ygiudewsqhct.in Trojan,CnC - - - - -
+1 0 coco.miniast.com Miner 779,2403 - - - -
+1 0 da.testiu.com Trojan 221 - - - -
+1 0 db.testyk.com Malware,CnC 3261 339 - - -
+1 0 xred.mooo.com Miner,Trojan,Backdoor,Malware 2377,1569,175,1377,3111 915 - - -
+1 0 pro.csocools.com Trojan,CnC 1117 - - - -
+1 1 donate.v2.xmrig.com APT,Miner,Trojan,Worm 2403,2415 - - - -

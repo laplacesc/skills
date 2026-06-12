@@ -1,0 +1,7 @@
+### 核心库文件解析测试接口
+GET http://localhost:8080/analysis/library/parse?
+    fileDir=/tmp/library/features-init/8b14b1618fbc40079165bdba0ecf9e4e&
+    job_id=8b14b1618fbc40079165bdba0ecf9e4e
+
+### 核心库初始化接口
+POST http://localhost:8080/internal/features/initial

@@ -1,0 +1,116 @@
+{
+  "type": "record",
+  "namespace": "slb",
+  "name": "virtual_server_report",
+  "fields": [
+    {
+      "type": "int",
+      "name": "_capacity"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "vsys_id"
+            },
+            {
+              "type": "string",
+              "name": "vsys"
+            },
+            {
+              "type": {
+                "items": {
+                  "fields": [
+                    {
+                      "type": "int",
+                      "name": "id"
+                    },
+                    {
+                      "type": "string",
+                      "name": "name"
+                    },
+                    {
+                      "type": "int",
+                      "name": "protocol"
+                    },
+                    {
+                      "type": "int",
+                      "name": "status"
+                    },
+                    {
+                      "type": "int",
+                      "name": "running_status"
+                    },
+                    {
+                      "type": "int",
+                      "name": "_action"
+                    },
+                    {
+                      "type": {
+                        "items": {
+                          "fields": [
+                            {
+                              "type": "string",
+                              "name": "ip_min"
+                            },
+                            {
+                              "type": "string",
+                              "name": "ip_max"
+                            },
+                            {
+                              "type": "int",
+                              "name": "port_min"
+                            },
+                            {
+                              "type": "int",
+                              "name": "port_max"
+                            }
+                          ],
+                          "type": "record",
+                          "name": "virtual_server_report.virtual_servers.ip_port"
+                        },
+                        "type": "array"
+                      },
+                      "name": "ip_port"
+                    },
+                    {
+                      "type": {
+                        "items": {
+                          "fields": [
+                            {
+                              "type": "string",
+                              "name": "prefix"
+                            },
+                            {
+                              "type": "int",
+                              "name": "len"
+                            }
+                          ],
+                          "type": "record",
+                          "name": "virtual_server_report.virtual_servers.ip_prefix"
+                        },
+                        "type": "array"
+                      },
+                      "name": "ip_prefix"
+                    }
+                  ],
+                  "type": "record",
+                  "name": "virtual_server_report.virtual_servers"
+                },
+                "type": "array"
+              },
+              "name": "virtual_servers"
+            }
+          ],
+          "type": "record",
+          "name": "slb_virtual_server_report"
+        },
+        "type": "array"
+      },
+      "name": "virtual_server_report"
+    }
+  ],
+  "doc": "Converted from 'slb_vs_icloud.xml' by xml2json.py"
+}

@@ -1,0 +1,6 @@
+{
+  "success": "true",
+  "code": "20000000",
+  "msg": "",
+  "data": "{\"success\": false,\"exception\": {\"code\": \"40000001\",\"message\": \"Syntax error, malformed JSON\"}\"}"
+}

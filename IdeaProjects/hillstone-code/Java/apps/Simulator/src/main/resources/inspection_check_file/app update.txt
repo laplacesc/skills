@@ -1,0 +1,16 @@
+# show app update
+
+APP signature update options:
+protocol: HTTPS
+server1: update1.hillstonenet.com, 443, trust-vr
+server2: update2.hillstonenet.com, 443, trust-vr
+server3:
+proxy server status: disable
+main proxy server:
+backup proxy server:
+mode: auto
+state report: disable
+schedule: daily 09:33
+current status: normal
+last update result: latest signature, needn't update
+last update time: Thu Jul 27 09:33:26 2023

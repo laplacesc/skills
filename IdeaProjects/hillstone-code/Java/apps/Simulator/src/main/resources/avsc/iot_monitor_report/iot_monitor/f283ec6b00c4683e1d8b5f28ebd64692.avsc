@@ -1,0 +1,78 @@
+{
+  "type": "record",
+  "namespace": "com.hillstone.simulator.entity.avro.model.iot_monitor_report.iot_monitor",
+  "doc": "IoT报表数据上送格式",
+  "name": "iot_report_upload",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_id",
+      "doc": "设备ID字符串（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "ip",
+      "doc": "设备的ip字符串（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "mac",
+      "doc": "设备的mac地址字符串（最大长度16）"
+    },
+    {
+      "type": "int",
+      "name": "vsys_id",
+      "doc": "设备所属vsysID"
+    },
+    {
+      "type": "string",
+      "name": "mfr",
+      "doc": "设备生产厂商字符串（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "mfr_cn",
+      "doc": "设备生产厂商字符串中文对照（最大长度128）"
+    },
+    {
+      "type": "string",
+      "name": "type",
+      "doc": "设备类型字符串（最大长度64）"
+    },
+    {
+      "type": "string",
+      "name": "type_cn",
+      "doc": "设备类型字符串中文对照（最大长度128）"
+    },
+    {
+      "type": "string",
+      "name": "model",
+      "doc": "设备型号字符串（最大长度32）"
+    },
+    {
+      "type": "int",
+      "name": "status",
+      "doc": "设备在线离线状态（1-离线，2-在线）"
+    },
+    {
+      "type": "string",
+      "name": "district",
+      "doc": "设备部署区域字符串（最大长度128）"
+    },
+    {
+      "type": "long",
+      "name": "time",
+      "doc": "设备信息最近一次更新的时间"
+    },
+    {
+      "type": "long",
+      "name": "rx",
+      "doc": "下行流量速率"
+    },
+    {
+      "type": "long",
+      "name": "tx",
+      "doc": "上行流量速率"
+    }
+  ]
+}

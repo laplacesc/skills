@@ -1,0 +1,88 @@
+{
+  "type": "record",
+  "namespace": "host_info_icloud",
+  "name": "host_info",
+  "fields": [
+    {
+      "default": 0,
+      "type": "long",
+      "name": "id"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "hostname"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "sip"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "zone"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "osid"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "browserid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "type"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "status"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "updata_time"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "username"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "a3name"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "vsys"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "vr"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "mac"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "last_update"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "os_change_time"
+    }
+  ],
+  "doc": "Converted from 'host_info_icloud.xml' by xml2json.py"
+}

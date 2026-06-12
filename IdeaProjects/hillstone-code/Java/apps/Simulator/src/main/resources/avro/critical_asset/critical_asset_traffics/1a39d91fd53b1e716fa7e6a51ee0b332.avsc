@@ -1,0 +1,52 @@
+{
+  "type": "record",
+  "namespace": "stats_critical_asset",
+  "name": "critical_asset_traffics",
+  "fields": [
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "vsys_id"
+            },
+            {
+              "type": {
+                "items": {
+                  "fields": [
+                    {
+                      "type": "int",
+                      "name": "id"
+                    },
+                    {
+                      "type": "long",
+                      "name": "connection"
+                    },
+                    {
+                      "type": "long",
+                      "name": "ibandwidth"
+                    },
+                    {
+                      "type": "long",
+                      "name": "obandwidth"
+                    }
+                  ],
+                  "type": "record",
+                  "name": "critical_asset_traffics.critical_asset_stats"
+                },
+                "type": "array"
+              },
+              "name": "critical_asset_stats"
+            }
+          ],
+          "type": "record",
+          "name": "stats_critical_asset_critical_asset_traffics"
+        },
+        "type": "array"
+      },
+      "name": "critical_asset_traffics"
+    }
+  ],
+  "doc": "Converted from 'critical_asset_traffics_icloud.xml' by xml2json.py"
+}

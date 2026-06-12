@@ -1,0 +1,111 @@
+#insert ignore into `t_ti_permission`(`path`, `method`, `description`)
+#values ('/management/library/signature/config', 'GET', '获取特征库配置'),
+#    ('/management/library/signature/config', 'POST', '新增特征库配置'),
+#    ('/management/library/signature/config', 'PUT', '修改特征库配置'),
+#    ('/management/library/signature/config', 'DELETE', '删除特征库配置'),
+#    ('/management/library/signature/config/list', 'GET', '获取特征库配置列表'),
+#    ('/management/library/signature/config/process', 'GET', '获取特征库数据流程'),
+#    ('/management/library/signature/config/manual-generation', 'POST', '手动生成特征库'),
+#    ('/management/library/signature/record/library', 'PUT', '特征库信息修改'),
+#    ('/management/library/signature/record/library/list', 'GET', '特征库生成记录列表'),
+#    ('/management/library/signature/record/source/list', 'GET', '获取特征库中数据源生成记录列表'),
+#    ('/management/library/signature/statistic/pie', 'GET', '查看分类占比'),
+#    ('/management/library/signature/statistic/trend', 'GET', '查看情报库中总情报数量趋势'),
+#    ('/management/library/signature/download', 'GET', '下载特征库'),
+#    ('/management/library/signature/download/check', 'GET', '检查特征库是否能够下载');
+### 获取特征库配置列表
+GET https://ti.hillstonenet.com.cn/management/library/signature/config/list
+Cookie: {{Cookie}}
+
+### 获取特征库数据流程
+GET https://ti.hillstonenet.com.cn/management/library/signature/config/process?type=source
+Cookie: {{Cookie}}
+
+### 获取特征库数据流程
+GET https://ti.hillstonenet.com.cn/management/library/signature/config/process?type=library
+Cookie: {{Cookie}}
+
+### 特征库生成记录列表
+GET https://ti.hillstonenet.com.cn/management/library/signature/record/library/list?page=1&limit=10&name=isource&
+    type=black&release=v1
+Cookie: {{Cookie}}
+
+### 获取特征库中数据源生成记录列表
+GET https://ti.hillstonenet.com.cn/management/library/signature/record/source/list?id=1
+Cookie: {{Cookie}}
+
+### 查看情报库中总情报数量趋势
+GET https://ti.hillstonenet.com.cn/management/library/signature/statistic/trend?name=isource&type=black&release=v1&
+    startTime=0&endTime=9999999999999
+Cookie: {{Cookie}}
+
+### 新增特征库配置
+POST https://ti.hillstonenet.com.cn/management/library/signature/config
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+{
+  "name": "isource",
+  "type": "black",
+  "release": "new",
+  "auditStatus": 0,
+  "selectType": {
+    "0": 3,
+    "1": 3,
+    "2": 1,
+    "3": 15
+  },
+  "split": "<>",
+  "hdfsPath": "/tip/signature/isource-black-new/",
+  "comment": "test",
+  "process": {
+  },
+  "source": [
+  ]
+}
+
+### 修改特征库配置
+PUT https://ti.hillstonenet.com.cn/management/library/signature/config
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+{
+  "id": 1,
+  "name": "isource",
+  "type": "black",
+  "release": "new",
+  "auditStatus": 0,
+  "selectType": {
+    "0": 3,
+    "1": 3,
+    "2": 1,
+    "3": 15
+  },
+  "split": "<>",
+  "hdfsPath": "/tip/signature/isource-black-new/",
+  "comment": "test2",
+  "process": {
+    "SourceCollectLibraryHandler": {},
+    "ISourceBlackNewProcessLibraryHandler": {}
+  },
+  "source": [
+  ]
+}
+
+### 智源API下载接口 97
+GET https://ti.hillstonenet.com.cn/api/library/isource
+X-Auth-Token: ca87f4e373c057396bac0672978d10d17fb7818d5ec8c9e3a8f6986a01a82edc
+
+>> {{Downloads}}/isource.zip
+
+### asd
+GET http://10.182.139.97:19005/api/library/isource
+X-Auth-Token: ca87f4e373c057396bac0672978d10d17fb7818d5ec8c9e3a8f6986a01a82edc
+
+>> {{Downloads}}/isource.zip
+
+### C2黑名单API下载接口 97
+GET https://ti.hillstonenet.com.cn/api/library/c2/blacklist?c2Version=v3
+X-Auth-Token: 42f089377dfc6838d3c217ab084a996604514ce33e152cfb5f55c1e5392c1268
+
+>> {{Downloads}}/c2-blacklist.zip

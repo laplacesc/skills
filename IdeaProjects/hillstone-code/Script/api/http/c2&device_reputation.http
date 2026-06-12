@@ -1,0 +1,96 @@
+### 查询配额
+GET https://ti.hillstonenet.com.cn/api/permission/quota
+X-Auth-Token: 13b74c62398f0c5812bfca681aadd38e866950a44f29963806515c2c3c475b02
+ACCEPT: application/json
+X-API-Version: 1.0.0
+X-API-Language: en
+
+### C2信誉查询
+POST https://ti.hillstonenet.com.cn/api/c2/domain/reputation
+X-Auth-Token: ad09a397c1168507b6e412bfe48d0382497369cb1c2b09d4294fb41bf88f419b
+ACCEPT: application/json
+X-API-Version: 1.0.0
+X-API-Language: en
+Device-SN: 0010080184514806
+Content-Type: application/json
+
+[
+  "2.dmkatti.com",
+  "webmine.cz"
+]
+
+### 设备云查配额
+GET https://ti.hillstonenet.com.cn/device/permission/quota
+X-Auth-Token: 4ad7e76bf572ed8fab377755adcee964aa3392f21b16aa018d16be08fb5377bc
+
+### 设备云查
+POST https://ti.hillstonenet.com.cn/device/ioc/reputation
+X-Auth-Token: 4ad7e76bf572ed8fab377755adcee964aa3392f21b16aa018d16be08fb5377bc
+Content-Type: application/json
+
+[
+  {
+    "ioc": "1.1.43.38",
+    "iocType": 0
+  },
+  {
+    "ioc": "0.0nbitcoinz.miningpool.io",
+    "iocType": 1
+  }
+]
+
+### 江西威胁情报入围测试使用
+POST https://ti.hillstonenet.com.cn/api/c2/domain/shortlisted-tests/reputation
+ACCEPT: application/json
+Content-Type: application/json
+X-Auth-Token: 7f8de301702a7374aa2072ef17b15a3e85bcdfb966543f7783acbb7f6b144fc9
+Device-SN: 0010080184514806
+timeout: 2000
+
+[
+  "linux.sogou.live"
+]
+
+### 第三版设备云查 IP
+POST https://ti.hillstonenet.com.cn/device/ioc/ip/reputation
+ACCEPT: application/json
+Content-Type: application/json
+X-Auth-Token: 4ad7e76bf572ed8fab377755adcee964aa3392f21b16aa018d16be08fb5377bc
+
+[
+  "1.1.1.1",
+  "1.1.43.38"
+]
+
+### 第三版设备云查 DOMAIN
+POST https://ti.hillstonenet.com.cn/device/ioc/domain/reputation
+ACCEPT: application/json
+Content-Type: application/json
+X-Auth-Token: 4ad7e76bf572ed8fab377755adcee964aa3392f21b16aa018d16be08fb5377bc
+
+[
+  "0.0nbitcoinz.miningpool.io"
+]
+
+### 第三版设备云查 URL
+POST https://ti.hillstonenet.com.cn/device/ioc/url/reputation
+ACCEPT: application/json
+Content-Type: application/json
+X-Auth-Token: 4ad7e76bf572ed8fab377755adcee964aa3392f21b16aa018d16be08fb5377bc
+
+[
+  "https://29916729.akdoiewjhuvys76ewty.0izg9b.com/b0318038972aa995080a738b53b287e28"
+]
+
+### 第三版设备云查 FILE
+POST https://ti.hillstonenet.com.cn/device/ioc/file/reputation
+ACCEPT: application/json
+Content-Type: application/json
+X-Auth-Token: 4ad7e76bf572ed8fab377755adcee964aa3392f21b16aa018d16be08fb5377bc
+
+[
+  "0000000d4516e15163fa63df80cfadbc"
+]
+
+### 设备 IP GEO 查询
+GET http://localhost:8080/device/ioc/ip/geo?msg=1.1.1.1

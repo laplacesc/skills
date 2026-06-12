@@ -1,0 +1,44 @@
+{
+  "type": "record",
+  "namespace": "caturl_icloud",
+  "name": "report",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "engine"
+    },
+    {
+      "type": "string",
+      "name": "database"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "id"
+            },
+            {
+              "type": "int",
+              "name": "catid"
+            },
+            {
+              "type": "long",
+              "name": "hits"
+            }
+          ],
+          "type": "record",
+          "name": "report.signatures"
+        },
+        "type": "array"
+      },
+      "name": "signatures"
+    }
+  ],
+  "doc": "Converted from 'caturl_icloud.xml' by xml2json.py"
+}

@@ -1,0 +1,68 @@
+{
+  "type": "record",
+  "namespace": "com.hillstone.simulator.entity.avro.model.stats_url.url_rank",
+  "name": "url_rank",
+  "fields": [
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "url"
+            },
+            {
+              "type": "long",
+              "name": "hit"
+            }
+          ],
+          "type": "record",
+          "name": "url_rank.url_url_top"
+        },
+        "type": "array"
+      },
+      "name": "url_url_top"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "url_cate_name"
+            },
+            {
+              "type": "long",
+              "name": "hit"
+            }
+          ],
+          "type": "record",
+          "name": "url_rank.url_category_top"
+        },
+        "type": "array"
+      },
+      "name": "url_category_top"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "user"
+            },
+            {
+              "type": "long",
+              "name": "hit"
+            }
+          ],
+          "type": "record",
+          "name": "url_rank.url_user_top"
+        },
+        "type": "array"
+      },
+      "name": "url_user_top"
+    }
+  ],
+  "doc": "Converted from 'url_icloud.xml' by xml2json.py"
+}

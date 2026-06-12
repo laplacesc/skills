@@ -1,0 +1,60 @@
+{
+  "type": "record",
+  "namespace": "iot_monitor_icloud",
+  "name": "iot_entry",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_id"
+    },
+    {
+      "type": "string",
+      "name": "ip"
+    },
+    {
+      "type": "string",
+      "name": "mac"
+    },
+    {
+      "type": "long",
+      "name": "vsys_id"
+    },
+    {
+      "type": "long",
+      "name": "mfr"
+    },
+    {
+      "type": "long",
+      "name": "type"
+    },
+    {
+      "type": "string",
+      "name": "model"
+    },
+    {
+      "type": "long",
+      "name": "status"
+    },
+    {
+      "type": "long",
+      "name": "trust"
+    },
+    {
+      "type": "string",
+      "name": "district"
+    },
+    {
+      "type": "long",
+      "name": "time"
+    },
+    {
+      "type": "long",
+      "name": "rx"
+    },
+    {
+      "type": "long",
+      "name": "tx"
+    }
+  ],
+  "doc": "Converted from 'iot_monitor_icloud.xml' by xml2json.py"
+}

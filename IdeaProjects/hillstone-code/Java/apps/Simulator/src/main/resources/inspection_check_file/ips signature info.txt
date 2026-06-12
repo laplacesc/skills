@@ -1,0 +1,28 @@
+SG-6000# show ips signature info
+
+Signature vendor: Hillstone Networks
+Current version: 3.0.150
+Release date: 2023-03-20 08:00:00
+Total signature count: 2450
+  DNS             12
+  FTP             4
+  HTTP            1949
+  POP3            1
+  SMTP            19
+  Telnet          5
+  TCP             342
+  UDP             14
+  IMAP            5
+  FINGER          0
+  SUNRPC          4
+  NNTP            0
+  TFTP            3
+  SNMP            1
+  MYSQL           9
+  MSSQL           9
+  ORACLE          9
+  MSRPC           3
+  NETBIOS         55
+  DHCP            1
+  LDAP            4
+  VOIP            1

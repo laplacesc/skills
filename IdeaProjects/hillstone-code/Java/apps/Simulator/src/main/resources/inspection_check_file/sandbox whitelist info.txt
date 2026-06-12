@@ -1,0 +1,5 @@
+SG-6000# show sandbox whitelist info
+
+DB vendor: Hillstone Networks
+Current version: 1.0.25
+Release date: 2023/04/01 03:00:02

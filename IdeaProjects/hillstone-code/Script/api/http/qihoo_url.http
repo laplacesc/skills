@@ -1,0 +1,12 @@
+###
+POST https://update.ti.360.cn/api/v2/list
+sign: adf43dcdf489ec9a26a06b123690907a
+key: 1f6f21a373e9deaeeede4d7c67ad4652
+lid: d8cda6a2e249a626
+Content-Type: application/json
+timestamp: 1751508447
+
+{
+  "type": "IP_REPUTATION_V3",
+  "data": []
+}

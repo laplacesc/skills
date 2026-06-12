@@ -1,0 +1,32 @@
+{
+  "type": "record",
+  "namespace": "com.hillstone.simulator.entity.avro.model.logd_report.event_report",
+  "name": "event",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "时间戳"
+    },
+    {
+      "name": "syslog_id",
+      "type": "int",
+      "doc": "日志id，uint型"
+    },
+    {
+      "name": "vsys_name",
+      "type": "string",
+      "doc": "vsys名称（最大长度32）"
+    },
+    {
+      "name": "vsys_id",
+      "type": "int",
+      "doc": "vsys id(uint16型)"
+    },
+    {
+      "name": "log_msg",
+      "type": "string",
+      "doc": "日志内容(最大长度512)"
+    }
+  ]
+}

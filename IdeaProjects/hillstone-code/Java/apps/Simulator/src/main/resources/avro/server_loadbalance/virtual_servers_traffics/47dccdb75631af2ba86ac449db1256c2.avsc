@@ -1,0 +1,80 @@
+{
+  "type": "record",
+  "namespace": "stats_slb",
+  "name": "virtual_servers_traffics",
+  "fields": [
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "vsys_id"
+            },
+            {
+              "type": "string",
+              "name": "vsys"
+            },
+            {
+              "type": {
+                "items": {
+                  "fields": [
+                    {
+                      "type": "int",
+                      "name": "id"
+                    },
+                    {
+                      "type": "long",
+                      "name": "connection"
+                    },
+                    {
+                      "type": "long",
+                      "name": "cps"
+                    },
+                    {
+                      "type": "long",
+                      "name": "ibytes"
+                    },
+                    {
+                      "type": "long",
+                      "name": "obytes"
+                    },
+                    {
+                      "type": "long",
+                      "name": "ipackets"
+                    },
+                    {
+                      "type": "long",
+                      "name": "opackets"
+                    },
+                    {
+                      "type": "long",
+                      "name": "ibandwidth"
+                    },
+                    {
+                      "type": "long",
+                      "name": "obandwidth"
+                    },
+                    {
+                      "type": "int",
+                      "name": "running_status"
+                    }
+                  ],
+                  "type": "record",
+                  "name": "virtual_servers_traffics.virtual_servers_stats"
+                },
+                "type": "array"
+              },
+              "name": "virtual_servers_stats"
+            }
+          ],
+          "type": "record",
+          "name": "stats_slb_virtual_servers_traffics"
+        },
+        "type": "array"
+      },
+      "name": "virtual_servers_traffics"
+    }
+  ],
+  "doc": "Converted from 'slb_vs_stats_icloud.xml' by xml2json.py"
+}

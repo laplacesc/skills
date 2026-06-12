@@ -1,0 +1,48 @@
+{
+  "type": "record",
+  "namespace": "botnet_icloud",
+  "name": "report_black",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "engine"
+    },
+    {
+      "type": "string",
+      "name": "database"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "hit_sig"
+            },
+            {
+              "type": "long",
+              "name": "def_type"
+            },
+            {
+              "type": "long",
+              "name": "sig_type"
+            },
+            {
+              "type": "long",
+              "name": "hits"
+            }
+          ],
+          "type": "record",
+          "name": "report_black.black_info"
+        },
+        "type": "array"
+      },
+      "name": "black_info"
+    }
+  ],
+  "doc": "Converted from 'botnet_icloud.xml' by xml2json.py"
+}

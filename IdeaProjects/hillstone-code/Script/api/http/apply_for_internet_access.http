@@ -1,0 +1,17 @@
+### 登录
+POST https://hspauth.hillstonenet.com/oauth2/login?
+    username=jxwu&password=HbjKDUriH3uKVWI2qPQIIQ%3D%3D&remember-me=true
+
+### 申请上网
+POST https://ils.hillstonenet.com/work-order_svc/order/order/submit
+Content-Type: application/json
+cookie: JSESSIONID=82A62A195BE2403643588AA98EF92D3F
+
+{
+  "createUser": 944,
+  "orderTitle": "申请上网",
+  "orderType": "108",
+  "networkParams": "{\"ipAddress\":\"10.182.139.97\",\"hours\":24}",
+  "lab": "苏州研发新机房",
+  "orderInfo": "[{\"label\":\"标题\",\"required\":true,\"type\":\"text\",\"typeName\":\"单行文本\",\"placeholder\":\"示例：KVM服务器安装/升级工具\",\"value\":\"申请上网\",\"change\":false},{\"label\":\"机房\",\"key\":\"DanXuanXiaLaKuang\",\"required\":true,\"type\":\"select\",\"typeName\":\"单选下拉框\",\"placeholder\":\"请选择机房\",\"value\":0,\"change\":true,\"minValue\":0,\"maxValue\":10,\"rule\":0,\"managerInput\":false,\"options\":[\"苏州研发新机房\",\"苏州研发旧机房\",\"北京机房\"]},{\"label\":\"上网设备IP\",\"key\":\"DanXingWenBen\",\"required\":true,\"type\":\"text\",\"typeName\":\"单行文本\",\"placeholder\":\"例：10.X.X.X（每次只能输一个IP）\",\"value\":\"10.182.139.97\",\"change\":true,\"minValue\":0,\"maxValue\":10,\"rule\":1},{\"label\":\"上网原因\",\"key\":\"DuoXuanXiaLaKuang\",\"required\":true,\"type\":\"multiple\",\"typeName\":\"多选下拉框\",\"placeholder\":\"请选择上网原因\",\"value\":[\"安装/升级工具\"],\"change\":true,\"minValue\":0,\"maxValue\":10,\"options\":[\"安装/升级工具\",\"安装/更新容器镜像\",\"下载第三方数据\",\"下载/更新驱动\",\"下载/更新第三方代码包\",\"测试公网系统\",\"其它\"]},{\"label\":\"上网时长\",\"key\":\"ShuZiShuRuKuang\",\"required\":true,\"type\":\"number\",\"typeName\":\"数字输入框\",\"placeholder\":\"请输入上网时长\",\"value\":24,\"change\":true,\"minValue\":0,\"maxValue\":\"24\"}]"
+}

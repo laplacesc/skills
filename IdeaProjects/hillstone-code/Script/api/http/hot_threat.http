@@ -1,0 +1,39 @@
+###
+GET https://ti.hillstonenet.com.cn/management/library/attck/matrix?versionId=&locale=en-US
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+###
+GET https://10.182.139.97:443/advices/api/advice?sn=5828248215000449&
+    passport=b1deb30e3f8f92136fe935075cb88db8ecd8b9dede920d96ff46ac521efbdb1f&kv=kv1&dv=dv1&id=480&ps=CS&pln=BDS-I2850&
+    cv=5.5R12-B5.4&cav=2
+
+###
+GET https://139.224.20.33:443/advices/api/advice?sn=HDDGHS2309283447&
+    passport=5623c7aa3cd1403349afc7ccebc7b837939e1a5ed961bc592d590958aff0da07&kv=kv1&dv=dv1&id=56&ps=CS&
+    pln=BDS-I3880-GC&
+    cv=5.5R10-B5.5&cav=2
+
+###
+POST https://ti.hillstonenet.com.cn/management/hotthreat/device-model
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+{
+  "ps": "CS",
+  "pln": "BDS-I5836-ThreatSensor-GC",
+  "cv": "5.5R10-B5.5",
+  "avVersion": "2.6",
+  "ipsVersion": "3"
+}
+
+### 上传文件，批量新增热点威胁建议
+POST https://ti.hillstonenet.com.cn/api/hot-threat/advices/import
+X-Auth-Token: 99ec17384600f49c96fca486c19af33d3b77d93b874abbf5c4378160f4511670
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="hot-threat-advices.json"
+
+< ./hot-threat-advices.json
+--WebAppBoundary--

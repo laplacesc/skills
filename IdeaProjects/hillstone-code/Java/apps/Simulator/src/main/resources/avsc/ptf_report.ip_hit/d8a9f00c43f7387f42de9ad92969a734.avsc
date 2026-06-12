@@ -1,0 +1,24 @@
+{
+	"type": "record",
+    "namespace": "com.hillstone.simulator.entity.avro.model.ptf_report.ip_hit",
+	"name": "report",
+	"fields": [{
+		"default": 0,
+		"type": "long",
+		"name": "ip",
+		"doc": "IP地址"
+	},
+	{
+		"default": 0,
+		"type": "int",
+		"name": "is_src",
+		"doc": "为1时表示1源地址，否则为目的地址"
+	},
+	{
+		"default": 0,
+		"type": "long",
+		"name": "hit_time",
+		"doc": "该ip的命中次数"
+	}],
+	"doc": "Converted from 'ptf_icloud.xml' by xml2json.py"
+}

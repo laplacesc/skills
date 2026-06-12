@@ -1,0 +1,6 @@
+SG-6000# show mac generic
+
+Total:   16384
+Free:    16383
+Static:  1
+Dynamic: 0

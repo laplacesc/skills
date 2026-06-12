@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<msg category="Register" type="ReqLicenseInfo" result="ok">
+    <body>
+        <information>
+            <license>
+                <license-response>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <version>2</version>
+                        <b64Key/>
+                        <type><![CDATA[Platform trial]]></type>
+                        <customer><![CDATA[Hillstone_Internal_Use_Only]]></customer>
+                        <expired-time>74 days</expired-time>
+                        <name><![CDATA[]]></name>
+                        <addtional><![CDATA[]]></addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <version>2</version>
+                        <b64Key/>
+                        <type><![CDATA[URL]]></type>
+                        <customer><![CDATA[Hillstone_Internal_Use_Only]]></customer>
+                        <expired-time>Permanent.Upgrade effective time 2018/06/26</expired-time>
+                        <name><![CDATA[]]></name>
+                        <addtional><![CDATA[Hillstone Networks]]></addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <version>2</version>
+                        <b64Key/>
+                        <type><![CDATA[Sandbox feature]]></type>
+                        <customer><![CDATA[Hillstone_Internal_Use_Only]]></customer>
+                        <expired-time>Permanent.Upgrade effective time 2020/12/04</expired-time>
+                        <name><![CDATA[]]></name>
+                        <addtional><![CDATA[10]]></addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <version>2</version>
+                        <b64Key/>
+                        <type><![CDATA[IPS]]></type>
+                        <customer><![CDATA[Hillstone_Internal_Use_Only]]></customer>
+                        <expired-time>Permanent.Upgrade effective time 2018/06/11</expired-time>
+                        <name><![CDATA[]]></name>
+                        <addtional><![CDATA[Hillstone Networks]]></addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <version>2</version>
+                        <b64Key/>
+                        <type><![CDATA[AntiVirus]]></type>
+                        <customer><![CDATA[Hillstone_Internal_Use_Only]]></customer>
+                        <expired-time>Permanent.Upgrade effective time 2018/06/11</expired-time>
+                        <name><![CDATA[]]></name>
+                        <addtional><![CDATA[Hillstone Networks]]></addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <version>2</version>
+                        <b64Key/>
+                        <type><![CDATA[APP signature]]></type>
+                        <customer><![CDATA[Hillstone_Internal_Use_Only]]></customer>
+                        <expired-time>Permanent.Upgrade effective time 2018/06/11</expired-time>
+                        <name><![CDATA[]]></name>
+                        <addtional><![CDATA[Hillstone Networks]]></addtional>
+                    </license-entry>
+                </license-response>
+            </license>
+        </information>
+    </body>
+</msg>

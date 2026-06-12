@@ -1,0 +1,21 @@
+### 上传热点威胁数据
+POST https://ti.hillstonenet.com.cn/api/document/user-upload
+X-Auth-Token: 2fcd999a467bd045892abf2a329d8d801803268109c49995b85f413c78408cc4
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="HotIntell.tar.gz"
+
+< ./assets/HotIntell.tar.gz
+--WebAppBoundary--
+
+### 上传安全咨询数据
+POST https://ti.hillstonenet.com.cn/api/document/user-upload
+X-Auth-Token: 2fcd999a467bd045892abf2a329d8d801803268109c49995b85f413c78408cc4
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="HotNews.tar.gz"
+
+< ./assets/HotNews.tar.gz
+--WebAppBoundary--

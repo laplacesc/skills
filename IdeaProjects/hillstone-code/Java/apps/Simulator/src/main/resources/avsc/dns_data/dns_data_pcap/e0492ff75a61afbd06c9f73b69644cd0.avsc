@@ -1,0 +1,12 @@
+{
+  "namespace": "com.hillstone.simulator.entity.avro.model.dns_data.dns_data_icloud",
+  "name": "dns_data",
+  "type": "record",
+  "fields": [
+    {
+      "type": "bytes",
+      "name": "dns_pcap",
+      "doc": "DNS抓包"
+    }
+  ]
+}

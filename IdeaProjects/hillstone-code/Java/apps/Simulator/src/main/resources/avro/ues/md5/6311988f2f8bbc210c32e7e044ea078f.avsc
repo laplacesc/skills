@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "processMD5",
+  "doc": "进程md5信息，定义日期2023/02/16",
+  "fields": [
+    {
+      "name": "md5",
+      "type": "string",
+      "doc": "进程打开文件的MD5，字段长度32，小写"
+    }
+  ]
+}

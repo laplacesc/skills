@@ -1,0 +1,24 @@
+# 版本迭代信息：添加返回状态码定义
+app_name: TX-SDK-PRO
+version: v2.8.9.1
+
+#该参数为被集成设备内存低，对于内存占用要求在一定范围内时开启，开启会对检测性能有一定影响
+#若设备性能高，不限制内存占用，建议设置为false，以此来提高检测效率
+#改参数默认开启状态，修改此参数，需重启SDK生效！
+gc_switch: false
+
+# 以下路径相对于当前执行文件的相对路径，注意！！！
+file_path:
+  all_records_file: "sdk_pro/data/db/all_records.json"
+  incr_records_file: "sdk_pro/data/db/inc_records.json"
+  db_path: "sdk_pro/data/db/"
+  # 激活码存放位置
+  authorize_file_path: "sdk_pro/data/authorize/"
+
+log_conf:
+  log_file_path: "/var/log/tx_sdk/tx_sdk.log"
+  log_max_size: 200
+  log_max_backups: 5
+  log_max_age: 30
+  log_compress: false
+  log_local_time: false

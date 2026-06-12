@@ -1,0 +1,37 @@
+{
+  "type": "record",
+  "namespace": "logd_event_icloud",
+  "name": "report",
+  "fields": [
+    {
+      "type": "long",
+      "name": "timestamp"
+    },
+    {
+      "type": "long",
+      "name": "syslog_id"
+    },
+    {
+      "type": "int",
+      "name": "type"
+    },
+    {
+      "type": "int",
+      "name": "severity"
+    },
+    {
+      "type": "string",
+      "name": "module"
+    },
+    {
+      "type": "string",
+      "name": "vsysname"
+    },
+    {
+      "type": "string",
+      "name": "log_msg"
+    }
+  ],
+  "doc": "Converted from 'logd_event_icloud.xml' by xml2json.py"
+}
+

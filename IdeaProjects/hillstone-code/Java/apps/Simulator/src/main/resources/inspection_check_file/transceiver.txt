@@ -1,0 +1,87 @@
+SG-6000# show transceiver
+
+Transceiver status information is shown as below:
+================       xethernet1/0       =====================
+SFP+/XFP information:   JDSU / PLRXPLSCS4322N / 190926
+Serial Number:                  CK39UF19T
+Transmission media:             Multi-mode
+Module temperature:             35.14    C
+Module temperature normal range:[-5.00 , 75.00]
+Tx supply voltage:              3.46     V
+Tx supply voltage normal range:[ 2.97 , 3.63]
+Tx bias current:                5.57    mA
+Tx bias current normal range:[3.00 , 8.50]
+Tx optical power:               -2.21   dBm
+Tx optical power normal range:[-7.50 , -1.30]
+Rx optical power:               -22.92  dBm
+Rx optical power normal range:[-12.00 , 1.00]
+Module Wavelength:              850.00  nm
+single module max transmit distance:    0       km
+OM1 max transmit distance:              30      m
+OM2 max transmit distance:              80      m
+OM3 max transmit distance:              300     m
+copper max transmit distance:           0       m
+===============================================================
+================       xethernet1/1       =====================
+SFP+/XFP information:   JDSU / PLRXPLSCS4322N / 190925
+Serial Number:                  CK39UF0TT
+Transmission media:             Multi-mode
+Module temperature:             35.41    C
+Module temperature normal range:[-5.00 , 75.00]
+Tx supply voltage:              3.45     V
+Tx supply voltage normal range:[ 2.97 , 3.63]
+Tx bias current:                6.19    mA
+Tx bias current normal range:[3.00 , 8.50]
+Tx optical power:               -2.28   dBm
+Tx optical power normal range:[-7.50 , -1.30]
+Rx optical power:               -36.99  dBm
+Rx optical power normal range:[-12.00 , 1.00]
+Module Wavelength:              850.00  nm
+single module max transmit distance:    0       km
+OM1 max transmit distance:              30      m
+OM2 max transmit distance:              80      m
+OM3 max transmit distance:              300     m
+copper max transmit distance:           0       m
+===============================================================
+================       xethernet1/2       =====================
+SFP+/XFP information:   JDSU / PLRXPLSCS4322N / 190926
+Serial Number:                  CK39UF10K
+Transmission media:             Multi-mode
+Module temperature:             33.31    C
+Module temperature normal range:[-5.00 , 75.00]
+Tx supply voltage:              3.45     V
+Tx supply voltage normal range:[ 2.97 , 3.63]
+Tx bias current:                6.08    mA
+Tx bias current normal range:[3.00 , 8.50]
+Tx optical power:               -2.24   dBm
+Tx optical power normal range:[-7.50 , -1.30]
+Rx optical power:               -22.76  dBm
+Rx optical power normal range:[-12.00 , 1.00]
+Module Wavelength:              850.00  nm
+single module max transmit distance:    0       km
+OM1 max transmit distance:              30      m
+OM2 max transmit distance:              80      m
+OM3 max transmit distance:              300     m
+copper max transmit distance:           0       m
+===============================================================
+================       xethernet1/3       =====================
+SFP+/XFP information:   JDSU / PLRXPLSCS4322N / 180712
+Serial Number:                  CJ29UF1DC
+Transmission media:             Multi-mode
+Module temperature:             29.79    C
+Module temperature normal range:[-5.00 , 75.00]
+Tx supply voltage:              3.45     V
+Tx supply voltage normal range:[ 2.97 , 3.63]
+Tx bias current:                6.25    mA
+Tx bias current normal range:[3.00 , 8.50]
+Tx optical power:               -2.26   dBm
+Tx optical power normal range:[-7.50 , -1.30]
+Rx optical power:               -15.92  dBm
+Rx optical power normal range:[-12.00 , 1.00]
+Module Wavelength:              850.00  nm
+single module max transmit distance:    0       km
+OM1 max transmit distance:              30      m
+OM2 max transmit distance:              80      m
+OM3 max transmit distance:              300     m
+copper max transmit distance:           0       m
+===============================================================

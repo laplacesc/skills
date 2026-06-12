@@ -1,0 +1,132 @@
+{
+  "type": "record",
+  "namespace": "wafd_websec_semantic_log",
+  "name": "report",
+  "fields": [
+    {
+      "type": "long",
+      "name": "time"
+    },
+    {
+      "type": "string",
+      "name": "client_ip"
+    },
+    {
+      "type": "int",
+      "name": "client_port"
+    },
+    {
+      "type": "string",
+      "name": "server_ip"
+    },
+    {
+      "type": "int",
+      "name": "server_port"
+    },
+    {
+      "type": "int",
+      "name": "site_id"
+    },
+    {
+      "type": "string",
+      "name": "site_name"
+    },
+    {
+      "type": "string",
+      "name": "policy_name"
+    },
+    {
+      "type": "int",
+      "name": "rule_id"
+    },
+    {
+      "type": "string",
+      "name": "rule_name"
+    },
+    {
+      "type": "string",
+      "name": "desc_en"
+    },
+    {
+      "type": "string",
+      "name": "desc_cn"
+    },
+    {
+      "type": "int",
+      "name": "severity"
+    },
+    {
+      "type": "string",
+      "name": "domain_name"
+    },
+    {
+      "type": "string",
+      "name": "http_method"
+    },
+    {
+      "type": "string",
+      "name": "http_url"
+    },
+    {
+      "type": "string",
+      "name": "http_content"
+    },
+    {
+      "type": "string",
+      "name": "src_country"
+    },
+    {
+      "type": "string",
+      "name": "src_area"
+    },
+    {
+      "type": "string",
+      "name": "payload"
+    },
+    {
+      "type": "string",
+      "name": "quotes_decision"
+    },
+    {
+      "type": "string",
+      "name": "unmatched_short_fp"
+    },
+    {
+      "type": "string",
+      "name": "fingerprint"
+    },
+    {
+      "type": "string",
+      "name": "semantic_engine_version"
+    },
+    {
+      "type": "string",
+      "name": "semantic_engine_result"
+    },
+    {
+      "type": "string",
+      "name": "waf_engine_version"
+    },
+    {
+      "type": "string",
+      "name": "waf_rule_version"
+    },
+    {
+      "type": "string",
+      "name": "xss_black_field"
+    },
+    {
+      "type": "int",
+      "name": "xss_detect_state"
+    },
+    {
+      "type": "string",
+      "name": "matched_pattern"
+    },
+    {
+      "type": "string",
+      "name": "decoded_methods"
+    }
+  ],
+  "doc": "Converted from 'wafd_websec_semantic_log.xml' by xml2json.py"
+}

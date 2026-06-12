@@ -1,0 +1,52 @@
+<cmds code="1">
+insert_after_cmd: cmd->sib is not none, insert failed
+# show cloud server
+cloud intelligence-platform parameters:
+=============================================================
+server:                          10.182.220.165
+username:
+password:
+security:                        encrypt
+server port:                     11443
+vrouter:                         trust-vr
+agent trust-domain:
+server trust-domain:
+device status:                   Online
+service status:
+------------------------------------------------------------
+CLOUD-VIEW                       enable
+SANDBOX                          disable
+CLOUD-VISTA                      disable
+USER-EXPERIENCE-PLAN             enable
+------------------------------------------------------------
+load type status:
+load-config                      enable
+------------------------------------------------------------
+upload type status:
+------------------------------------------------------------
+module                           status
+------------------------------------------------------------
+traffic                          enable
+av                               enable
+mal-url                          enable
+url-filter                       enable
+ips                              enable
+threat-event                     enable
+atd                              enable
+log-event                        enable
+app                              enable
+ptf                              enable
+session                          enable
+url                              enable
+inspection                       enable
+av-common-grey                   enable
+av-sample-collect                enable
+av-status                        enable
+caturl-status                    enable
+botnet-status                    enable
+ips-status                       enable
+ad-hit-counter                   enable
+botnet-grey                      enable
+botnet-black                     enable
+stats-interface                  disable
+=============================================================

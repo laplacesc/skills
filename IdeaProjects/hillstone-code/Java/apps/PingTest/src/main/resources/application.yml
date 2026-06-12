@@ -1,0 +1,18 @@
+spring:
+  config:
+    use-legacy-processing: true
+  profiles:
+    include: test
+
+server:
+  port: 8787
+
+vod:
+  key:
+    encryption: QmufiGYX6vQ97dTx
+    decryption: QmufiGYX6vQ97dTx
+  capture:
+    monitoredIps: ${monitoredIps}
+    limit:
+      deviceSns:
+        - 5823619215001043

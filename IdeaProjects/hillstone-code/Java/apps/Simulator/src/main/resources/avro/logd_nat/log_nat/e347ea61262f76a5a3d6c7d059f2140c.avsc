@@ -1,0 +1,93 @@
+{
+  "type": "record",
+  "name": "nat",
+  "namespace": "com.hillstone.cloud.ngcv.common.model.nat.avro",
+  "doc": "traffic nat日志schema，定义日期2023/2/13",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "时间戳"
+    },
+    {
+      "name": "syslog_id",
+      "type": "int",
+      "doc": "日志id，uint32型"
+    },
+    {
+      "name": "srcip_a3user",
+      "type": "string",
+      "doc": "AAA用户，字段长度：1-64"
+    },
+    {
+      "name": "type",
+      "type": "int",
+      "doc": "NAT类型，uint16"
+    },
+    {
+      "name": "rule_id",
+      "type": "int",
+      "doc": "规则id，uint16"
+    },
+    {
+      "name": "sip",
+      "doc": "源ip",
+      "type": {
+        "type": "record",
+        "name": "ip_record",
+        "fields": [
+          {
+            "name": "ip_addr",
+            "type": "string",
+            "doc": "ip地址信息,字段长度：1-128"
+          },
+          {
+            "name": "ip_family",
+            "type": "int",
+            "doc": "ip 类型 1 ipv4，2ipv6"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sport",
+      "type": "int",
+      "doc": "源端口，uint16"
+    },
+    {
+      "name": "dip",
+      "type": "ip_record",
+      "doc": "目的ip地址信息"
+    },
+    {
+      "name": "dport",
+      "type": "int",
+      "doc": "目的端口，uint16"
+    },
+    {
+      "name": "trans_ip",
+      "type": "ip_record",
+      "doc": "转换后的ip地址信息"
+    },
+    {
+      "name": "trans_port",
+      "type": "int",
+      "doc": "转换后的端口，uint16"
+    },
+    {
+      "name": "source_trans_ip",
+      "type": "ip_record",
+      "doc": "源转换后的ip地址信息"
+    },
+    {
+      "name": "source_trans_port",
+      "type": "int",
+      "doc": "源转换后的端口，uint16"
+    },
+    {
+      "name": "protocol_id",
+      "type": "int",
+      "doc": "协议,uint16类型"
+    }
+  ]
+}

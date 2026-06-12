@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ti-library-ali-nas-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 500Gi
+  nfs:
+    path: /u01/prod/ti-library
+    server: 10.182.139.97
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: inexpensive-nas
+  volumeMode: Filesystem

@@ -1,0 +1,70 @@
+<msg category="Register" type="ReqLicenseInfo" result="ok">
+    <body>
+        <information>
+            <license>
+                <license-response>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <b64Key>
+                            L3anlb7MePHAb6NHycCziU78qDkWty2F0PxCAxrQd6vloTbHLDPGM5onslnGlXmZE4JKJVdLWmkwCJtXkq6+NwyDlxVM/bZIRPfUyEgd1PFVmHhjWgyYPrCjFcD2mIfrPIfbPV4d5OhzNLqcBvY3KPvHA1ynMq55GnGh0z3cOB8PGmzOygkddEDUTPRx/cMcob3jSNA1OOxUrvpfbEiZsxsqgrhGfIuMuJtoP2Nzsqf8URYIlnP0UQtvzAJx52AEOuAXwF5UiQOqNVkGz1QvVXXpGvFbrjUKAp6gcb+kaojsUCEXOfJU72XPqqr4UWeFR/vVOGCztutqnrYvbJZkmQ==
+                        </b64Key>
+                        <version>2</version>
+                        <type>Advances functions</type>
+                        <customer>test</customer>
+                        <expired-time>Permanent</expired-time>
+                        <name>appd110516042519</name>
+                        <addtional>vendor: Hillstone</addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <b64Key>
+                            XXn/uj6xiHubtERWWTNSvcxpVB8zLrZUqUSU//M1gxGqh6mja6WwOOshLIT6vJ7LvJWBR/V+7EFghr5tpaA9LXru34N4zmn8r9veUXmqNCupQhRYIWGxiuVh+rmtBa2/e3T8FZkQBh2GfaEmczKTz70n22SnhLILYVofK9GH4BA6ndyCmpPwdDedSnD12N+pPmYXJ7tKLNlyuJS9jDla2qOfTBkVdJaoJ7GLNk6XeFcIjPdl73FsLnt0wPE51mNdLPyQ2XzaWWKDSJUUtW193g7gmbdzKszr1GhxaZmCNwkRepr15+CyxkeJSorE0tFiwz1rR4n8a/T4d/UuLenzsA==
+                        </b64Key>
+                        <version>2</version>
+                        <type>Platform</type>
+                        <customer>abc</customer>
+                        <expired-time>Permanent.Upgrade effective time 2016/08/08</expired-time>
+                        <name>appd130226101423</name>
+                        <addtional>vendor: Hillstone</addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <b64Key>
+                            GGsei0W+Snl0t+a1NlUhMu/Vw9qammlzVZhcFgIR9jD6GLg5UEGeUf5vsBie1/X0sR2f0S/jRLSgIEdBPj4ii8HjKShdeGJzesBPflPvdROjKiMdzoSs+P18RdLO1Tz8fBQTPXX16JmMU2Z9UeshEgH5Yfp85MAPeHlaB6RfcgNXe3+2eV3YFb/usX7TjGjUs3ruWVl4tf2lfXzQk5MT/xxntouE0VvM4Ct5tP4/MC33l1Xw6lXwFqqzg9vpZNh+3tHSiLPbaR3IM17CWXwDd279dzXT342iSJyXo10OhJ9llvWQh/UxH7POO9xaOX55j6C5qPD5ts4yfzBCGHfvXA==
+                        </b64Key>
+                        <version>2</version>
+                        <type>Platform trial</type>
+                        <customer>test</customer>
+                        <expired-time>expired</expired-time>
+                        <name>av110919084853</name>
+                        <addtional>vendor: Kaspersky</addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <b64Key>
+                            Q8LO0spaXcYcDrz1n0GtDYLECbOO8K1HEpFpc/OsdP0ZTh9vwrZej2SfsHDpMLYYSwvMCl+SsF2p+X9C0CbH+C+lTK17rGxYaZiXzJ4nl9mangW5tbdRwl8qAcUbQ2WfMtx/FqEONvf7CswFdgaRh6wFPAY/tGapdhHK5q+37tunip72wgQpdfKjD+HkvoLcGXYJAAWtaYmLJCTnuz4DYLhGa4DekOEM0xvkOVwTcqQeEH9QfXmMSOAB//cfiZv4+57WidOtJJ1OKTnQF+w9g5oLYhprQK3yjaRoBl8XqZC6gcfSl2J9H/32RViCp19u92ST7/Nv0mXxQtamXpztXA==
+                        </b64Key>
+                        <version>2</version>
+                        <type>APP signature</type>
+                        <customer>abc</customer>
+                        <expired-time>25 days</expired-time>
+                        <name>av130226101410</name>
+                        <addtional>vendor: Kaspersky</addtional>
+                    </license-entry>
+                    <license-entry>
+                        <dev-sn>1103508100001929</dev-sn>
+                        <b64Key>
+                            lPdtGVDabeMqlrUUCqggpX2YZqFpRoTTWNiM7C92kIxrjb6r5qwbuX3VOItlztOZDG9bliSpTSEs7W5K52yVGpxv33zN6KiuxVCImES9K72uLI2e4FUzOZrY3FZKXSYegTLpO/ROupKQHCZ6VD0OikQR/KtqVVRcTWz5w31xQI7Vbe0+AZTo0ER/x9irVONDGi5n/uPHBGK2+Y5CG2OnddvniTAptl9yUw5EP8gfH4SNvT8LuGKhq7pvKemX7lfhX552yBvyBLUhV4gSSasyh3K0DRKiqSjMBBD7NTH39GapWtQ6Xr93FqVT9kjKXoOVwXD8uwyzgi5aRYQq5hAOqA==
+                        </b64Key>
+                        <version>2</version>
+                        <type>Performance</type>
+                        <customer>abc</customer>
+                        <expired-time>expire soon</expired-time>
+                        <name>ips130226101414</name>
+                        <addtional>vendor: Hillstone</addtional>
+                    </license-entry>
+                </license-response>
+            </license>
+        </information>
+    </body>
+</msg>

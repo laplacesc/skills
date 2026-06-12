@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "namespace": "tifd_icloud",
+  "name": "url_query",
+  "fields": [
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "element"
+            },
+            {
+              "type": "int",
+              "name": "from"
+            }
+          ],
+          "type": "record",
+          "name": "tifd_icloud_url_query"
+        },
+        "type": "array"
+      },
+      "name": "url_query"
+    }
+  ],
+  "doc": "Converted from 'tifd_icloud.xml' by xml2json.py"
+}

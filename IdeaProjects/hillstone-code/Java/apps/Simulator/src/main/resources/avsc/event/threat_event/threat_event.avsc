@@ -1,0 +1,1195 @@
+{
+	"type": "record",
+	"name": "threat",
+	"namespace": "com.hillstone.simulator.entity.avro.model.event.threat_event_three",
+	"doc": "威胁日志schema，定义日期2024/3/6，FR39063、39065，完善证据信息",
+	"fields": [
+		{
+			"name": "common",
+			"type": {
+				"type": "record",
+				"name": "common",
+				"fields": [
+					{
+						"name": "app_name",
+						"type": "string",
+						"doc": "应用名称,字段长度：1-32"
+					},
+					{
+						"name": "protocol",
+						"type": "int",
+						"doc": "协议,字段范围：1-65535"
+					},
+					{
+						"name": "policy_id",
+						"type": "int",
+						"doc": "策略id,字段范围：1-100000"
+					},
+					{
+						"name": "threat_profile",
+						"type": "string",
+						"doc": "威胁检测模板：1-16"
+					},
+					{
+						"name": "pcap_id",
+						"type": "long",
+						"doc": "报文id"
+					},
+					{
+						"name": "knowledge_id",
+						"type": "int",
+						"doc": "知识库id"
+					},
+					{
+						"name": "defender_id",
+						"type": "int",
+						"doc": "引擎id，数据范围：1-16"
+					},
+					{
+						"name": "event_info",
+						"type": {
+							"type": "record",
+							"name": "event_info",
+							"fields": [
+								{
+									"name": "event_name",
+									"type": "string",
+									"doc": "威胁时间名称,字段长度：1-96"
+								},
+								{
+									"type": {
+										"items": "string",
+										"name": "tactic_id",
+										"type": "array",
+										"doc": "attck&id的战术id,字段长度：1-256"
+									},
+									"name": "tactic_info"
+								},
+								{
+									"type": {
+										"items": "string",
+										"name": "technique_id",
+										"type": "array",
+										"doc": "attck&id的技术id,字段长度：1-256"
+									},
+									"name": "technique_info"
+								},
+								{
+									"name": "begin_time",
+									"type": "long",
+									"doc": "威胁开始时间"
+								},
+								{
+									"name": "end_time",
+									"type": "long",
+									"doc": "威胁结束时间"
+								},
+								{
+									"name": "pri_type",
+									"type": "int",
+									"doc": "威胁一级类型,数据范围：1-6"
+								},
+								{
+									"name": "sec_type",
+									"type": "int",
+									"doc": "威胁二级类型,数据范围：1-38"
+								},
+								{
+									"name": "severity",
+									"type": "int",
+									"doc": "威胁等级,数据范围：1-4"
+								},
+								{
+									"name": "confidence",
+									"type": "int",
+									"doc": "威胁置信度,数据范围：1-100"
+								},
+								{
+									"name": "attacksource",
+									"type": "string",
+									"doc": "威胁来源,字段长度：1-128"
+								},
+								{
+									"name": "attack_result",
+									"type": "int",
+									"doc": "攻击结果,数据范围：0 未知,1 企图, 2 成功, 3失陷.默认为 0"
+								},
+								{
+									"name": "attack_num",
+									"type": "int",
+									"doc": "攻击次数，和威胁聚合相关"
+								},
+								{
+									"name": "action",
+									"type": "int",
+									"doc": "处理动作,数据范围：0 无动作, 1 仅记录日志, 2 reset, 3 填充magic 4 警告 5 阻断 6 丢弃7 告警 8 sinkhole替换 9 返回页面的http cookie 10 返回页面url参数 11 返回含有点击按钮页面，用户点击后设置cookie用于登录12 返回含有验证码页面，用户填写正确后设置cookie"
+								},
+								{
+								    "name": "code",
+								    "type": "int",
+								    "doc": "响应码，和HTTP协议相关",
+								    "default": 0
+								},
+								{
+								    "name": "method",
+								    "type": "string",
+								    "doc": "请求方法，和HTTP协议相关,字段长度：0-16",
+								    "default": ""
+								},
+								{
+                                    "type" : {
+                                        "items": "string",
+                                         "name": "proxy_ip",
+                                         "type": "array",
+                                         "doc": "代理ip以及其地理位置信息，字段长度: 1-128"
+                                    },
+                                    "name": "proxy_info",
+                                    "default": []
+                                },
+								{
+									"name": "attacker",
+									"type": [
+										"null",
+										{
+											"type": "record",
+											"name": "ip_record",
+											"fields": [
+												{
+													"name": "ip_addr",
+													"type": "string",
+													"doc": "ip地址信息,字段长度：1-128"
+												},
+												{
+													"name": "ip_family",
+													"type": "int",
+													"doc": "ip 类型 1 ipv4，2ipv6"
+												}
+											]
+										}
+									],
+									"doc": "攻击者",
+									"default": null
+								},
+								{
+									"name": "victim",
+									"type": [
+										"null",
+										"ip_record"
+									],
+									"doc": "受害者",
+									"default": null
+								}
+							]
+						}
+					},
+					{
+						"name": "source_info",
+						"type": {
+							"type": "record",
+							"name": "source_info",
+							"fields": [
+								{
+									"name": "addr",
+									"type": "ip_record",
+									"doc": "ip地址信息,ip"
+								},
+								{
+									"name": "port",
+									"type": "int",
+									"doc": "端口信息,数据范围：1-65535"
+								},
+								{
+									"name": "ip_mask_len",
+									"type": "int",
+									"doc": "ip掩码长度,数据范围：1-128"
+								},
+								{
+									"name": "nat_ip",
+									"type": "ip_record",
+									"doc": "nat ip地址"
+								},
+								{
+									"name": "nat_port",
+									"type": "int",
+									"doc": "nat 端口,数据范围：1-65535"
+								},
+								{
+									"name": "vsysid",
+									"type": "int",
+									"doc": "虚拟操作系统id,数据范围：1-1000"
+								},
+								{
+									"name": "interfaceid",
+									"type": "int",
+									"doc": "接口id,数据范围：1-10000"
+								},
+								{
+									"name": "vrid",
+									"type": "int",
+									"doc": "虚拟路由id,数据范围：1-502"
+								},
+								{
+									"name": "zoneid",
+									"type": "int",
+									"doc": "安全域id,数据范围：1-2050"
+								},
+								{
+									"name": "vsysname",
+									"type": "string",
+									"doc": "虚拟操作系统名称,字段长度：1-16"
+								},
+								{
+									"name": "vrname",
+									"type": "string",
+									"doc": "虚拟路由名称,字段长度：1-16"
+								},
+								{
+									"name": "interfacename",
+									"type": "string",
+									"doc": "接口名称,字段长度：1-16"
+								},
+								{
+									"name": "zonename",
+									"type": "string",
+									"doc": "安全域名称,字段长度：1-16"
+								},
+								{
+									"name": "auth_user",
+									"type": "string",
+									"doc": "主机信息 AAA:用户@主机"
+								},
+								{
+								    "name": "mac",
+								    "type": "string",
+								    "doc": "MAC地址,字段长度：0-64",
+								    "default": ""
+								},
+								{
+								    "name": "country_name",
+								    "type": "string",
+								    "doc": "IP地理位置,字段长度：0-64",
+								    "default": ""
+								}
+							]
+						}
+					},
+					{
+						"name": "dst_info",
+						"type": {
+							"type": "record",
+							"name": "dst_info",
+							"fields": [
+								{
+									"name": "addr",
+									"type": "ip_record",
+									"doc": "ip地址信息,同源ip"
+								},
+								{
+									"name": "port",
+									"type": "int",
+									"doc": "端口信息,数据范围：1-65535"
+								},
+								{
+									"name": "ip_mask_len",
+									"type": "int",
+									"doc": "ip掩码长度,数据范围：1-128"
+								},
+								{
+									"name": "nat_ip",
+									"type": "ip_record",
+									"doc": "nat ip地址"
+								},
+								{
+									"name": "nat_port",
+									"type": "int",
+									"doc": "nat 端口,数据范围：1-65535"
+								},
+								{
+									"name": "vsysid",
+									"type": "int",
+									"doc": "虚拟操作系统id,数据范围：1-1000"
+								},
+								{
+									"name": "interfaceid",
+									"type": "int",
+									"doc": "接口id,数据范围：1-10000"
+								},
+								{
+									"name": "vrid",
+									"type": "int",
+									"doc": "虚拟路由id,数据范围：1-502"
+								},
+								{
+									"name": "zoneid",
+									"type": "int",
+									"doc": "安全域id,数据范围：1-2050"
+								},
+								{
+									"name": "vsysname",
+									"type": "string",
+									"doc": "虚拟操作系统名称,字段长度：1-16"
+								},
+								{
+									"name": "vrname",
+									"type": "string",
+									"doc": "虚拟路由名称,字段长度：1-16"
+								},
+								{
+									"name": "interfacename",
+									"type": "string",
+									"doc": "接口名称,字段长度：1-16"
+								},
+								{
+									"name": "zonename",
+									"type": "string",
+									"doc": "安全域名称,字段长度：1-16"
+								},
+								{
+									"name": "auth_user",
+									"type": "string",
+									"doc": "主机信息 AAA:用户@主机"
+								},
+								{
+								    "name": "mac",
+								    "type": "string",
+								    "doc": "MAC地址,字段长度：0-64",
+								    "default": ""
+								},
+								{
+								    "name": "country_name",
+								    "type": "string",
+								    "doc": "IP地理位置,字段长度：0-64",
+								    "default": ""
+								}
+							]
+						}
+					}
+				]
+			},
+			"doc": "公共字段，非必要不修改"
+		},
+		{
+			"name": "engine_priv",
+			"type": [
+				"null",
+				{
+					"name": "ips",
+					"type": "record",
+					"fields": [
+						{
+							"name": "common",
+							"type": {
+								"type": "record",
+								"name": "ips_common",
+								"fields": [
+									{
+										"name": "attack_content",
+										"type": "string",
+										"doc": "攻击内容，字段长度：1-5600，base64编码上送"
+									},
+									{
+										"name": "attack_pos",
+										"type": "string",
+										"doc": "攻击匹配段，例如[[1,4],[2,8],[9,10]]，每个数组代表一个高亮匹配段"
+									},
+									{
+										"name": "ips_type",
+										"type": "int",
+										"doc": "私有字段类型,和下面私有字段相关。1 engine_detect 2 protocol_abnormal 3 inject_attack 4 hidden_iframe 5 extern_link 6 web_acl 7 cc_defense 8 cc_limit 9  cc_url_limit  10 brute_force 11 weak_password 12 sus_ua 13 sensitive_file"
+									},
+									{
+										"name": "CVE_ID",
+										"type": "string",
+										"doc": "CVE_ID，字段长度：1-96"
+									},
+									{
+									    "name": "url",
+									    "type": "string",
+									    "doc": "URL，字段长度：0-128",
+									    "default": ""
+									},
+									{
+									    "name": "direction",
+									    "type": "int",
+									    "doc": "高亮字符串方向，0 请求中高亮 1 响应中高亮 2 URL中高亮",
+									    "default": -1
+									}
+								]
+							}
+						},
+						{
+							"name": "priv",
+							"type": [
+								"null",
+								{
+									"name": "engine_detect",
+									"type": "record",
+									"fields": [
+										{
+											"name": "block_type",
+											"type": "int",
+											"doc": "阻断类型。1 block_ip 2 block_service"
+										},
+										{
+											"name": "block_time",
+											"type": "int",
+											"doc": "阻断时常。"
+										},
+										{
+										    "name": "common_pattern",
+										    "type": "string",
+										    "doc": "平凡字符串，字段长度：0-580",
+										    "default": ""
+										}
+									]
+								},
+								{
+									"name": "protocol_abnormal",
+									"type": "record",
+									"fields": [
+										{
+											"name": "block_type",
+											"type": "int",
+											"doc": "阻断类型。1 block_ip 2 block_service"
+										},
+										{
+											"name": "block_time",
+											"type": "int",
+											"doc": "阻断时常。"
+										}
+									]
+								},
+								{
+									"name": "inject_attack",
+									"type": "record",
+									"fields": [
+										{
+											"name": "uri",
+											"type": "string",
+											"doc": "uri，字段长度：1-255"
+										},
+										{
+											"name": "attack_data",
+											"type": "string",
+											"doc": "注入攻击内容，字段长度：1-80"
+										},
+										{
+											"name": "injection_point",
+											"type": "string",
+											"doc": "注入点，字段长度：1-16"
+										},
+										{
+											"name": "site",
+											"type": "string",
+											"doc": "站点，字段长度：1-64"
+										}
+									]
+								},
+								{
+									"name": "hidden_iframe",
+									"type": "record",
+									"fields": [
+										{
+											"name": "hidden_iframe_height",
+											"type": "int",
+											"doc": "隐藏iframe高度"
+										},
+										{
+											"name": "hidden_iframe_width",
+											"type": "int",
+											"doc": "隐藏iframe宽度"
+										}
+									]
+								},
+								{
+									"name": "extern_link",
+									"type": "record",
+									"fields": [
+										{
+											"name": "request_uri",
+											"type": "string",
+											"doc": "uri，字段长度：1-255"
+										},
+										{
+											"name": "site",
+											"type": "string",
+											"doc": "站点，字段长度：1-64"
+										},
+										{
+											"name": "externl_link_url",
+											"type": "string",
+											"doc": "外链url，字段长度：1-255"
+										}
+									]
+								},
+								{
+									"name": "web_acl",
+									"type": "record",
+									"fields": [
+										{
+											"name": "site",
+											"type": "string",
+											"doc": "站点，字段长度：1-64"
+										},
+										{
+											"name": "acl",
+											"type": "string",
+											"doc": "访问控制名单，字段长度：1-64"
+										},
+										{
+											"name": "request_uri",
+											"type": "string",
+											"doc": "uri，字段长度：1-255"
+										}
+									]
+								},
+								{
+									"name": "cc_defense",
+									"type": "record",
+									"fields": [
+										{
+											"name": "web_server",
+											"type": "string",
+											"doc": "web服务器，字段长度：1-80"
+										},
+										{
+											"name": "request_rate",
+											"type": "int",
+											"doc": "请求频率"
+										},
+										{
+											"name": "threshold",
+											"type": "int",
+											"doc": "请求频率阈值，数据范围：0-4096"
+										}
+									]
+								},
+								{
+									"name": "cc_limit",
+									"type": "record",
+									"fields": [
+										{
+											"name": "web_server",
+											"type": "string",
+											"doc": "web服务器，字段长度：1-80"
+										},
+										{
+											"name": "request_rate",
+											"type": "int",
+											"doc": "请求频率"
+										},
+										{
+											"name": "limit_rate",
+											"type": "int",
+											"doc": "频率阈值，数据范围：0-4096"
+										}
+									]
+								},
+								{
+									"name": "cc_url_limit",
+									"type": "record",
+									"fields": [
+										{
+											"name": "web_server",
+											"type": "string",
+											"doc": "web服务器，字段长度：1-80"
+										},
+										{
+											"name": "request_rate",
+											"type": "int",
+											"doc": "请求频率"
+										},
+										{
+											"name": "limit_rate",
+											"type": "int",
+											"doc": "频率阈值，数据范围：0-4096"
+										},
+										{
+											"name": "block_type",
+											"type": "int",
+											"doc": "阻断类型。1 block_ip 2 block_service"
+										},
+										{
+											"name": "block_time",
+											"type": "int",
+											"doc": "阻断时常。"
+										}
+									]
+								},
+								{
+									"name": "brute_force",
+									"type": "record",
+									"fields": [
+										{
+											"name": "event",
+											"type": "string",
+											"doc": "攻击描述，字段长度：1-80"
+										},
+										{
+											"name": "attack_times",
+											"type": "int",
+											"doc": "暴力破解次数"
+										}
+									]
+								},
+								{
+									"name": "weak_password",
+									"type": "record",
+									"fields": [
+										{
+											"name": "username",
+											"type": "string",
+											"doc": "用户名，字段长度：1-32"
+										},
+										{
+											"type": "string",
+											"name": "password",
+											"doc": "密码，字段长度：1-32"
+										},
+										{
+											"name": "url",
+											"type": "string",
+											"default": "",
+											"doc": "URL，字段长度：0-128"
+										}
+									]
+								},
+								{
+									"name": "sus_ua",
+									"type": "record",
+									"fields": [
+										{
+											"name": "attack_data",
+											"type": "string",
+											"doc": "攻击内容，字段长度：1-80"
+										}
+									]
+								},
+								{
+									"name": "sensitive_file_scan",
+									"type": "record",
+									"fields": [
+										{
+											"name": "sensitive_file",
+											"type": "string",
+											"doc": "可疑文件，字段长度：1-80"
+										},
+										{
+											"name": "dic_hit_count",
+											"type": "int",
+											"doc": "字典命中次数"
+										},
+										{
+											"name": "http_404_count",
+											"type": "int",
+											"doc": "响应404次数"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "botnet",
+					"type": "record",
+					"fields": [
+						{
+							"name": "common",
+							"type": {
+								"type": "record",
+								"name": "botnet_common",
+								"fields": [
+									{
+										"name": "match_type",
+										"type": "int",
+										"doc": "威胁类型，字段范围：1：Botnet C&C IP 2、3:Botnet C&C domain 4: Botnet C&C IP/port 5: Botnet C&C url 6: DNS Tunneling Communication 7 Botnet C&C Sinkhole 8 dga_detect"
+									},
+									{
+										"name": "botnet_tag",
+										"type": "string",
+										"doc": "恶意家族标签，字段长度：1-256"
+									},
+									{
+										"name": "campaign_id",
+										"type": "int",
+										"doc": "攻击团伙"
+									},
+									{
+										"name": "evalution",
+										"type": "int",
+										"doc": "失陷标记，1 失陷 0 未失陷"
+									},
+									{
+										"name": "invade_ip",
+										"type": "ip_record",
+										"doc": "失陷ip，见ip_record"
+									},
+									{
+									    "name": "attack_content",
+									    "type": "string",
+									    "doc": "攻击内容，字段长度：1-5600，base64编码上送",
+									    "default": ""
+									},
+									{
+									    "name": "url",
+									    "type": "string",
+									    "doc": "URL，字段长度：0-128",
+									    "default": ""
+									},
+									{
+									    "name": "direction",
+									    "type": "int",
+									    "doc": "高亮字符串方向，0 请求中高亮 1 响应中高亮",
+									    "default": -1
+									}
+								]
+							}
+						},
+						{
+							"name": "priv",
+							"type": [
+								"null",
+								{
+									"name": "dga_detect",
+									"type": "record",
+									"fields": [
+										{
+											"name": "dga_domain",
+											"type": "string",
+											"doc": "dga域名，字段长度：1-128"
+										}
+									]
+								},
+								{
+									"name": "cc_server",
+									"type": "record",
+									"fields": [
+										{
+											"name": "cc_server",
+											"type": "string",
+											"doc": "cc服务器，字段长度：1-128，cc类型根据match_type映射"
+										},
+										{
+											"name": "check_protocol",
+											"type": "string",
+											"doc": "恶意服务的协议，字段长度：1-32"
+										},
+										{
+											"name": "related_domain",
+											"type": "string",
+											"doc": "DNS原始请求域名，字段长度：1-255"
+										}
+									]
+								},
+								{
+									"name": "tunnel_detect",
+									"type": "record",
+									"fields": [
+										{
+											"name": "tunnel_feature",
+											"type": "string",
+											"doc": "隧道特征，字段长度：1-256"
+										},
+										{
+											"name": "tunnel_domain",
+											"type": "string",
+											"doc": "隧道域名，字段长度：1-128"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "sandbox",
+					"type": "record",
+					"fields": [
+						{
+							"name": "file_name",
+							"type": "string",
+							"doc": "文件名称，字段长度：1-512"
+						},
+						{
+							"name": "file_type",
+							"type": "string",
+							"doc": "文件类型，字段长度：1-512"
+						},
+						{
+							"name": "sandbox_md5",
+							"type": "string",
+							"doc": "MD5，字段长度：1-40"
+						},
+						{
+							"name": "url",
+							"type": "string",
+							"doc": "url，字段长度：1-512"
+						},
+						{
+							"name": "server",
+							"type": "int",
+							"doc": "服务器类型，字段范围：0 无 1 本地沙箱 2 云沙箱"
+						}
+					]
+				},
+				{
+					"name": "av",
+					"type": "record",
+					"fields": [
+						{
+							"name": "file_name",
+							"type": "string",
+							"doc": "文件名称，字段长度：1-512"
+						},
+						{
+							"name": "file_type",
+							"type": "string",
+							"doc": "文件类型，字段长度：1-512"
+						},
+						{
+							"name": "file_md5",
+							"type": "string",
+							"doc": "MD5，字段长度：1-40"
+						},
+						{
+							"name": "url_md5",
+							"type": "string",
+							"doc": "MD5，字段长度：1-40"
+						},
+						{
+							"name": "url",
+							"type": "string",
+							"doc": "url，字段长度：1-512"
+						}
+					]
+				},
+				{
+					"name": "ptf",
+					"type": "record",
+					"fields": [
+						{
+							"name": "hit_count",
+							"type": "int",
+							"doc": "命中次数"
+						},
+						{
+							"name": "detect_ip",
+							"type": "ip_record",
+							"doc": "检测ip,见ip_record"
+						},
+						{
+							"name": "reason",
+							"type": "string",
+							"doc": "原因，字段长度：1-100"
+						}
+					]
+				},
+				{
+					"name": "antispam",
+					"type": "record",
+					"fields": [
+						{
+							"name": "sender",
+							"type": "string",
+							"doc": "发件人，字段长度：1-128"
+						},
+						{
+							"name": "recipient",
+							"type": "string",
+							"doc": "收件人，字段长度：1-512"
+						},
+						{
+							"name": "subject",
+							"type": "string",
+							"doc": "邮件主题，字段长度：1-512"
+						}
+					]
+				},
+				{
+					"name": "ad",
+					"type": "record",
+					"fields": [
+						{
+							"name": "zone",
+							"type": "string",
+							"doc": "告警信息，字段长度：1-64"
+						},
+						{
+							"name": "trigger_reason",
+							"type": "int",
+							"doc": "触发原因：0：none 1:超过源警戒值 2:超过目的警戒值 3：超过目的端口警戒值 "
+						},
+						{
+							"name": "alarm_message",
+							"type": "string",
+							"doc": "告警信息，字段长度：1-256"
+						},
+						{
+							"name": "attack_times",
+							"type": "int",
+							"doc": "攻击次数"
+						}
+					]
+				},
+				{
+					"name": "atd",
+					"type": "record",
+					"fields": [
+						{
+							"name": "amtd_category",
+							"type": "int"
+						},
+						{
+							"name": "domain",
+							"type": "string",
+							"doc": "域名信息，字段长度：1-128"
+						},
+						{
+							"name": "uri",
+							"type": "string",
+							"doc": "uri，字段长度：1-256"
+						},
+						{
+							"name": "uri_match",
+							"type": "string",
+							"doc": "已知恶意URI，字段长度：1-256"
+						},
+						{
+							"name": "malware_family_name",
+							"type": "string",
+							"doc": "恶意软件名称，字段长度：1-64"
+						},
+						{
+							"name": "user_agent",
+							"type": "string",
+							"doc": "user_agent，字段长度：1-128"
+						},
+						{
+							"name": "user_agent_match",
+							"type": "string",
+							"doc": "已知恶意UA，字段长度：1-128"
+						},
+						{
+							"name": "url_match",
+							"type": "string",
+							"doc": "已知恶意URL，字段长度：1-2048"
+						}
+					]
+				},
+				{
+					"name": "web_detect",
+					"type": "record",
+					"fields": [
+						{
+							"name": "message",
+							"type": "string",
+							"doc": "攻击描述，字段长度：1-1024"
+						},
+						{
+							"name": "protection_type",
+							"type": "int"
+						},
+						{
+							"name": "protection_sub_type",
+							"type": "int"
+						},
+						{
+							"name": "hit_count",
+							"type": "int",
+							"doc": "攻击次数"
+						},
+						{
+							"name": "CVE_ID",
+							"type": "string",
+							"doc": "CVE_ID，字段长度：1-1024"
+						},
+						{
+							"name": "CNNVD_ID",
+							"type": "string",
+							"doc": "CNNVD_ID，字段长度：1-128"
+						},
+						{
+							"name": "url",
+							"type": "string",
+							"doc": "url，字段长度：1-128"
+						},
+						{
+							"name": "attack_content",
+							"type": "string",
+							"doc": "攻击内容，字段长度：1-11000"
+						}
+					]
+				},
+				{
+					"name": "decept",
+					"type": "record",
+					"fields": [
+						{
+							"name": "deception_type",
+							"type": "int"
+						},
+						{
+							"name": "uri",
+							"type": "string",
+							"doc": "uri，字段长度：1-128"
+						},
+						{
+							"name": "user_agent",
+							"type": "string",
+							"doc": "user_agent，字段长度：1-128"
+						},
+						{
+							"name": "hostname",
+							"type": "string",
+							"doc": "主机名，字段长度：1-128"
+						},
+						{
+							"name": "ssh_local_version",
+							"type": "string",
+							"doc": "SSH本地版本，字段长度：1-128"
+						},
+						{
+							"name": "ssh_remote_version",
+							"type": "string",
+							"doc": "SSH远端版本，字段长度：1-128"
+						},
+						{
+							"name": "username",
+							"type": "string",
+							"doc": "用户名，字段长度：1-128"
+						},
+						{
+							"name": "password",
+							"type": "string",
+							"doc": "密码，字段长度：1-128"
+						},
+						{
+							"name": "file_name",
+							"type": "string",
+							"doc": "文件名，字段长度：1-128"
+						},
+						{
+							"name": "op_code",
+							"type": "string",
+							"doc": "操作码"
+						}
+					]
+				},
+				{
+					"name": "abd",
+					"type": "record",
+					"fields": [
+						{
+							"name": "server_type",
+							"type": "int",
+							"doc": "服务类型，1 imap4_server 2 irc_server 3 ldap_server 4 mysql_server 5 ftp_server 6 pop3_server 7 smtp_server 8 ssh_server 9 telnet_server"
+						},
+						{
+							"name": "server",
+							"type": "string",
+							"doc": "服务器地址，字段长度：1-128"
+						},
+						{
+							"type": {
+								"items": "int",
+								"name": "errcode",
+								"type": "array",
+								"doc": "icmp访问不可达的返回码"
+							},
+							"name": "icmp_unreachable"
+						},
+						{
+							"name": "url",
+							"type": "string",
+							"doc": "服务器地址，字段长度：1-256"
+						},
+						{
+							"name": "host",
+							"type": "string",
+							"doc": "主机名，字段长度：1-128"
+						},
+						{
+							"name": "keyword",
+							"type": "string",
+							"doc": "关键字，字段长度：1-8"
+						},
+						{
+							"name": "user_agent",
+							"type": "string",
+							"doc": "user_agent，字段长度：1-256"
+						},
+						{
+							"name": "domain",
+							"type": "string",
+							"doc": "服务器地址，字段长度：1-128"
+						},
+						{
+							"name": "message",
+							"type": "string",
+							"doc": "服务器地址，字段长度：1-128"
+						},
+						{
+							"name": "file_path",
+							"type": "string",
+							"doc": "文件路径，字段长度：1-128"
+						},
+						{
+							"type": {
+								"items": {
+									"fields": [
+										{
+											"type": "string",
+											"name": "username",
+											"doc": "用户名，字段长度：1-64"
+										},
+										{
+											"type": "string",
+											"name": "password",
+											"doc": "密码，字段长度：1-64"
+										}
+									],
+									"type": "record",
+									"name": "login"
+								},
+								"type": "array"
+							},
+							"name": "login"
+						}
+					]
+				},
+				{
+					"name": "secure_dns",
+					"type": "record",
+					"fields": [
+						{
+							"name": "rule_id",
+							"type": "int",
+							"default": 0,
+							"doc": "dns-proxy rule ID"
+						},
+						{
+							"name": "domain_name",
+							"type": "string",
+							"default": "",
+							"doc": "恶意域名，字段长度：1-256"
+						},
+						{
+							"name": "tag_type",
+							"type": "string",
+							"default": "",
+							"doc": "字段长度：1-64"
+						},
+						{
+							"name": "tag_name",
+							"type": "string",
+							"default": "",
+							"doc": "字段长度：1-64"
+						}
+					]
+				}
+			],
+			"doc": "各引擎私有字段"
+		}
+	]
+}

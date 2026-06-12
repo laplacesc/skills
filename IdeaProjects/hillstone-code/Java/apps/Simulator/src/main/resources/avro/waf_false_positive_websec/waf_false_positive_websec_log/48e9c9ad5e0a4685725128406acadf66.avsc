@@ -1,0 +1,124 @@
+{
+  "type": "record",
+  "namespace": "wafd_false_positive_websec_ic",
+  "name": "report",
+  "fields": [
+    {
+      "type": "long",
+      "name": "time"
+    },
+    {
+      "type": "string",
+      "name": "client_ip"
+    },
+    {
+      "type": "int",
+      "name": "client_port"
+    },
+    {
+      "type": "string",
+      "name": "server_ip"
+    },
+    {
+      "type": "int",
+      "name": "server_port"
+    },
+    {
+      "type": "int",
+      "name": "site_id"
+    },
+    {
+      "type": "string",
+      "name": "site_name"
+    },
+    {
+      "type": "string",
+      "name": "policy_name"
+    },
+    {
+      "type": "long",
+      "name": "protection_type"
+    },
+    {
+      "type": "long",
+      "name": "protection_sub_type"
+    },
+    {
+      "type": "string",
+      "name": "action"
+    },
+    {
+      "type": "string",
+      "name": "followed_action"
+    },
+    {
+      "type": "string",
+      "name": "block_time"
+    },
+    {
+      "type": "int",
+      "name": "rule_id"
+    },
+    {
+      "type": "string",
+      "name": "rule_name"
+    },
+    {
+      "type": "string",
+      "name": "desc_en"
+    },
+    {
+      "type": "string",
+      "name": "desc_cn"
+    },
+    {
+      "type": "int",
+      "name": "severity"
+    },
+    {
+      "type": "string",
+      "name": "domain_name"
+    },
+    {
+      "type": "string",
+      "name": "http_method"
+    },
+    {
+      "type": "string",
+      "name": "http_url"
+    },
+    {
+      "type": "string",
+      "name": "http_content"
+    },
+    {
+      "type": "string",
+      "name": "src_country"
+    },
+    {
+      "type": "string",
+      "name": "src_area"
+    },
+    {
+      "type": "string",
+      "name": "message"
+    },
+    {
+      "type": "long",
+      "name": "hit_count"
+    },
+    {
+      "type": "string",
+      "name": "desc_feedback"
+    },
+    {
+      "type": "string",
+      "name": "matched_pattern"
+    },
+    {
+      "type": "string",
+      "name": "decoded_methods"
+    }
+  ],
+  "doc": "Converted from 'wafd_false_positive_websec_ic.xml' by xml2json.py"
+}

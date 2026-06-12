@@ -1,0 +1,3 @@
+SG-6000# show share-access-detect signature info
+
+Error: Failed to get the information of endpoint-idetify signature

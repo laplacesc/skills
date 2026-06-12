@@ -1,0 +1,20 @@
+# restTemplate 配置
+rest:
+  connect:
+    timeout: 10000
+  request:
+    timeout: 10000
+  socket:
+    timeout: 10000
+# 运行模式 1 服务启动自动穿件设备 2 服务启动不创建设备，通过外部调用开启连接
+process:
+  model: 1
+  # 运行类型 1 注册云景 2 注册本地大模型
+  register:
+    type: 1
+multi:
+  enable: false
+  num: 100
+  sn-file-path : cpc-simulator/src/main/resources/sn.txt
+  max-multi: 500
+  sleep-time: 1000

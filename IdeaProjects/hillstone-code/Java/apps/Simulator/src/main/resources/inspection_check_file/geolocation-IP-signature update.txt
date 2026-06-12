@@ -1,0 +1,15 @@
+SG-6000# show geolocation-IP-signature update
+
+IPGEO signature update options:
+protocol: HTTPS
+server1: update1.hillstonenet.com, 443, trust-vr
+server2: update2.hillstonenet.com, 443, trust-vr
+server3:
+proxy server status: disable
+main proxy server:
+backup proxy server:
+mode: auto
+schedule: daily 10:22
+current status: normal
+last update result: latest signature, needn't update
+last update time: Thu Jul 27 10:22:37 2023

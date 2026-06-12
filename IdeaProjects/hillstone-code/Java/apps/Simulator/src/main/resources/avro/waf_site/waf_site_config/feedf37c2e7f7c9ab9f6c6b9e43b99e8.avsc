@@ -1,0 +1,52 @@
+{
+  "type": "record",
+  "namespace": "waf_site",
+  "name": "waf_site_config",
+  "fields": [
+    {
+      "type": "int",
+      "name": "_capacity"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "id"
+            },
+            {
+              "type": "string",
+              "name": "name"
+            },
+            {
+              "type": "int",
+              "name": "site_type"
+            },
+            {
+              "type": "int",
+              "name": "status"
+            },
+            {
+              "type": "int",
+              "name": "policy"
+            },
+            {
+              "type": "string",
+              "name": "ip_port_domain"
+            },
+            {
+              "type": "int",
+              "name": "_action"
+            }
+          ],
+          "type": "record",
+          "name": "waf_site_config.waf_sites"
+        },
+        "type": "array"
+      },
+      "name": "waf_sites"
+    }
+  ],
+  "doc": "Converted from 'waf_site_icloud.xml' by xml2json.py"
+}

@@ -1,0 +1,60 @@
+{
+  "type": "record",
+  "namespace": "botnet_icloud",
+  "name": "report_dga",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "database"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "domain"
+            },
+            {
+              "type": "string",
+              "name": "family"
+            },
+            {
+              "type": "long",
+              "name": "timestamp"
+            },
+            {
+              "type": "string",
+              "name": "addr1"
+            },
+            {
+              "type": "string",
+              "name": "addr2"
+            },
+            {
+              "type": "string",
+              "name": "addr3"
+            },
+            {
+              "type": "string",
+              "name": "addr4"
+            },
+            {
+              "type": "long",
+              "name": "hits"
+            }
+          ],
+          "type": "record",
+          "name": "report_dga.result"
+        },
+        "type": "array"
+      },
+      "name": "result"
+    }
+  ],
+  "doc": "Converted from 'botnet_icloud.xml' by xml2json.py"
+}

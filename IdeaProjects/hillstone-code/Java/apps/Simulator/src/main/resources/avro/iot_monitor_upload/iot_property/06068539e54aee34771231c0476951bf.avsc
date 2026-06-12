@@ -1,0 +1,73 @@
+{
+  "namespace": "com.hillstone.iotProperty",
+  "type": "record",
+  "name": "iotMonitorProperty",
+  "doc": "智源云景接收IoT设备资产信息schema",
+  "fields": [
+    {
+      "name": "deviceId",
+      "type": "string",
+      "doc": "IoT设备的ID，最大长度64"
+    },
+    {
+      "name": "ip",
+      "type": "string",
+      "doc": "IoT设备的ip地址，最大长度64"
+    },
+    {
+      "name": "mac",
+      "type": "string",
+      "doc": "IoT设备的mac地址，最大长度16"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "doc": "IoT设备的类型，最大长度64"
+    },
+    {
+      "name": "typeCn",
+      "type": "string",
+      "doc": "IoT设备的类型中文对照，最大长度128"
+    },
+    {
+      "name": "mfr",
+      "type": "string",
+      "doc": "IoT设备的生产厂商，最大长度64"
+    },
+    {
+      "name": "mfrCn",
+      "type": "string",
+      "doc": "IoT设备的生产厂商中文对照，最大长度128"
+    },
+    {
+      "name": "model",
+      "type": "string",
+      "doc": "IoT设备的型号，最大长度32"
+    },
+    {
+      "name": "osFamily",
+      "type": "string",
+      "doc": "IoT设备的操作系统族，最大长度64"
+    },
+    {
+      "name": "osVersion",
+      "type": "string",
+      "doc": "IoT设备的操作系统版本，最大长度128"
+    },
+    {
+      "name": "district",
+      "type": "string",
+      "doc": "IoT设备的部署区域地理信息，最大长度128"
+    },
+    {
+      "name": "lastUpdateTime",
+      "type": "long",
+      "doc": "IoT设备信息最近一次更新的时间"
+    },
+    {
+      "name": "status",
+      "type": "int",
+      "doc": "IoT设备在线状态，1-离线，2-在线"
+    }
+  ]
+}

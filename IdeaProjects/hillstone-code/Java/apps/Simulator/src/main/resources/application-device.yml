@@ -1,0 +1,17 @@
+device:
+  info:
+    client:
+      wsUrl: ${device.connect.info.ws_link_mode}://${device.connect.info.server_ip}:${device.connect.info.server_port}/long
+      sn: ${device.connect.info.sn}
+      username: ${device.connect.info.username}
+      httpUrl: ${device.connect.info.http_link_mode}://${device.connect.info.server_ip}:${device.connect.info.server_port}/
+      product: ${device.connect.info.product}
+      fwName: ${device.connect.info.fw_name}
+      platform: ${device.connect.info.platform}
+      protocolVersion: ${device.connect.info.protocol_version}
+      bootFile: ${device.connect.info.boot_file}
+      realTimeMonitorVersion: ${device.connect.info.real_time_monitor_version}
+      basicInfoVersion: ${device.connect.info.basic_info_version}
+      isYdDevice: ${device.connect.info.is_yd_device}
+      dataUploadVersion: ${device.connect.info.data_upload_version}
+      processModel: ${process.model}

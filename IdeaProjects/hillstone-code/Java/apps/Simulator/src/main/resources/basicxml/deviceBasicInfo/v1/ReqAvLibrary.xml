@@ -1,0 +1,16 @@
+<msg category="ReqDeviceInfo" type="ReqAvLibrary" result="ok">
+    <body>
+        <information>
+            <signature>
+                <av-library-response>
+                    <enable>1</enable>
+                    <number>3094497</number>
+                    <vendor/>
+                    <magic>f005d51e3f84e1b841c3c6921816dc269f4f</magic>
+                    <version>2.1.150826</version>
+                    <release-time>2015-08-26 10:35:13</release-time>
+                </av-library-response>
+            </signature>
+        </information>
+    </body>
+</msg>

@@ -1,0 +1,29 @@
+### 360同步查询接口
+POST http://localhost:8080/api/source/qihoo/query
+Content-Type: application/json
+
+{
+  "threatEleType": "domain",
+  "threatEleValue": "yufxorej.org",
+  "queryType": 1
+}
+
+### 腾讯同步查询接口
+POST http://localhost:8080/api/source/tencent/query
+Content-Type: application/json
+
+{
+  "threatEleType": "domain",
+  "threatEleValue": "yufxorej.org",
+  "queryType": 1
+}
+
+### VT同步查询接口
+POST http://localhost:8080/virustotal/query
+Content-Type: application/json
+
+{
+  "threatEleType": "domain",
+  "threatEleValue": "yufxorej.org",
+  "queryType": 1
+}

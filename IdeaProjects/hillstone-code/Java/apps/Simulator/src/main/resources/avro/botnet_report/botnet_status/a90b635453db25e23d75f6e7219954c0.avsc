@@ -1,0 +1,64 @@
+{
+  "type": "record",
+  "namespace": "botnet_icloud",
+  "name": "botnet_status",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "license_expire_time"
+    },
+    {
+      "type": "string",
+      "name": "database_version"
+    },
+    {
+      "type": "int",
+      "name": "feature_status"
+    },
+    {
+      "type": "long",
+      "name": "C2_signature_number"
+    },
+    {
+      "type": "long",
+      "name": "C2_signature_mem_size"
+    },
+    {
+      "type": "long",
+      "name": "DGA_mem_size"
+    },
+    {
+      "type": "long",
+      "name": "DNS_tunnel_mem_size"
+    },
+    {
+      "type": "long",
+      "name": "flash_mem_size"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "type"
+            },
+            {
+              "type": "long",
+              "name": "using_mem"
+            }
+          ],
+          "type": "record",
+          "name": "botnet_status.botnet_scan_algor"
+        },
+        "type": "array"
+      },
+      "name": "botnet_scan_algor"
+    }
+  ],
+  "doc": "Converted from 'botnet_icloud.xml' by xml2json.py"
+}

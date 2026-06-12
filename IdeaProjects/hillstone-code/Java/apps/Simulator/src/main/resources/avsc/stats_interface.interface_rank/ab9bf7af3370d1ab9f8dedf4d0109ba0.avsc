@@ -1,0 +1,45 @@
+{
+	"namespace": "com.hillstone.simulator.entity.avro.model.stats_interface.interface_rank.v1",
+	"name": "stats_interface",
+	"type": "record",
+	"fields": [{
+		"name": "interface",
+		"type": {
+			"type": "array",
+			"items": {
+				"name": "interface_item",
+				"type": "record",
+				"fields": [{
+					"type": "string",
+					"name": "interface",
+					"doc": "接口名称"
+				},
+				{
+					"type": "long",
+					"name": "upavgspeed",
+					"doc": "指定周期内各个接口的上行平均速率，单位bps"
+				},
+				{
+					"type": "long",
+					"name": "downavgspeed",
+					"doc": "指定周期内各个接口的下行平均速率，单位bps"
+				},
+				{
+					"type": "long",
+					"name": "upmaxspeed",
+					"doc": "指定周期内各个接口的上行最大速率，单位bps"
+				},
+				{
+					"type": "long",
+					"name": "downmaxspeed",
+					"doc": "指定周期内各个接口的下行最大速率，单位bps"
+				}]
+			}
+		}
+	},
+	{
+		"type": "int",
+		"name": "interval",
+		"doc": "上送周期，单位秒"
+	}]
+}

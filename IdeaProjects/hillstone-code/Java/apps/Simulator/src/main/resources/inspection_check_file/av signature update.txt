@@ -1,0 +1,15 @@
+SG-6000# show av signature update
+
+AV signature update options:
+protocol: HTTPS
+server1: update1.hillstonenet.com, 443, trust-vr
+server2: update2.hillstonenet.com, 443, trust-vr
+server3:
+proxy server status: disable
+main proxy server:
+backup proxy server:
+mode: auto
+schedule: daily 04:28
+current status: normal
+last update result: success
+last update time: Thu Jul 27 04:45:45 2023

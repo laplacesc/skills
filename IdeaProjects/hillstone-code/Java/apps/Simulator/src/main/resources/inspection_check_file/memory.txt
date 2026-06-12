@@ -1,0 +1,4 @@
+SG-6000# show memory
+The percentage of memory utilization: 22%
+   total(KB)    used(KB)   free(KB)
+   32859136     7324992    25534144

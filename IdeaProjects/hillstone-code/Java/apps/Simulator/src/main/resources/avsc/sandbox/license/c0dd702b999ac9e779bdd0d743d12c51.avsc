@@ -1,0 +1,16 @@
+{
+	"type": "record",
+	"namespace": "com.hillstone.simulator.entity.avro.model.sandbox.license",
+	"name": "license_info_v3",
+	"fields": [{
+		"type": "long",
+		"name": "license_due",
+		"doc": "license过期时间"
+	},
+	{
+		"type": "int",
+		"name": "file_upload_cap",
+		"doc": "文件上传容量类型"
+	}],
+	"doc": "Converted from 'sandbox_icloud.xml' by xml2json.py"
+}

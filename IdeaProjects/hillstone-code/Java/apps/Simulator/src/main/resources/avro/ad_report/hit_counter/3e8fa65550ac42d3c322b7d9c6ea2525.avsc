@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "namespace": "ad_icloud",
+  "name": "ad_status",
+  "fields": [
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {"type": "int", "name": "zone_type"},
+            {"type": "string", "name": "threat_type"},
+            {"type": "string", "name": "sub_threat_type"},
+            {"type": "int", "name": "match_counter"}
+          ],
+          "type": "record",
+          "name": "ad_icloud_ad_status"
+        },
+        "type": "array"
+      },
+      "name": "ad_status"
+    }
+  ],
+  "doc": "Converted from 'ad.xml' by xml2json.py"
+}

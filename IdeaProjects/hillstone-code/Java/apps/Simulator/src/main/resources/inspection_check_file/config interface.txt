@@ -1,0 +1,79 @@
+interface ethernet03
+  zone  "trust"
+  ip address 10.88.0.1 255.255.255.0
+  manage ping
+exit
+interface ethernet08
+  zone  "trust"
+  ip address 172.0.44.2 255.255.255.0
+  manage ping
+exit
+interface ethernet09
+  zone  "trust"
+  ip address 172.0.3.2 255.255.255.0
+  manage ping
+exit
+interface MGT0
+  zone  "mgt"
+  ip address 192.168.1.1 255.255.255.0
+  manage ip 192.168.1.2
+  ip address 1.1.1.1 255.255.255.255 secondary
+  manage ssh
+  manage ping
+  manage snmp
+  manage https
+exit
+interface cellular0/0
+    zone  "untrust"
+    ip address 6.6.6.6 0.0.0.0
+    manage ping
+exit
+interface ethernet0/0
+  zone  "untrust"
+  ip address 10.182.139.202 255.255.255.0
+  manage ssh
+  manage https
+  manage ping
+exit
+interface ethernet0/1
+  zone  "tap"
+exit
+interface ethernet0/2
+  zone  "untrust"
+  ip address 33.3.3.254 255.255.255.0
+  manage ping
+exit
+interface ethernet0/2.1
+  zone  "mgt"
+  ip address 4.4.4.1 0.0.0.0
+  manage ping
+exit
+interface ethernet0/3
+exit
+interface ethernet0/4
+exit
+interface ethernet0/5
+exit
+interface ethernet0/6
+  zone  "trust"
+  ip address 172.16.0.1 255.255.255.0
+  manage ping
+  manage ssh
+  manage https
+exit
+interface ethernet0/7
+  zone  "l2-untrust"
+  ip address 172.16.1.1 255.255.255.0
+  manage ping
+exit
+interface vswitchif1
+  zone  "trust"
+  shutdown
+exit
+interface tunnel1
+  zone  "l2-trust"
+exit
+interface loopback1
+  zone  "trust"
+exit
+

@@ -1,0 +1,19 @@
+SG-6000# show controller slot 0 port 0 statistic
+ethernet0/0, physical port 24:
+    InGoodOctets:          2100694        InBadOctets:                  0
+    InGoodPkts:              28912        InBadPkts:                    0
+    InUnicastPkts:            2779        InBroadcastPkts:          24211
+    InMulticastPkts:          1922        InControlPkts:                0
+    InUndersizePkts:             0        InOversizePkts:               0
+    InFragments:                 0        InJabbers:                    0
+    InMACRcvErrors:              0        InCRCAlignErrors:             0
+    DropEvents:                  0
+    OutGoodOctets:          885437        OutGoodPkts:              12092
+    OutUnicastPkts:     18446744073709533841        OutBroadcastPkts:         29867
+    OutMulticastPkts:            0        OutControlPkts:               0
+    Collisions:                  0        OutDropDeferrals:             0
+    SingleCollisions:            0        MultipleCollisions:           0
+    ExcessiveCollisions:         0        LateCollisions:               0
+    Pkts64Octets:                1        Pkts65to127Octets:            1
+    Pkts128to255Octets:          1        Pkts256to511Octets:           1
+    Pkts512to1023Octets:         1        Pkts1024toMaxOctets:          1

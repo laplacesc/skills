@@ -1,0 +1,96 @@
+<cmds code="1">
+insert_after_cmd: cmd->sib is not none, insert failed
+# show statistics-set predef_if_bw history
+Item number 1, active item number 0
+Target:   Bandwidth (Unit: Bytes)
+Group-by:  interface directional vsys
+Interface ethernet0/1                     Vsys root                             last 5sec : up 0           down 0
+Recent 1 hour stats in unit of 30 seconds
+Up  :  0        0        0        0        0        0
+Down:  2900536    2100082    2500833    2400750    2410035    3140024
+Up  :  0        0        0        0        0        0
+Down:  2731007    2600893    2003385    2337009    2690007    2780063
+Up  :  0        0        0        0        0        0
+Down:  2480071    25403    26270    27132    22915    22601
+Up  :  0        0        0        0        0        0
+Down:  2713005    2318009    2680060    2500727    2005860    2550080
+Up  :  0        0        0        0        0        0
+Down:  2540037    3300023    2400372    2300576    2210057    0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        333        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Recent 24 hours stats in unit of 10 minutes
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        3435        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Up  :  0        0        0        0        0        0        0        0
+Down:  0        0        0        0        0        0        0        0
+Recent 30 days stats in unit of 1 day
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        21331
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0
+Up  :  0        0        0        0        0        0
+Down:  0        0        0        0        0        0

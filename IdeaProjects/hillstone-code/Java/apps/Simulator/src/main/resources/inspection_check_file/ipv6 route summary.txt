@@ -1,0 +1,25 @@
+# show ipv6 route summary
+Notes: The capacity only limit the route number of static RIPng OSPFv3 BGP route
+Route number statistics according to prefix type and distance
+
+Routing Table Summary for Virtual Router <trust-vr>
+==============================================================================
+Routing Table       Route Source           Count       Active       Select
+------------------------------------------------------------------------------
+Destination         total                      1            1            1
+Interface           total                      0            0            0
+Source              total                      0            0            0
+Source Interface    total                      0            0            0
+Destination         kernel                     1            1            1
+==============================================================================
+
+Routing Table Summary for Virtual Router <mgt-vr>
+==============================================================================
+Routing Table       Route Source           Count       Active       Select
+------------------------------------------------------------------------------
+Destination         total                      1            1            1
+Interface           total                      0            0            0
+Source              total                      0            0            0
+Source Interface    total                      0            0            0
+Destination         kernel                     1            1            1
+==============================================================================

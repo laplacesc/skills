@@ -1,0 +1,40 @@
+### 埃文地理库内部查询接口
+POST http://localhost:8080/api/source/geo/query
+Content-Type: application/json
+
+{
+  "threatEleType": "ip",
+  "threatEleValue": "222.92.61.109"
+}
+
+### 埃文地理库内部查询接口
+POST http://localhost:8080/api/source/geo/query
+Content-Type: application/json
+
+{
+  "threatEleType": "ip",
+  "threatEleValue": "119.129.73.231"
+}
+
+### 埃文地理库内部查询接口
+POST http://localhost:8080/api/source/geo/query
+Content-Type: application/json
+
+{
+  "threatEleType": "ip",
+  "threatEleValue": "188.253.121.148"
+}
+
+### 埃文地理库内部查询接口
+POST http://localhost:8080/api/source/geo/query
+Content-Type: application/json
+
+{
+  "threatEleType": "ip",
+  "threatEleValue": "155.117.18.56"
+}
+
+### {"data":{"source_id":"V1njtNpN2XYdqG59t6IlSw==","token":"b17ce8d8621f4250bde27d0745bee38q","data":{"type":"ip","status":1,"threat_level":"unknown","confidence_score":1.0,"ip_type":"ipv4","ip_address":"222.92.61.109","asn":"4134","as_owner":"中国电信","country_code":"CN","location":[{"country":"中国","province":"江苏省","city":"苏州市","locale":"zh-CN"},{"country":"China","province":"Jiangsu","city":"Suzhou City","locale":"en"}],"longitude":120.467447,"latitude":31.347428,"tags":[{"namespace":"Aiwen-ip","key":"ip-scene","value":"Company"}]}},"status":1}
+### {"data":{"source_id":"V1njtNpN2XYdqG59t6IlSw==","token":"b17ce8d8621f4250bde27d0745bee38q","data":{"type":"ip","status":1,"threat_level":"unknown","confidence_score":1.0,"ip_type":"ipv4","ip_address":"119.129.73.231","asn":"4134","as_owner":"中国电信","country_code":"CN","location":[{"country":"中国","province":"广东省","city":"广州市","locale":"zh-CN"},{"country":"China","province":"Guangdong","city":"Guangzhou City","locale":"en"}],"longitude":113.321856,"latitude":23.08451,"tags":[{"namespace":"Aiwen-ip","key":"ip-scene","value":"Home Broadband"}]}},"status":1}
+### {"data":{"source_id":"V1njtNpN2XYdqG59t6IlSw==","token":"b17ce8d8621f4250bde27d0745bee38q","data":{"type":"ip","status":1,"threat_level":"unknown","confidence_score":1.0,"ip_type":"ipv4","ip_address":"188.253.121.148","asn":"38136","as_owner":"Akari Networks","country_code":"SG","location":[{"country":"新加坡","province":"新加坡","city":"新加坡","locale":"zh-CN"},{"country":"Singapore","province":"Singapore","city":"Singapore","locale":"en"}],"longitude":103.853519,"latitude":1.286529,"tags":[]}},"status":1}
+### {"data":{"source_id":"V1njtNpN2XYdqG59t6IlSw==","token":"b17ce8d8621f4250bde27d0745bee38q","data":{"type":"ip","status":1,"threat_level":"unknown","confidence_score":1.0,"ip_type":"ipv4","ip_address":"155.117.18.56","asn":"63150","as_owner":"BAGE CLOUD LLC","country_code":"US","location":[{"country":"美国","province":"加利福尼亚州","city":"洛杉矶","locale":"zh-CN"},{"country":"United States","province":"California","city":"Los Angeles","locale":"en"}],"longitude":-118.244514,"latitude":34.051941,"tags":[]}},"status":1}

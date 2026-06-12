@@ -1,0 +1,38 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Interface ethernet03
+                Description:
+                Physical up                    Admin up
+                Link up                        Protocol up
+                Interface ID:38
+                IP address:10.88.0.1 255.255.255.0
+                MAC address:3029.5231.d6fe
+                IP MTU:1500
+                ARP learn:enable
+                ARP disable-dynamic-entry:disable
+                ARP timeout:1200
+                Duplicate address detection alarm enable
+                Speed mode:1000
+                Duplex mode:full
+                media type:copper
+                QoS input profile : 1st-level --
+                                    2nd-level --
+                QoS output profile: 1st-level --
+                                    2nd-level --
+                downstream bandwidth is 1000000000
+                upstream   bandwidth is 1000000000
+                Bind to zone trust
+                Belong to vsys root
+                Proximity detect off
+                Proximity route disable
+                manage service:SSH;HTTPS;
+                Secondary IP address0: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address1: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address2: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address3: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address4: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address5: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address6: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address7: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address8: 0.0.0.0 mask:0.0.0.0
+                Secondary IP address9: 0.0.0.0 mask:0.0.0.0
+=========================================================================================================================================================

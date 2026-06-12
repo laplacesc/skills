@@ -1,0 +1,126 @@
+{
+    "name": "device_info",
+    "namespace": "com.hillstone.simulator.entity.avro.model.statistics.device_info.v1",
+    "type": "record",
+    "fields": [
+        {
+            "name": "overall_traffic",
+            "doc" : "The total traffic statistic by deimention of inetFamily and direction result of device.",
+            "type": {
+                "name" : "diff_inet_family_traffic",
+                "type": "record",
+                "fields": [
+                    {
+                        "name": "traffic_ipv4",
+                        "type" : {
+                            "name" : "directional_traffic_record",
+                            "type": "record",
+                            "fields": [
+                                {
+                                    "name": "upstream_bandwidth",
+                                    "doc" : "This field is used to express the amount of traffic flowing through the device in bytes",
+                                    "type": "long"
+                                },
+                                {
+                                    "name": "downstream_bandwidth",
+                                    "type": "long"
+                                }
+                            ]
+                        }
+
+                    },
+                    {
+                        "name" : "traffic_ipv6",
+                        "type" : "directional_traffic_record"
+                    }
+                ]
+            }
+        },
+
+        {
+            "name" : "overall_session",
+            "doc"   : "The instant count of session in device.",
+            "type" : {
+                "name" : "diff_inet_family_value",
+                "type" : "record",
+                "fields" : [
+                    {
+                        "name": "ipv4_value",
+                        "type": "long"
+                    },
+                    {
+                        "name": "ipv6_value",
+                        "type": "long"
+                    }
+                ]
+            }
+        },
+
+        {
+            "name"  : "overall_session_rampup",
+            "doc"   : "The average rate at which sessions are newly created within the interval, in uints per second",
+            "type"  : "diff_inet_family_value"
+        },
+
+
+        {
+            "name": "all_user_visiable_interfaces_info",
+            "doc" : "The informations of all interfaces that is visible to user",
+            "type" : {
+                "type" : "array",
+                "items" : {
+                    "name" : "interfaces_info",
+                    "type" : "record",
+                    "fields" :  [
+                        {
+                            "name" : "if_name",
+                            "type" : "string"
+                        },
+                        {
+                            "name" : "traffic",
+                            "type" : "diff_inet_family_traffic"
+                        }
+                    ]
+                }
+            }
+        },
+
+
+
+        {
+            "name": "join_control_info",
+            "type": {
+                "name": "control_info",
+                "type": "record",
+                "fields": [
+                    {
+                        "name": "interval",
+                        "doc" : "time granularity is minute.",
+                        "type": "int"
+                    },
+                    {
+                        "name": "end_time",
+                        "doc" : "A timestamp in UTC format that expresses the point in time as of the collected data",
+                        "type": "long"
+                    },
+                    {
+                        "name": "collect_data_status",
+                        "type": {
+                            "name": "status",
+                            "type": "enum",
+                            "symbols": [
+                                "SUCCESS",
+                                "FAILURE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "additional_info",
+                        "doc": "Most of time this field records error info.",
+                        "type": "string"
+                    }
+                ]
+            }
+        }
+    ]
+}

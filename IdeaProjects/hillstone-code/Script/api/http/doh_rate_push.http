@@ -1,0 +1,24 @@
+### 云瞻将DoH查询速率限制值主动推送给指定设备 内部请求
+POST http://localhost:8080/management/extraction/doh-rate/push
+Content-Type: application/json
+
+{
+  "sns": [
+    "WASD382354820500",
+    "5935017235003144"
+  ],
+  "percentage": 80
+}
+
+### 云瞻将DoH查询速率限制值主动推送给指定设备 登录状态请求
+POST https://ti.hillstonenet.com.cn/management/extraction/doh-rate/push
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+{
+  "sns": [
+    "WASD382354820500",
+    "6730905232001644"
+  ],
+  "percentage": 110
+}

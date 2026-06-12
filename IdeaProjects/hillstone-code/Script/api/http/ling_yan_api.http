@@ -1,0 +1,25 @@
+### 获取灵岩设备APIKEY
+GET https://ti.hillstonenet.com.cn/device/lingyan/apikey?sn=WASD382354820500
+
+### 获取灵岩设备APIKEY 41
+GET https://dev.jxwumksww.ti.hillstonenet.com.cn/device/lingyan/apikey?sn=operations-lingyan
+
+### 为灵岩平台提供IOC情报查询
+GET https://ti.hillstonenet.com.cn/device/lingyan/ioc/detail?queryValue=1.1.1.1
+X-Auth-Token: f3e3aef59608c72fefadbad74aeb48d4501bdf18e8fa88d010e767ae407401c7
+
+### 提供漏洞信息查询
+GET https://ti.hillstonenet.com.cn/device/lingyan/vulnerability/detail?cveId=123
+X-Auth-Token: 7f8de301702a7374aa2072ef17b15a3e85bcdfb966543f7783acbb7f6b144fc9
+
+### 提供漏洞信息查询
+GET https://ti.hillstonenet.com.cn/device/lingyan/vulnerabilities?nameCn=字节码
+X-Auth-Token: 9aceb9ce40a68b9cbeeccfefb401231809d2c1198a6f4504800685a9f794aba5
+
+### ATT&CK technique
+GET https://ti.hillstonenet.com.cn/device/lingyan/attck/detail?attckId=T1596.004
+X-Auth-Token: 4ad7e76bf572ed8fab377755adcee964aa3392f21b16aa018d16be08fb5377bc
+
+### ATT&CK tactic
+GET https://ti.hillstonenet.com.cn/device/lingyan/attck/detail?attckId=TA0006
+X-Auth-Token: 4ad7e76bf572ed8fab377755adcee964aa3392f21b16aa018d16be08fb5377bc

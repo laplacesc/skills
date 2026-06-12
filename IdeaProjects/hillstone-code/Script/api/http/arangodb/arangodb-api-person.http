@@ -1,0 +1,96 @@
+### FetchEdge
+# FETCH PROP ON KNOWS {0} -> {1} YIELD KNOWS.creationDate
+POST http://10.182.63.120:8529/_db/ldbc/_api/cursor
+Content-Type: application/json
+
+{
+  "query": "FOR edge IN person_knows_person FILTER edge._from == @person1 AND edge._to == @person2 RETURN edge.creationDate",
+  "bindVars": {
+    "person1": "person/933",
+    "person2": "person/36226"
+  },
+  "count": false,
+  "batchSize": 1
+}
+
+### FetchTag
+# FETCH PROP ON Person {0} YIELD Person.firstName, Person.lastName, Person.gender, Person.birthday, Person.creationDate, Person.locationIP, Person.browserUsed
+POST http://10.182.63.120:8529/_db/ldbc/_api/cursor
+Content-Type: application/json
+
+{
+  "query": "FOR vertex IN person FILTER vertex._key == @person RETURN { 'firstName': vertex.firstName, 'lastName': vertex.lastName, 'gender': vertex.gender, 'birthday': vertex.birthday, 'creationDate': vertex.creationDate, 'locationIP': vertex.locationIP, 'browserUsed': vertex.browserUsed }",
+  "bindVars": {
+    "person": "933"
+  },
+  "count": false,
+  "batchSize": 1
+}
+
+### Go1StepDst
+# GO 1 STEP FROM {0} OVER KNOWS yield $$.Person.firstName
+POST http://10.182.63.120:8529/_db/ldbc/_api/cursor
+Content-Type: application/json
+
+{
+  "query": "FOR edge IN person_knows_person FILTER edge._from == @person FOR vertex IN person FILTER vertex._id == edge._to RETURN vertex.firstName",
+  "bindVars": {
+    "person": "person/933"
+  },
+  "count": false,
+  "batchSize": 1
+}
+
+### Go1StepEdge
+# GO 1 STEP FROM {0} OVER KNOWS yield KNOWS.creationDate
+POST http://10.182.63.120:8529/_db/ldbc/_api/cursor
+Content-Type: application/json
+
+{
+  "query": "FOR edge IN person_knows_person FILTER edge._from == @person RETURN edge.creationDate",
+  "bindVars": {
+    "person": "person/933"
+  },
+  "count": false,
+  "batchSize": 1
+}
+
+### Go2StepDst
+# GO 2 STEP FROM {0} OVER KNOWS yield $$.Person.firstName
+
+### Go2StepEdge
+# GO 2 STEP FROM {0} OVER KNOWS yield KNOWS.creationDate
+
+### Go3StepDst
+# GO 3 STEP FROM {0} OVER KNOWS yield $$.Person.firstName
+
+### Go3StepEdge
+# GO 3 STEP FROM {0} OVER KNOWS yield KNOWS.creationDate
+
+### LookUp
+# LOOKUP ON Person WHERE Person.firstName == "{1}" YIELD Person.firstName, Person.lastName, Person.gender, Person.birthday, Person.creationDate, Person.locationIP, Person.browserUsed
+POST http://10.182.63.120:8529/_db/ldbc/_api/cursor
+Content-Type: application/json
+
+{
+  "query": "FOR vertex IN person FILTER vertex.firstName == @firstName RETURN { 'firstName': vertex.firstName, 'lastName': vertex.lastName, 'gender': vertex.gender, 'birthday': vertex.birthday, 'creationDate': vertex.creationDate, 'locationIP': vertex.locationIP, 'browserUsed': vertex.browserUsed }",
+  "bindVars": {
+    "firstName": "Benjamin W."
+  },
+  "count": false,
+  "batchSize": 1
+}
+
+### FindShortestNoVidPath
+# FIND SHORTEST PATH FROM {0} TO -1 OVER * YIELD path as p
+
+### FindShortestPath
+# FIND SHORTEST PATH FROM {0} TO {1} OVER * YIELD path as p
+
+### BatchInsertEdgeScenari
+
+### BatchInsertVertexScenari
+
+### InsertEdgeScenari
+
+### InsertVertexScenari

@@ -1,0 +1,5 @@
+SG-6000# show ntp status
+
+ntp version is 4
+ntp client is disabled, authentication is disabled
+ntp query-interval is 5 minute, max-adjustment time is 10 seconds

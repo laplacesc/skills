@@ -1,0 +1,41 @@
+<msg category="Register" type="ReqDeviceBasicInfo" result="ok">
+    <body>
+        <platform>
+            <device-response>
+                <id>17039872</id>
+                <name>DEVICE_NAME</name>
+                <sn>1103508100001929</sn>
+                <assembly>45091</assembly>
+                <bootfile>SG6000-M-5.5R2P3.bin</bootfile>
+                <regtype>flash</regtype>
+                <timestamp>2015/10/27 21:00:24</timestamp>
+                <author/>
+                <uptime>16631</uptime>
+                <platform>SG-6000-E1600</platform>
+                <version>Version 5.0</version>
+                <agent-version>2.0</agent-version>
+                <total-memory>4194304</total-memory>
+                <sessions-capacity>99999999</sessions-capacity>
+                <capacity>
+                    <service-group-member>64</service-group-member>
+                    <address-book-member>1000</address-book-member>
+                </capacity>
+                <vsys-info>
+                    <support-vsys>1</support-vsys>
+                    <entity>
+                        <vsys-name>root</vsys-name>
+                        <vsys-id>0</vsys-id>
+                        <vsys-capacity>425000</vsys-capacity>
+                        <policy-max>6000</policy-max>
+                    </entity>
+                    <entity>
+                        <vsys-name>vsys1</vsys-name>
+                        <vsys-id>1</vsys-id>
+                        <vsys-capacity>425000</vsys-capacity>
+                        <policy-max>6000</policy-max>
+                    </entity>
+                </vsys-info>
+            </device-response>
+        </platform>
+    </body>
+</msg>

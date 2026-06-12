@@ -1,0 +1,93 @@
+{
+    "name": "traffic_rank",
+    "namespace": "com.hillstone.simulator.entity.avro.model.statistics_set.traffic_rank",
+    "type": "record",
+    "fields": [
+        {
+            "name" : "user_traffic_rank",
+            "type": {
+                "name" : "traffic_rank_record",
+                "type" : "record",
+                "fields" : [
+                    {
+                        "name" : "rank",
+                        "type" : {
+                            "type": "array",
+                            "items": {
+                                "name": "traffic_rank_item",
+                                "type": "record",
+                                "fields": [
+                                    {
+                                        "name": "item_name",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "upstream_bandwidth",
+                                        "doc" : "This field is used to represent the total amount of upstream traffic to which the entry belongs, in bytes",
+                                        "type": "long"
+                                    },
+                                    {
+                                        "name": "downstream_bandwidth",
+                                        "type": "long"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+
+                    {
+                        "name": "join_control_info",
+                        "type": {
+                            "name": "control_info",
+                            "type": "record",
+                            "fields": [
+                                {
+                                    "name": "interval",
+                                    "doc" : "time granularity is minute.",
+                                    "type": "int"
+                                },
+                                {
+                                    "name": "end_time",
+                                    "doc" : "A timestamp in UTC format that expresses the point in time as of the collected data",
+                                    "type": "long"
+                                },
+                                {
+                                    "name": "collect_data_status",
+                                    "type": {
+                                        "name": "status",
+                                        "type": "enum",
+                                        "symbols": [
+                                            "SUCCESS",
+                                            "FAILURE"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "additional_info",
+                                    "doc": "Most of time this field records error info.",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                ]
+
+            }
+        },
+
+        {
+            "name" : "app_traffic_rank",
+            "type" : "traffic_rank_record"
+        },
+
+        {
+            "name" : "dip_traffic_rank",
+            "type" : "traffic_rank_record"
+        },
+
+        {
+            "name" : "interface_traffic_rank",
+            "type" : "traffic_rank_record"
+        }
+    ]
+}

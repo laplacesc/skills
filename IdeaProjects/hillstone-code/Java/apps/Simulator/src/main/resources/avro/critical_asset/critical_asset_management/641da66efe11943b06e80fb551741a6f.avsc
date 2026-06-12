@@ -1,0 +1,72 @@
+{
+  "type": "record",
+  "namespace": "critical_asset",
+  "name": "critical_asset_management",
+  "fields": [
+    {
+      "type": "int",
+      "name": "_capacity"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "vsys_id"
+            },
+            {
+              "type": "string",
+              "name": "vsys_name"
+            },
+            {
+              "type": {
+                "items": {
+                  "fields": [
+                    {
+                      "type": "int",
+                      "name": "id"
+                    },
+                    {
+                      "type": "string",
+                      "name": "name"
+                    },
+                    {
+                      "type": "string",
+                      "name": "zone"
+                    },
+                    {
+                      "type": "long",
+                      "name": "ip"
+                    },
+                    {
+                      "type": "string",
+                      "name": "desc"
+                    },
+                    {
+                      "type": "int",
+                      "name": "status"
+                    },
+                    {
+                      "type": "int",
+                      "name": "_action"
+                    }
+                  ],
+                  "type": "record",
+                  "name": "critical_asset_management.report.critical_asset"
+                },
+                "type": "array"
+              },
+              "name": "critical_asset"
+            }
+          ],
+          "type": "record",
+          "name": "critical_asset_management.report"
+        },
+        "type": "array"
+      },
+      "name": "report"
+    }
+  ],
+  "doc": "Converted from 'critical_asset_icloud.xml' by xml2json.py"
+}

@@ -1,0 +1,131 @@
+# address
+# 数据库存储加密与控制TDE              https://10.182.63.224    SysAdmin SecAdmin Auditor/hillstone@2023
+# 山石网科数据库运维安全防护网关系统DOG  https://10.182.63.222    SysAdmin SecAdmin Auditor/hillstone@2018
+# 山石网科数据库动态脱敏系统DMD         https://10.182.63.223    SysAdmin SecAdmin Auditor/hillstone@2018
+# 数据安全治理平台DSGP                 https://10.182.62.160    SecAdmin/Hillstone4Ever
+### SysAdmin/hillstone@2018 系统资源使用率
+POST https://10.182.63.222/hardware/getNetInit
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 系统资源使用率
+POST https://10.182.63.222/hardware/per
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 服务监控
+POST https://10.182.63.222/hardware/getServerStatues
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 系统告警列表
+POST https://10.182.63.222/hardware/getSyswarnList
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}} &
+pageSize = 15 &
+page = 1 &
+orderField = time &
+order = desc
+
+### SysAdmin/hillstone@2018 系统信息
+POST https://10.182.63.222/hardware/getMonitorInfo
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 系统监控（页面底部）
+GET https://10.182.63.222/system/getStatusAndTime
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 当前系统状态
+POST https://10.182.63.222/base/getSysInfo
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 LICENSE授权
+POST https://10.182.63.222/license/index
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 授权信息下载
+GET https://10.182.63.222/license/getCpuSerialize?sn=DOG2024
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 授权激活
+POST https://10.182.63.222/license/active
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="csrf_token"
+
+{{token}}
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="DOG2024.cer"
+Content-Type: application/x-x509-ca-cert
+
+< DOG2024.cpu
+--WebAppBoundary
+
+### SysAdmin/hillstone@2018 扩增实例
+POST https://10.182.63.222/license/activeDb
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="csrf_token"
+
+{{token}}
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="DOG2024.cer"
+Content-Type: application/x-x509-ca-cert
+
+< DOG2024.cpu
+--WebAppBoundary
+
+### SysAdmin/hillstone@2018 升级列表
+POST https://10.182.63.222/upgrade/getUpgradeList
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}} &
+page = 1 &
+pageSize = 15 &
+order = desc &
+orderField = createTime
+
+### SysAdmin/hillstone@2018 手动上传升级文件
+POST https://10.182.63.222/upgrade/uploadFile
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="csrf_token"
+
+{{token}}
+--WebAppBoundary
+Content-Disposition: form-data; name="upfile"; filename="DOG2024.tar.gz"
+Content-Type: application/octet-stream
+
+< DOG2024.cpu
+--WebAppBoundary
+
+### SysAdmin/hillstone@2018 升级文件校验
+POST https://10.182.63.222/upgrade/checkFile
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+### SysAdmin/hillstone@2018 升级
+POST https://10.182.63.222/upgrade/update
+Content-Type: application/x-www-form-urlencoded
+
+token = {{token}}
+
+###

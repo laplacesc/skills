@@ -1,0 +1,31 @@
+{
+	"type": "record",
+	"namespace": "com.hillstone.simulator.entity.avro.model.sset_report.traffic_his",
+	"name": "report",
+	"fields": [{
+		"type": "int",
+		"name": "type",
+		"doc": "上送数据类型，1：源IP，2：目的IP，3：应用"
+	},
+	{
+		"type": "string",
+		"name": "name",
+		"doc": "上报的统计项名称"
+	},
+	{
+		"type": "string",
+		"name": "vr",
+		"doc": "统计项所属vrouter，可以为空"
+	},
+	{
+		"type": "long",
+		"name": "up_bytes",
+		"doc": "上行带宽，单位：字节"
+	},
+	{
+		"type": "long",
+		"name": "down_bytes",
+		"doc": "下行带宽，单位：字节"
+	}],
+	"doc": "Converted from 'sset_icloud.xml' by xml2json.py"
+}

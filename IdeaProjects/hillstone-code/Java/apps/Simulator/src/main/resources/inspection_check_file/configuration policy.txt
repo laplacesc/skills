@@ -1,0 +1,49 @@
+<cmds code="1">
+insert_after_cmd: cmd->sib is not none, insert failed
+# show configuration policy
+
+rule id 1
+  action permit
+  src-zone "l2-trust"
+  dst-zone "l2-trust"
+  src-addr "Any"
+  dst-addr "Any"
+  service "Any"
+  av "predef_low"
+  ips "web-server"
+  botnet-c2-prevention "C2-test"
+  name "rule1"
+exit
+rule id 2
+  action permit
+  src-zone "l2-trust"
+  dst-zone "l2-untrust"
+  src-addr "Any"
+  dst-addr "Any"
+  service "Any"
+  av "predef_middle"
+  ips "Windows-server"
+  botnet-c2-prevention "C2-test"
+  name "rule2"
+exit
+rule id 3
+  action permit
+  src-zone "l2-untrust"
+  dst-zone "l2-trust"
+  src-addr "Any"
+  dst-addr "Any"
+  service "Any"
+  av "predef_middle"
+  ips "General-server"
+  botnet-c2-prevention "C2-test"
+  name "rule3"
+exit
+rule id 4
+  action deny
+  src-zone "Any"
+  dst-zone "Any"
+  src-addr "Any"
+  dst-addr "Any"
+  service "Any"
+  name "rule4"
+exit

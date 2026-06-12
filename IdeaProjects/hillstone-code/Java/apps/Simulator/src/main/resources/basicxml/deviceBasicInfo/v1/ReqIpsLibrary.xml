@@ -1,0 +1,16 @@
+<msg category="ReqDeviceInfo" type="ReqIpsLibrary" result="ok">
+    <body>
+        <information>
+            <signature>
+                <ips-library-response>
+                    <enable>1</enable>
+                    <number>1751635979</number>
+                    <vendor>Hillstone Networks</vendor>
+                    <magic>0a2abd36f9d9d6e6da03bea3af4d29988501</magic>
+                    <version>2.0.25</version>
+                    <release-time>2015-08-06 21:48:16</release-time>
+                </ips-library-response>
+            </signature>
+        </information>
+    </body>
+</msg>

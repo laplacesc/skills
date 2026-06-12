@@ -1,0 +1,72 @@
+{
+  "type": "record",
+  "namespace": "slb",
+  "name": "virtual_server_report",
+  "fields": [
+    {
+      "type": "int",
+      "name": "_capacity"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "vsys_id"
+            },
+            {
+              "type": "string",
+              "name": "vsys"
+            },
+            {
+              "type": {
+                "items": {
+                  "fields": [
+                    {
+                      "type": "int",
+                      "name": "id"
+                    },
+                    {
+                      "type": "string",
+                      "name": "name"
+                    },
+                    {
+                      "type": "int",
+                      "name": "protocol"
+                    },
+                    {
+                      "type": "int",
+                      "name": "status"
+                    },
+                    {
+                      "type": "int",
+                      "name": "running_status"
+                    },
+                    {
+                      "type": "int",
+                      "name": "_action"
+                    },
+                    {
+                      "type": "string",
+                      "name": "ip_port"
+                    }
+                  ],
+                  "type": "record",
+                  "name": "virtual_server_report.virtual_servers"
+                },
+                "type": "array"
+              },
+              "name": "virtual_servers"
+            }
+          ],
+          "type": "record",
+          "name": "slb_virtual_server_report"
+        },
+        "type": "array"
+      },
+      "name": "virtual_server_report"
+    }
+  ],
+  "doc": "Converted from 'slb_vs_icloud.xml' by xml2json.py"
+}

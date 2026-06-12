@@ -1,0 +1,65 @@
+{
+  "type": "record",
+  "namespace": "com.hillstone.simulator.entity.avro.model.sandbox.md5.v2",
+  "name": "md5_query_with_protocol_context",
+  "fields": [
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "doc": "Md5 of the file",
+              "type": "string",
+              "name": "md5"
+            },
+            {
+              "doc": "Type of the file",
+              "type": "string",
+              "name": "file_type"
+            },
+            {
+              "doc": "Protocol of the file",
+              "type": "string",
+              "name": "protocol"
+            },
+            {
+              "doc": "Source ip of the file",
+              "type": "string",
+              "name": "src_ip"
+            },
+            {
+              "doc": "Source port of the file",
+              "type": "string",
+              "name": "src_port"
+            },
+            {
+              "doc": "Destination ip of the file",
+              "type": "string",
+              "name": "dst_ip"
+            },
+            {
+              "doc": "Destination port of the file",
+              "type": "string",
+              "name": "dst_port"
+            },
+            {
+              "doc": "Version of data",
+              "type": "string",
+              "name": "version"
+            },
+            {
+              "doc": "Version 1:{url:url of http, method:method of http} || {addressee:addressee of mail, addresser:addresser of mail, subject:subject of mail}",
+              "type": "string",
+              "name": "data"
+            }
+          ],
+          "type": "record",
+          "name": "sandbox_icloud_md5_query_with_protocol_context"
+        },
+        "type": "array"
+      },
+      "name": "md5_query_with_protocol_context"
+    }
+  ],
+  "doc": "Converted from 'sandbox_icloud.xml' by xml2json.py"
+}

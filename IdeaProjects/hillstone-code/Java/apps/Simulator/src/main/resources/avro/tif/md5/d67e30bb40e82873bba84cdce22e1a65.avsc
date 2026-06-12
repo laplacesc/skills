@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "namespace": "tifd_icloud",
+  "name": "md5_query",
+  "fields": [
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "element"
+            },
+            {
+              "type": "int",
+              "name": "from"
+            }
+          ],
+          "type": "record",
+          "name": "tifd_icloud_md5_query"
+        },
+        "type": "array"
+      },
+      "name": "md5_query"
+    }
+  ],
+  "doc": "Converted from 'tifd_icloud.xml' by xml2json.py"
+}

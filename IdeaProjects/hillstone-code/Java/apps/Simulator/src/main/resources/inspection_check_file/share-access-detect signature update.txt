@@ -1,0 +1,14 @@
+SG-6000# show share-access-detect signature update
+
+Share-access-detect signature update options:
+protocol: HTTPS
+server1: update1.hillstonenet.com, 443, trust-vr
+server2: update2.hillstonenet.com, 443, trust-vr
+server3:
+proxy server status: disable
+main proxy server:
+backup proxy server:
+mode: manual
+schedule: daily 15:15
+current status: normal
+last update result: not update yet from system up

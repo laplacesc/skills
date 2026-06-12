@@ -1,0 +1,17 @@
+H:physical state;A:admin state;L:link state;P:protocol state;U:up;D:down;K:ha keep up;C:lacp down
+N:Not shared;S:Shared;E:Exported to vsys;V:Vsys interface
+=========================================================================================================================================================
+Interface name       IPv4 address/mask    IPv6 address/prefix                           Zone name     Vsys     H A L P MAC address    F Description
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+vswitchif1            0.0.0.0/0            N/A                                           NULL          root     D U D D 3029.5231.d70c N ------
+ethernet0/0           192.168.0.1/24       N/A                                           l2-trust         root     U U D D 3029.5231.d6fb N ------
+ethernet0/1          58.215.219.162/29    N/A                                           untrust       root     U U U U 3029.5231.d6fc N 上联专线1
+ethernet0/2          58.215.13.226/29     N/A                                           untrust       root     U U U U 3029.5231.d6fd N 上联专线2
+ethernet03          10.88.0.1/24         N/A                                           trust         root     U U U U 3029.5231.d6fe N 下联核心交换（通过行
+ethernet0/4          192.168.1.18/29      N/A                                           l2-untrust         root     U U D D 3029.5231.d6ff N 下联老校区
+ethernet0/5          0.0.0.0/0            N/A                                           NULL          root     D U D D 3029.5231.d700 N ------
+ethernet0/6          0.0.0.0/0            N/A                                           NULL          root     D U D D 3029.5231.d701 N ------
+ethernet0/7          0.0.0.0/0            N/A                                           NULL          root     D U D D 3029.5231.d702 N ------
+ethernet08          172.0.44.2/24        N/A                                           l2-trust         root     U U D D 3029.5231.d703 N ------
+ethernet09         172.0.3.2/24        N/A                                           trust         root     D U D D 3829.1251.d703 N ------
+=========================================================================================================================================================

@@ -1,0 +1,10 @@
+### operations-ips
+POST https://ti.hillstonenet.com.cn/api/ips/signature
+X-Auth-Token: da2c5340b92ae413f9bb3ac49394a6b91691b3dda58a4700401622181bfbd170
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="mappingFile"; filename="rule_info.json"
+
+< ./rule_info.json
+--WebAppBoundary--

@@ -1,0 +1,5 @@
+SG-6000# show geolocation-IP-signature info
+
+DB vendor: Hillstone Networks
+Current version: 2.0.230612
+Release date: 20230612 19:23:44

@@ -1,0 +1,94 @@
+{
+    "name" : "url_rank",
+    "namespace" : "com.hillstone.simulator.entity.avro.model.statistics_set.url_rank",
+    "type" : "record",
+    "fields" : [
+        {
+            "name" : "url_hit_rank",
+            "type" : {
+                "name" : "url_rank_record",
+                "type" : "record",
+                "fields" : [
+                    {
+                        "name" : "rank",
+                        "type" : {
+                            "type" : "array",
+                            "items" : {
+                                "name" : "url_rank_item",
+                                "doc": "This field meaning depend on type.",
+                                "type" : "record",
+                                "fields" : [
+                                    {
+                                        "name": "item_name",
+                                        "doc" : "This field can mean URL, username, or URL category, and its maximum length is 256",
+                                        "type": "string"
+                                    },
+
+                                    {
+                                        "name" : "value",
+                                        "doc" : "this meaning may is hit cout, url visit count or bandwidth, its unit is bytes if it meaning bandwidth",
+                                        "type" : "long"
+                                    }
+                                ]
+                            }
+
+
+                        }
+                    },
+
+                    {
+                        "name": "join_control_info",
+                        "type": {
+                            "name": "control_info",
+                            "type": "record",
+                            "fields": [
+                                {
+                                    "name": "interval",
+                                    "doc" : "time granularity is minute.",
+                                    "type": "int"
+                                },
+                                {
+                                    "name": "end_time",
+                                    "doc" : "A timestamp in UTC format that expresses the point in time as of the collected data",
+                                    "type": "long"
+                                },
+                                {
+                                    "name": "collect_data_status",
+                                    "type": {
+                                        "name": "status",
+                                        "type": "enum",
+                                        "symbols": [
+                                            "SUCCESS",
+                                            "FAILURE"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "additional_info",
+                                    "doc": "Most of time this field records error info.",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+
+        {
+            "name" : "user_hit_url_rank",
+            "type" : "url_rank_record"
+        },
+
+        {
+            "name" : "url_category_traffic_rank",
+            "type" : "url_rank_record"
+        },
+
+
+        {
+            "name" : "url_category_hit_rank",
+            "type" : "url_rank_record"
+        }
+    ]
+}

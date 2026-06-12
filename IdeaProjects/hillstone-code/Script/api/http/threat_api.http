@@ -1,0 +1,19 @@
+### ip detail
+GET https://ti.hillstonenet.com.cn/api/ip/detail?key=45.33.13.134
+Accept: application/json
+X-Auth-Token: 37c647396c30fba38dc8a99a94386777ac08c572bfd78ce8fd921cb33ace7d20
+
+### ip reputation
+GET https://ti.hillstonenet.com.cn/api/ip/reputation?key=45.33.13.134
+Accept: application/json
+X-Auth-Token: 37c647396c30fba38dc8a99a94386777ac08c572bfd78ce8fd921cb33ace7d20
+
+### domain detail
+GET https://ti.hillstonenet.com.cn/api/domain/detail?key=klingaimedia.com
+Accept: application/json
+X-Auth-Token: 37c647396c30fba38dc8a99a94386777ac08c572bfd78ce8fd921cb33ace7d20
+
+### file detail
+GET https://ti.hillstonenet.com.cn/api/file/detail?key=00000015c090196f22e160224a7c7bc7
+Accept: application/json
+X-Auth-Token: 37c647396c30fba38dc8a99a94386777ac08c572bfd78ce8fd921cb33ace7d20

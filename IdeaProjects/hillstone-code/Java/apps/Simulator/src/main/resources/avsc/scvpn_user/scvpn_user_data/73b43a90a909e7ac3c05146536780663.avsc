@@ -1,0 +1,107 @@
+{
+	"type": "record",
+	"name": "sslvpn",
+	"namespace": "com.hillstone.simulator.entity.avro.model.scvpn_user.scvpn_user_data",
+	"fields": [{
+		"name": "sa_index",
+		"doc": "sa 索引",
+		"type": "int"
+	},
+	{
+		"name": "user_name",
+		"doc": "用户名, 长度1-128",
+		"type": "string"
+	},
+	{
+		"name": "vsys_name",
+		"doc": "vsys名称, 长度1-24",
+		"type": "string"
+	},
+	{
+		"name": "tunnel_name",
+		"doc": "SSL VPN名称, 长度1-128",
+		"type": "string"
+	},
+	{
+		"name": "public_ip",
+		"doc": "客户端公有IP, 长度1-128",
+		"type": "string"
+	},
+	{
+		"name": "private_ip",
+		"doc": "客户端私有IP, 长度1-128",
+		"type": "string"
+	},
+	{
+		"name": "user_group",
+		"doc": "用户组, 长度0-512",
+		"type": ["null",
+		"string"],
+		"default": null
+	},
+	{
+		"name": "device_type",
+		"doc": "设备型号, 长度0-64",
+		"type": ["null",
+		"string"],
+		"default": null
+	},
+	{
+		"name": "hostid",
+		"doc": "主机ID, 长度0-32",
+		"type": ["null",
+		"string"],
+		"default": null
+	},
+	{
+		"name": "os",
+		"doc": "操作系统, 长度0-128",
+		"type": ["null",
+		"string"],
+		"default": null
+	},
+	{
+		"name": "mac",
+		"doc": "MAC地址, 长度0-18",
+		"type": ["null",
+		"string"],
+		"default": null
+	},
+	{
+		"name": "version",
+		"doc": "客户端版本, 长度0-16",
+		"type": ["null",
+		"string"],
+		"default": null
+	},
+	{
+		"name": "login_time",
+		"doc": "登录时间",
+		"type": "long"
+	},
+	{
+		"name": "logoff_time",
+		"doc": "登出时间",
+		"type": "long"
+	},
+	{
+		"name": "online_time",
+		"doc": "用户在线时长",
+		"type": "long"
+	},
+	{
+		"name": "traffic_recv",
+		"doc": "用户收到的流量, 单位bytes, 无符号数",
+		"type": "long"
+	},
+	{
+		"name": "traffic_send",
+		"doc": "用户发送的流量, 单位bytes, 无符号数",
+		"type": "long"
+	},
+	{
+		"name": "timestamp",
+		"doc": "数据写入队列时间",
+		"type": "long"
+	}]
+}

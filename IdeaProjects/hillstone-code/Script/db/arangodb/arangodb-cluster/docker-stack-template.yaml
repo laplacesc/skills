@@ -1,0 +1,249 @@
+version: '3.6'
+services:
+  agent0:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8531 --agency.my-address tcp://${NODE1_IP}:8531 --agency.activate true --agency.size 3 --agency.supervision true"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE1_NAME}
+    ports:
+      - target: 8531
+        published: 8531
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_agent0:/var/lib/arangodb3
+      - conf_agent0:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    networks:
+      - arangodb-net
+
+  agent1:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8531 --agency.my-address tcp://${NODE2_IP}:8531 --agency.activate true --agency.size 3 --agency.supervision true"
+    deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+          placement:
+            constraints:
+              - node.hostname == ${NODE2_NAME}
+    ports:
+      - target: 8531
+        published: 8531
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_agent1:/var/lib/arangodb3
+      - conf_agent1:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    networks:
+      - arangodb-net
+
+  agent2:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8531 --agency.my-address tcp://${NODE3_IP}:8531 --agency.activate true --agency.size 3 --agency.supervision true --agency.endpoint tcp://${NODE1_IP}:8531 --agency.endpoint tcp://${NODE2_IP}:8531 --agency.endpoint tcp://${NODE3_IP}:8531"
+    deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+          placement:
+            constraints:
+              - node.hostname == ${NODE3_NAME}
+    ports:
+      - target: 8531
+        published: 8531
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_agent2:/var/lib/arangodb3
+      - conf_agent2:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    networks:
+      - arangodb-net
+
+  dbserver0:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8530 --cluster.my-address tcp://${NODE1_IP}:8530 --cluster.my-role DBSERVER --cluster.agency-endpoint tcp://${NODE1_IP}:8531 --cluster.agency-endpoint tcp://${NODE2_IP}:8531 --cluster.agency-endpoint tcp://${NODE3_IP}:8531"
+    deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+          placement:
+            constraints:
+              - node.hostname == ${NODE1_NAME}
+    ports:
+      - target: 8530
+        published: 8530
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_dbserver0:/var/lib/arangodb3
+      - conf_dbserver0:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    depends_on:
+      - agent0
+    networks:
+      - arangodb-net
+
+  dbserver1:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8530 --cluster.my-address tcp://${NODE2_IP}:8530 --cluster.my-role DBSERVER --cluster.agency-endpoint tcp://${NODE1_IP}:8531 --cluster.agency-endpoint tcp://${NODE2_IP}:8531 --cluster.agency-endpoint tcp://${NODE3_IP}:8531"
+    deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+          placement:
+            constraints:
+              - node.hostname == ${NODE2_NAME}
+    ports:
+      - target: 8530
+        published: 8530
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_dbserver1:/var/lib/arangodb3
+      - conf_dbserver1:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    depends_on:
+      - agent1
+    networks:
+      - arangodb-net
+
+  dbserver2:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8530 --cluster.my-address tcp://${NODE3_IP}:8530 --cluster.my-role DBSERVER --cluster.agency-endpoint tcp://${NODE1_IP}:8531 --cluster.agency-endpoint tcp://${NODE2_IP}:8531 --cluster.agency-endpoint tcp://${NODE3_IP}:8531"
+    deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+          placement:
+            constraints:
+              - node.hostname == ${NODE3_NAME}
+    ports:
+      - target: 8530
+        published: 8530
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_dbserver2:/var/lib/arangodb3
+      - conf_dbserver2:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    depends_on:
+      - agent2
+    networks:
+      - arangodb-net
+
+  coordinator0:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8529 --cluster.my-address tcp://${NODE1_IP}:8529 --cluster.my-role COORDINATOR --cluster.agency-endpoint tcp://${NODE1_IP}:8531 --cluster.agency-endpoint tcp://${NODE2_IP}:8531 --cluster.agency-endpoint tcp://${NODE3_IP}:8531"
+    deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+          placement:
+            constraints:
+              - node.hostname == ${NODE1_NAME}
+    ports:
+      - target: 8529
+        published: 8529
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_coordinator0:/var/lib/arangodb3
+      - conf_coordinator0:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    depends_on:
+      - agent0
+      - dbserver0
+    networks:
+      - arangodb-net
+
+  coordinator1:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8529 --cluster.my-address tcp://${NODE2_IP}:8529 --cluster.my-role COORDINATOR --cluster.agency-endpoint tcp://${NODE1_IP}:8531 --cluster.agency-endpoint tcp://${NODE2_IP}:8531 --cluster.agency-endpoint tcp://${NODE3_IP}:8531"
+    deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+          placement:
+            constraints:
+              - node.hostname == ${NODE2_NAME}
+    ports:
+      - target: 8529
+        published: 8529
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_coordinator1:/var/lib/arangodb3
+      - conf_coordinator1:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    depends_on:
+      - agent1
+      - dbserver1
+    networks:
+      - arangodb-net
+
+  coordinator2:
+    image: arangodb:3.12.3
+    command: "arangod --server.endpoint tcp://0.0.0.0:8529 --cluster.my-address tcp://${NODE3_IP}:8529 --cluster.my-role COORDINATOR --cluster.agency-endpoint tcp://${NODE1_IP}:8531 --cluster.agency-endpoint tcp://${NODE2_IP}:8531 --cluster.agency-endpoint tcp://${NODE3_IP}:8531"
+    deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+          placement:
+            constraints:
+              - node.hostname == ${NODE3_NAME}
+    ports:
+      - target: 8529
+        published: 8529
+        protocol: tcp
+        mode: host
+    volumes:
+      - data_coordinator2:/var/lib/arangodb3
+      - conf_coordinator2:/etc/arangodb3
+    environment:
+      - ARANGO_NO_AUTH=1
+    depends_on:
+      - agent2
+      - dbserver2
+    networks:
+      - arangodb-net
+
+networks:
+  arangodb-net:
+    external: true
+    attachable: true
+    name: host
+
+volumes:
+  data_agent0:
+  conf_agent0:
+  data_agent1:
+  conf_agent1:
+  data_agent2:
+  conf_agent2:
+  data_dbserver0:
+  conf_dbserver0:
+  data_dbserver1:
+  conf_dbserver1:
+  data_dbserver2:
+  conf_dbserver2:
+  data_coordinator0:
+  conf_coordinator0:
+  data_coordinator1:
+  conf_coordinator1:
+  data_coordinator2:
+  conf_coordinator2:

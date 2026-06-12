@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "namespace": "cloud_query",
+  "name": "api_key_request",
+  "fields": [
+    {
+      "name": "device_sn",
+      "type": "string",
+      "doc": "设备SN号"
+    }
+  ],
+  "doc": "设备获取云查ApiKey"
+}

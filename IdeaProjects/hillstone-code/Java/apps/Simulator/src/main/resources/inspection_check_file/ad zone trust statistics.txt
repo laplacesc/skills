@@ -1,0 +1,37 @@
+# show ad zone trust statistics
+
+
+Statistics counter on zone trust:
+==============================================================
+Attack defense type                 Counter     State
+--------------------------------------------------------------
+Tear Drop                           0           on
+IP Spoofing                         2           on
+Land Attack                         0           on
+IP Option                           0           on
+IP Fragment                         0           on
+IP Directed Broadcast               0           on
+Winnuke                             0           on
+Port Scan                           0           on
+Source SYN Flood                    0           on
+Destination SYN Flood(ip-based)     0           on
+Destination SYN Flood(port-based)   0           on
+SYN Proxy                           0           on
+SYN Cookie                          0           on
+TCP Anomaly                         0           on
+ICMP Flood                          0           on
+Address Sweep                       0           on
+Ping of Death                       0           on
+Huge ICMP Packet                    0           on
+Source UDP Flood                    0           on
+Destination UDP Flood               0           on
+DNS Query Flood                     0           on
+DNS Recursive Query Flood           0           on
+ARP Spoofing IP Number per MAC      0           on
+ARP Spoofing Reverse Query          3           on
+ND Spoofing IP Number per MAC       0           off
+ND Spoofing Reverse Query           0           off
+ND Spoofing Unsolicited NA Send     0           off
+TCP Split Handshake                 0           on
+DNS Reply Flood                     0           on
+==============================================================

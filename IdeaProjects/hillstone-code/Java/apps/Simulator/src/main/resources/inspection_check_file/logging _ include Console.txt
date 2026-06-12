@@ -1,0 +1,17 @@
+SG-6000# show logging | include Console
+Console         On      warnings        -
+Console         Off     warnings        -               -       -           -
+Console         Off     -
+Console         Off     -
+Console         On      -
+Console         Off     -               -       -           -
+Console         Off     -               -       -           -
+Console         Off     -               -       -           -
+Console         Off     -               -       -           -
+Console         Off     -
+Console         Off     -
+Console         Off     -
+Console         Off     -               -       -           -
+Console         Off     -               -       -           -
+Console         Off     -               -       -           -
+Console         Off     -

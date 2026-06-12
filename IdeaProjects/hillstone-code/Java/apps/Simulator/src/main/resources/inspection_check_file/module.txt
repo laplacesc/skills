@@ -1,0 +1,12 @@
+SG-6000# show module
+
+Slot State        Module Type          Serial Number
+---- ------------ -------------------- ----------------
+   1 Online       IOC-K-4SFP+-FT       57199W87HB300035
+   2 Empty
+   3 Empty
+   4 Empty
+   5 Empty
+   6 Empty
+   7 Empty
+   8 Empty

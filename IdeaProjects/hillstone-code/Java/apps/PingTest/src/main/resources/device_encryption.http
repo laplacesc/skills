@@ -1,0 +1,3 @@
+### 获取公网 IP、归属地及其运营商
+GET https://dev.jxwufywdo.ti.hillstonenet.com.cn/device/ioc/ip/geo?
+    msg=6mShhMcIcytuQCIa4LOc%2Bmf6YyK3kJoaLHlIiwbguLqTharePD74d1bjZxtuZidqGtEJ1%2FF%2BbVnOiaUYBgeWWAgScoPa1uO2c6R5Xq%2Fqf86vR151guLn1qcPBpqTbNjCcXpnlsipW3%2FpdXxiROzatCB%2FblUp6ZJos7NKlZP7ZHY%3D

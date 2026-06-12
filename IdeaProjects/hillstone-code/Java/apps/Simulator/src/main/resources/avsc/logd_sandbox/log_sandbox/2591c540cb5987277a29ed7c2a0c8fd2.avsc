@@ -1,0 +1,83 @@
+{
+  "type": "record",
+  "name": "sandbox",
+  "namespace": "com.hillstone.simulator.entity.avro.model.logd_sandbox.logd_sandbox",
+  "doc": "sandbox日志schema，定义日期2023/2/13",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "时间戳"
+    },
+    {
+      "name": "syslog_id",
+      "type": "int",
+      "doc": "日志id，uint32型"
+    },
+    {
+      "name": "receive_time",
+      "type": "long",
+      "doc": "接收时间的时间戳"
+    },
+    {
+      "name": "file_name",
+      "type": "string",
+      "doc": "文件名,字段长度：1-256"
+    },
+    {
+      "name": "sip",
+      "type": "string",
+      "doc": "源ip(最大长度64)"
+    },
+    {
+      "name": "sport",
+      "type": "int",
+      "doc": "源端口，uint16"
+    },
+    {
+      "name": "dip",
+      "type": "string",
+      "doc": "目的ip(最大长度64)"
+    },
+    {
+      "name": "dport",
+      "type": "int",
+      "doc": "目的端口，uint16"
+    },
+    {
+      "name": "dir",
+      "type": "string",
+      "doc": "方向,字段长度：1-10"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "doc": "url, 字段长度：1-256"
+    },
+    {
+      "name": "app",
+      "type": "string",
+      "doc": "应用/协议,字段长度：1-96"
+    },
+    {
+      "name": "file_type",
+      "type": "string",
+      "doc": "文件类型,字段长度：1-16"
+    },
+    {
+      "name": "detect_by",
+      "type": "string",
+      "doc": "检测阶段,字段长度：1-64"
+    },
+    {
+      "name": "verdict",
+      "type": "string",
+      "doc": "结论,字段长度：1-32"
+    },
+    {
+      "name": "profile_name",
+      "type": "string",
+      "doc": "沙箱profile名称,最大长度32"
+    }
+  ]
+}

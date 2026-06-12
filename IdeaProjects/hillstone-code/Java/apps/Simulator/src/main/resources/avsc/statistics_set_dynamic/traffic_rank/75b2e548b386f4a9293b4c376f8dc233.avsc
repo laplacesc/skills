@@ -1,0 +1,131 @@
+{
+  "type": "record",
+  "namespace": "com.hillstone.simulator.entity.avro.model.statistics_set_dynamic.traffic_rank",
+  "name": "traffic_rank",
+  "fields": [
+    {
+      "type": "string",
+      "name": "type"
+    },
+    {
+      "type": "string",
+      "name": "user"
+    },
+    {
+      "type": "string",
+      "name": "app_name"
+    },
+    {
+      "type": "string",
+      "name": "app_group"
+    },
+    {
+      "type": "string",
+      "name": "address_book"
+    },
+    {
+      "type": "string",
+      "name": "interface"
+    },
+    {
+      "type": "string",
+      "name": "zone_name"
+    },
+    {
+      "type": "long",
+      "name": "sort_by"
+    },
+    {
+      "type": "long",
+      "name": "time_range"
+    },
+    {
+      "type": "int",
+      "name": "with_other"
+    },
+    {
+      "type": "string",
+      "name": "vr"
+    },
+    {
+      "type": "string",
+      "name": "aaa_server"
+    },
+    {
+      "type": "int",
+      "name": "phystatus"
+    },
+    {
+      "type": "int",
+      "name": "adminstatus"
+    },
+    {
+      "type": "int",
+      "name": "linkstatus"
+    },
+    {
+      "type": "int",
+      "name": "protostatus"
+    },
+    {
+      "type": "string",
+      "name": "ip_of_if"
+    },
+    {
+      "type": "int",
+      "name": "ipmask_of_if"
+    },
+    {
+      "type": "string",
+      "name": "zone_of_if"
+    },
+    {
+      "type": "int",
+      "name": "zone_if_id"
+    },
+    {
+      "type": "long",
+      "name": "upStream"
+    },
+    {
+      "type": "long",
+      "name": "downStream"
+    },
+    {
+      "type": "long",
+      "name": "upBw"
+    },
+    {
+      "type": "long",
+      "name": "downBw"
+    },
+    {
+      "type": "long",
+      "name": "all_upStream"
+    },
+    {
+      "type": "long",
+      "name": "all_downStream"
+    },
+    {
+      "type": "long",
+      "name": "sessions"
+    },
+    {
+      "type": "long",
+      "name": "upPct"
+    },
+    {
+      "type": "long",
+      "name": "downPct"
+    },
+    {
+      "type": "long",
+      "name": "totalPct"
+    },
+    {
+      "type": "long",
+      "name": "sessionsPct"
+    }
+  ]
+}

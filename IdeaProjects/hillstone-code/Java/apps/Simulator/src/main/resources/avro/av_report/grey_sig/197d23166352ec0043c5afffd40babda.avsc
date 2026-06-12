@@ -1,0 +1,36 @@
+{
+  "type": "record",
+  "namespace": "av_icloud",
+  "name": "report_grey",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "engine"
+    },
+    {
+      "type": "string",
+      "name": "database"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "id"
+            }
+          ],
+          "type": "record",
+          "name": "report_grey.signatures"
+        },
+        "type": "array"
+      },
+      "name": "signatures"
+    }
+  ],
+  "doc": "Converted from 'av_icloud.xml' by xml2json.py"
+}

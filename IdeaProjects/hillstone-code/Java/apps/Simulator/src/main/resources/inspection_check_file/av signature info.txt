@@ -1,0 +1,5 @@
+# show av signature info
+
+Current version: 2.5.230726
+Release date: 2023-07-26 04:31:56
+Total signature count: 15000000

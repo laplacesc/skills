@@ -1,0 +1,5 @@
+### GET request to example server
+GET https://ti.hillstonenet.com.cn/api/threat-intelligence/sources-list
+X-Auth-Token: 42f089377dfc6838d3c217ab084a996604514ce33e152cfb5f55c1e5392c1268
+
+###

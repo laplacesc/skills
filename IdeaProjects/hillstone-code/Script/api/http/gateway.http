@@ -1,0 +1,41 @@
+### 禁止任何访问
+GET https://ti.hillstonenet.com.cn/gateway/permission/quota
+
+### 禁止任何访问
+GET https://ti.hillstonenet.com.cn/gateway/permission/ti-apikey/info
+
+### 禁止任何访问 删除用户1/设备2权限
+GET https://ti.hillstonenet.com.cn/gateway/permission/init?
+    accountType=&
+    accountId=
+
+
+
+### 页面 获取验证的验证图片
+GET https://ti.hillstonenet.com.cn/verify/captcha
+
+### 页面 验证图片校验
+GET https://ti.hillstonenet.com.cn/verify/validation?
+    key={{$random.alphanumeric(8)}}&
+    distance={{$random.float(100)}}
+
+### 页面 权限是否超限
+GET https://ti.hillstonenet.com.cn/check/limitation
+
+### 探针 只允许服务间访问
+GET https://ti.hillstonenet.com.cn/health/live
+
+### 探针 只允许服务间访问
+GET https://ti.hillstonenet.com.cn/health/ready
+
+### 页面 登出
+GET https://ti.hillstonenet.com.cn/logout
+
+### 页面 管理平台登出
+GET https://ti.hillstonenet.com.cn/management/logout
+
+### 页面 用户状态
+GET https://ti.hillstonenet.com.cn/user/status
+
+### 页面 管理平台用户状态
+GET https://ti.hillstonenet.com.cn/management/user/status

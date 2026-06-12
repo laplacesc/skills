@@ -1,0 +1,8 @@
+# Install all Python dependencies for this workspace with:
+#   pip install -r requirements.txt
+
+beautifulsoup4>=4.12
+pandas>=2.0
+PyQt6>=6.6
+requests>=2.31
+scapy>=2.5

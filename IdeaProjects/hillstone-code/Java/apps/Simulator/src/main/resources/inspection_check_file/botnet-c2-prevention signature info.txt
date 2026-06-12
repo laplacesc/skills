@@ -1,0 +1,5 @@
+SG-6000# show botnet-c2-prevention signature info
+
+Current version: 3.8.230726001
+Release date: 2023/07/26 10:22:08
+Total signature count: 1599999

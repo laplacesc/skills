@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Superset SDK Demo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif; background: #f5f7fa; color: #1a2332; }
+  .app { max-width: 1400px; margin: 0 auto; padding: 20px; }
+  header { background: linear-gradient(135deg, #1a73e8, #0d47a1); color: #fff; padding: 24px 32px; border-radius: 12px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  header h1 { font-size: 22px; font-weight: 600; }
+  header .subtitle { font-size: 13px; opacity: .8; margin-top: 4px; }
+  header .badge { background: rgba(255,255,255,.2); padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-card { background: #fff; padding: 16px 20px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.08); cursor: pointer; transition: all .2s; border: 2px solid transparent; }
+  .stat-card:hover { border-color: #1a73e8; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(26,115,232,.15); }
+  .stat-card .num { font-size: 28px; font-weight: 700; color: #1a73e8; }
+  .stat-card .label { font-size: 13px; color: #5f6b7a; margin-top: 4px; }
+  .panel { background: #fff; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 20px; overflow: hidden; }
+  .panel-header { padding: 16px 20px; border-bottom: 1px solid #eef1f5; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
+  .panel-header .actions { display: flex; gap: 8px; }
+  .panel-body { padding: 0; }
+  .panel-body.loading { display: flex; align-items: center; justify-content: center; padding: 40px; color: #8e9aab; }
+  .panel-body.loading::after { content: "⏳ 加载中..."; }
+  .panel-body.error { padding: 20px; color: #d32f2f; background: #fef2f2; }
+  .panel-body.empty { padding: 32px; text-align: center; color: #8e9aab; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 10px 16px; text-align: left; border-bottom: 1px solid #eef1f5; }
+  th { background: #f8f9fb; font-weight: 600; color: #5f6b7a; position: sticky; top: 0; z-index: 1; }
+  tr:hover td { background: #f0f4ff; }
+  .tab-bar { display: flex; border-bottom: 1px solid #eef1f5; background: #f8f9fb; overflow-x: auto; }
+  .tab-bar button { padding: 12px 20px; border: none; background: none; cursor: pointer; font-size: 13px; font-weight: 500; color: #5f6b7a; white-space: nowrap; border-bottom: 2px solid transparent; transition: all .2s; }
+  .tab-bar button:hover { color: #1a73e8; background: rgba(26,115,232,.05); }
+  .tab-bar button.active { color: #1a73e8; border-bottom-color: #1a73e8; background: #fff; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .sql-editor { padding: 16px; }
+  .sql-editor textarea { width: 100%; min-height: 100px; padding: 12px; border: 1px solid #d0d5dd; border-radius: 6px; font-family: "SF Mono", "Fira Code", monospace; font-size: 13px; resize: vertical; }
+  .sql-editor textarea:focus { outline: none; border-color: #1a73e8; box-shadow: 0 0 0 3px rgba(26,115,232,.1); }
+  .sql-editor .row { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .sql-editor select { padding: 8px 12px; border: 1px solid #d0d5dd; border-radius: 6px; font-size: 13px; background: #fff; }
+  .btn { padding: 8px 16px; border: none; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .2s; }
+  .btn-primary { background: #1a73e8; color: #fff; }
+  .btn-primary:hover { background: #1557b0; }
+  .btn-primary:disabled { background: #a0c4f1; cursor: not-allowed; }
+  .btn-secondary { background: #e8eaed; color: #3c4043; }
+  .btn-secondary:hover { background: #d2d5d9; }
+  .sql-result { padding: 16px; overflow-x: auto; }
+  .sql-result .meta { font-size: 12px; color: #5f6b7a; margin-bottom: 8px; }
+  .sql-result .error { color: #d32f2f; padding: 8px 0; }
+  pre { background: #f8f9fb; padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; max-height: 400px; }
+  .code { font-family: "SF Mono", "Fira Code", monospace; font-size: 12px; background: #f3f4f6; padding: 2px 6px; border-radius: 4px; }
+  .detail-grid { padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .detail-grid .field { }
+  .detail-grid .field .key { font-size: 11px; color: #8e9aab; text-transform: uppercase; letter-spacing: .5px; }
+  .detail-grid .field .val { font-size: 14px; margin-top: 2px; word-break: break-all; }
+  .json-toggle { cursor: pointer; color: #1a73e8; text-decoration: underline; font-size: 12px; }
+  .embed-container { width: 100%; min-height: 600px; border: none; border-radius: 0; }
+  .embed-container iframe { width: 100%; height: 700px; border: none; }
+  .embed-controls { padding: 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .embed-controls select { padding: 8px 12px; border: 1px solid #d0d5dd; border-radius: 6px; font-size: 13px; background: #fff; min-width: 240px; }
+  .embed-note { padding: 12px 16px; background: #fff8e1; border-top: 1px solid #ffe082; font-size: 12px; color: #795548; }
+  @media (max-width: 768px) {
+    .app { padding: 12px; }
+    header { padding: 16px 20px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .detail-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<!-- Superset Embedded SDK (ESM 方式加载) -->
+<script type="importmap">
+{
+  "imports": {
+    "@superset-ui/embedded-sdk": "https://esm.sh/@superset-ui/embedded-sdk@0.1.7"
+  }
+}
+</script>
+</head>
+<body>
+<div class="app" id="app">
+
+<header>
+  <div>
+    <h1>📊 Superset SDK Demo</h1>
+    <div class="subtitle">通过 REST API 展示 Apache Superset 数据能力</div>
+  </div>
+  <div>
+    <span class="badge" id="connectionStatus">⏳ 连接中...</span>
+  </div>
+</header>
+
+<div class="stats" id="stats">
+  <div class="stat-card" onclick="switchTab('databases')"><div class="num" id="statDatabases">-</div><div class="label">数据库连接</div></div>
+  <div class="stat-card" onclick="switchTab('dashboards')"><div class="num" id="statDashboards">-</div><div class="label">仪表盘</div></div>
+  <div class="stat-card" onclick="switchTab('charts')"><div class="num" id="statCharts">-</div><div class="label">图表</div></div>
+  <div class="stat-card" onclick="switchTab('datasets')"><div class="num" id="statDatasets">-</div><div class="label">数据集</div></div>
+  <div class="stat-card" onclick="switchTab('saved-queries')"><div class="num" id="statSavedQueries">-</div><div class="label">已保存查询</div></div>
+</div>
+
+<div class="panel">
+  <div class="tab-bar" id="tabBar">
+    <button class="active" data-tab="databases">🗄️ 数据库</button>
+    <button data-tab="sqllab">⚡ SQL Lab</button>
+    <button data-tab="dashboards">📈 仪表盘</button>
+    <button data-tab="charts">📊 图表</button>
+    <button data-tab="datasets">📦 数据集</button>
+    <button data-tab="saved-queries">💾 已保存查询</button>
+    <button data-tab="crossdb">🔄 跨引擎对比</button>
+    <button data-tab="embed">🎨 嵌入</button>
+    <button data-tab="raw">🔧 原始 JSON</button>
+  </div>
+
+  <!-- Tab: Databases -->
+  <div class="tab-content active" id="tab-databases">
+    <div class="panel-header">数据库连接 <span class="actions"><button class="btn btn-secondary" onclick="loadDatabases()">🔄 刷新</button></span></div>
+    <div class="panel-body" id="databasesBody"><div class="panel-body loading"></div></div>
+  </div>
+
+  <!-- Tab: SQL Lab -->
+  <div class="tab-content" id="tab-sqllab">
+    <div class="panel-header">SQL Lab <span class="badge" id="sqlStatus" style="font-size:12px;background:#e8eaed;color:#3c4043;padding:4px 8px"></span></div>
+    <div class="sql-editor">
+      <div class="row">
+        <select id="sqlDbId"><option value="">-- 选择数据库 --</option></select>
+        <input type="text" id="sqlSchema" placeholder="schema (默认 tip_db)" style="padding:8px 12px;border:1px solid #d0d5dd;border-radius:6px;font-size:13px;width:160px" value="tip_db">
+      </div>
+      <textarea id="sqlInput" placeholder="输入 SQL 查询...&#10;例如: SHOW TABLES FROM tip_db">SHOW TABLES FROM tip_db</textarea>
+      <div class="row" style="margin-top:12px;">
+        <button class="btn btn-primary" id="sqlExecuteBtn" onclick="executeSql()">▶ 执行</button>
+      </div>
+    </div>
+    <div class="sql-result" id="sqlResult" style="display:none"></div>
+  </div>
+
+  <!-- Tab: Dashboards -->
+  <div class="tab-content" id="tab-dashboards">
+    <div class="panel-header">仪表盘 <span class="actions"><button class="btn btn-secondary" onclick="loadDashboards()">🔄 刷新</button></span></div>
+    <div class="panel-body" id="dashboardsBody"><div class="panel-body loading"></div></div>
+  </div>
+
+  <!-- Tab: Charts -->
+  <div class="tab-content" id="tab-charts">
+    <div class="panel-header">图表 <span class="actions"><button class="btn btn-secondary" onclick="loadCharts()">🔄 刷新</button></span></div>
+    <div class="panel-body" id="chartsBody"><div class="panel-body loading"></div></div>
+  </div>
+
+  <!-- Tab: Datasets -->
+  <div class="tab-content" id="tab-datasets">
+    <div class="panel-header">数据集 <span class="actions"><button class="btn btn-secondary" onclick="loadDatasets()">🔄 刷新</button></span></div>
+    <div class="panel-body" id="datasetsBody"><div class="panel-body loading"></div></div>
+  </div>
+
+  <!-- Tab: Saved Queries -->
+  <div class="tab-content" id="tab-saved-queries">
+    <div class="panel-header">已保存查询 <span class="actions"><button class="btn btn-secondary" onclick="loadSavedQueries()">🔄 刷新</button></span></div>
+    <div class="panel-body" id="savedQueriesBody"><div class="panel-body loading"></div></div>
+  </div>
+
+  <!-- Tab: Cross-DB Comparison -->
+  <div class="tab-content" id="tab-crossdb">
+    <div class="panel-header">跨引擎对比 <span class="actions"><button class="btn btn-secondary" onclick="loadEngines()">🔄 刷新引擎列表</button></span></div>
+    <div class="sql-editor">
+      <div class="row">
+        <select id="crossDbA" style="flex:1"><option value="">-- 选择数据库 A --</option></select>
+        <span style="color:#8e9aab">vs</span>
+        <select id="crossDbB" style="flex:1"><option value="">-- 选择数据库 B --</option></select>
+      </div>
+      <textarea id="crossSqlInput" placeholder="输入对比 SQL..." style="min-height:60px">SELECT COUNT(*) AS cnt FROM tip_db.tbl_a</textarea>
+      <div class="row" style="margin-top:12px;">
+        <button class="btn btn-primary" onclick="crossDbCompare()">🔄 对比执行</button>
+      </div>
+    </div>
+    <div id="crossDbResult" style="padding:16px;display:none"></div>
+  </div>
+
+  <!-- Tab: Embedding -->
+  <div class="tab-content" id="tab-embed">
+    <div class="panel-header">🎨 嵌入仪表盘 <span class="badge" style="background:#e3f2fd;color:#1565c0">通过 @superset-ui/embedded-sdk</span></div>
+    <div class="embed-controls">
+      <select id="embedDashboardSelect">
+        <option value="">-- 选择仪表盘 --</option>
+      </select>
+      <button class="btn btn-primary" id="embedBtn" onclick="loadEmbedDashboard()">📥 嵌入仪表盘</button>
+      <button class="btn btn-secondary" onclick="clearEmbed()">✖ 清除</button>
+      <label style="font-size:12px;display:flex;align-items:center;gap:4px;margin-left:8px">
+        <input type="checkbox" id="embedHideTitle" checked> 隐藏标题
+      </label>
+    </div>
+    <div class="embed-container" id="embedContainer">
+      <div class="panel-body empty" style="padding:60px">
+        <div style="font-size:32px;margin-bottom:12px">📊</div>
+        <div>选择一个仪表盘并点击「嵌入仪表盘」</div>
+        <div style="font-size:12px;color:#8e9aab;margin-top:4px">需要启用 Superset Guest Token 功能 (Superset 3.0+)</div>
+      </div>
+    </div>
+    <div class="embed-note">
+      💡 嵌入功能通过后端的 <code>/api/embed/guest-token</code> 生成 Guest Token，
+      再由前端的 <code>@superset-ui/embedded-sdk</code> 在 iframe 中渲染。仪表盘需在 Superset 中<strong>启用公开嵌入</strong>。
+    </div>
+  </div>
+
+  <!-- Tab: Raw JSON -->
+  <div class="tab-content" id="tab-raw">
+    <div class="panel-header">原始 JSON <span class="actions">
+      <select id="rawEndpoint" style="padding:6px 10px;border:1px solid #d0d5dd;border-radius:6px;font-size:12px">
+        <option value="/api/databases">/api/databases</option>
+        <option value="/api/dashboards">/api/dashboards</option>
+        <option value="/api/charts">/api/charts</option>
+        <option value="/api/datasets">/api/datasets</option>
+        <option value="/api/saved-queries">/api/saved-queries</option>
+        <option value="/api/engines">/api/engines</option>
+        <option value="/api/overview">/api/overview</option>
+      </select>
+      <button class="btn btn-primary" onclick="loadRawJson()">请求</button>
+    </span></div>
+    <div class="panel-body" id="rawBody"><pre id="rawJsonContent" style="margin:0;border-radius:0;">点击「请求」查看 JSON 响应</pre></div>
+  </div>
+
+</div>
+
+<footer style="text-align:center;padding:20px;color:#8e9aab;font-size:12px">
+  Superset SDK Demo &middot; 基于 Spring Boot REST API
+</footer>
+
+</div><!-- /app -->
+
+<script>
+// ============================================================
+// 全局状态
+// ============================================================
+const BASE = '';
+let dbOptions = [];
+
+// ============================================================
+// 初始化
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Tab 切换
+  document.querySelectorAll('.tab-bar button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  loadOverview();
+  loadDatabases();
+  loadDashboards();
+  loadCharts();
+  loadDatasets();
+  loadSavedQueries();
+  loadEngines();
+});
+
+// ============================================================
+// API 请求封装
+// ============================================================
+async function api(url, options = {}) {
+  const resp = await fetch(BASE + url, {
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', ...options.headers },
+    ...options
+  });
+  if (!resp.ok) {
+    const text = await resp.text();
+    let msg;
+    try { msg = JSON.parse(text).error || text; } catch(e) { msg = text; }
+    throw new Error(msg || `HTTP ${resp.status}`);
+  }
+  return resp.json();
+}
+
+function showError(el, msg) {
+  el.innerHTML = `<div class="error">❌ ${escapeHtml(msg)}</div>`;
+}
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// ============================================================
+// Overview
+// ============================================================
+async function loadOverview() {
+  try {
+    const data = await api('/api/overview');
+    document.getElementById('statDatabases').textContent = data.databases ?? '-';
+    document.getElementById('statDashboards').textContent = data.dashboards ?? '-';
+    document.getElementById('statCharts').textContent = data.charts ?? '-';
+    document.getElementById('statDatasets').textContent = data.datasets ?? '-';
+    document.getElementById('statSavedQueries').textContent = data.savedQueries ?? '-';
+    document.getElementById('connectionStatus').textContent = '✅ 已连接';
+    document.getElementById('connectionStatus').style.background = 'rgba(76,175,80,.3)';
+  } catch (e) {
+    document.getElementById('connectionStatus').textContent = '❌ 连接失败: ' + e.message;
+    document.getElementById('connectionStatus').style.background = 'rgba(211,47,47,.3)';
+  }
+}
+
+// ============================================================
+// Databases
+// ============================================================
+async function loadDatabases() {
+  const body = document.getElementById('databasesBody');
+  body.innerHTML = '<div class="panel-body loading"></div>';
+  try {
+    const data = await api('/api/databases');
+    if (!data.result || data.result.length === 0) {
+      body.innerHTML = '<div class="panel-body empty">暂无数据库连接</div>';
+      return;
+    }
+    dbOptions = data.result;
+    // 更新 SQL Lab 和跨引擎对比的 select
+    populateSelect('sqlDbId', data.result, 'id', 'database_name');
+    populateSelect('crossDbA', data.result, 'id', 'database_name');
+    populateSelect('crossDbB', data.result, 'id', 'database_name');
+
+    let html = `<table><thead><tr><th>ID</th><th>名称</th><th>引擎</th><th>操作</th></tr></thead><tbody>`;
+    for (const db of data.result) {
+      html += `<tr>
+        <td>${db.id}</td>
+        <td>${escapeHtml(db.database_name || db.databaseName || '')}</td>
+        <td><span class="code">${escapeHtml(db.backend || '')}</span></td>
+        <td>
+          <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showDbSchemas(${db.id})">查看 Schema</button>
+          <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showDbDetail(${db.id})">详情</button>
+        </td>
+      </tr>`;
+    }
+    html += '</tbody></table>';
+    body.innerHTML = html;
+  } catch (e) {
+    showError(body, e.message);
+  }
+}
+
+async function showDbSchemas(id) {
+  try {
+    const schemas = await api(`/api/databases/${id}/schemas`);
+    let schemaList = [];
+    if (schemas.result && Array.isArray(schemas.result)) {
+      schemaList = schemas.result;
+    }
+    if (schemaList.length === 0) {
+      alert('无 schema');
+      return;
+    }
+    const schema = schemaList[0];
+    const tables = await api(`/api/databases/${id}/tables/${schema}`);
+    let tableList = [];
+    if (tables.result && Array.isArray(tables.result)) {
+      tableList = tables.result.map(t => t.label || t.table_name || JSON.stringify(t));
+    }
+    alert(`Schema: ${schema}\n表: ${tableList.join(', ') || '无'}`);
+  } catch (e) {
+    alert('获取失败: ' + e.message);
+  }
+}
+
+async function showDbDetail(id) {
+  try {
+    const db = await api(`/api/databases/${id}`);
+    alert(JSON.stringify(db, null, 2));
+  } catch (e) {
+    alert('获取失败: ' + e.message);
+  }
+}
+
+function populateSelect(id, items, valKey, labelKey) {
+  const sel = document.getElementById(id);
+  if (!sel) return;
+  sel.innerHTML = '<option value="">-- 选择数据库 --</option>';
+  for (const item of items) {
+    const val = item[valKey];
+    const label = item[labelKey] || item.database_name || item.databaseName || val;
+    sel.innerHTML += `<option value="${val}">${escapeHtml(label)}</option>`;
+  }
+}
+
+// ============================================================
+// SQL Lab
+// ============================================================
+async function executeSql() {
+  const dbId = document.getElementById('sqlDbId').value;
+  const sql = document.getElementById('sqlInput').value.trim();
+  const btn = document.getElementById('sqlExecuteBtn');
+
+  if (!dbId) { alert('请选择数据库'); return; }
+  if (!sql) { alert('请输入 SQL'); return; }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ 执行中...';
+  document.getElementById('sqlStatus').textContent = '执行中...';
+
+  const resultDiv = document.getElementById('sqlResult');
+  resultDiv.style.display = 'block';
+  resultDiv.innerHTML = '<div class="meta">⏳ 查询已提交，等待结果...</div>';
+
+  try {
+    const schema = document.getElementById('sqlSchema').value.trim();
+    const execResp = await api('/api/sqllab/execute', {
+      method: 'POST',
+      body: JSON.stringify({ databaseId: dbId, sql, schema: schema || undefined })
+    });
+
+    document.getElementById('sqlStatus').textContent = `queryId: ${execResp.query_id || execResp.queryId || '?'}`;
+
+    // 优先使用内联返回的数据（同步模式）
+    if (execResp.data && execResp.data.length !== undefined) {
+      renderQueryResult(resultDiv, execResp);
+    } else if (execResp.query_id || execResp.queryId) {
+      // 异步模式降级：显示手动获取按钮
+      const qid = execResp.query_id || execResp.queryId;
+      resultDiv.innerHTML = `<div class="meta">✅ 查询已提交（异步模式）</div>
+        <p>Query ID: <span class="code">${escapeHtml(qid)}</span></p>
+        <button class="btn btn-primary" onclick="fetchResult('${qid}')">📥 获取结果</button>
+        <div id="pollResultContainer"></div>`;
+    } else {
+      resultDiv.innerHTML = `<pre>${escapeHtml(JSON.stringify(execResp, null, 2))}</pre>`;
+    }
+  } catch (e) {
+    resultDiv.innerHTML = `<div class="error">❌ ${escapeHtml(e.message)}</div>`;
+  }
+
+  btn.disabled = false;
+  btn.textContent = '▶ 执行';
+}
+
+async function fetchResult(queryId) {
+  const container = document.getElementById('pollResultContainer') || document.getElementById('sqlResult');
+  await pollResult(queryId, container);
+}
+
+async function pollResult(queryId, container) {
+  try {
+    let attempts = 0;
+    const maxAttempts = 30;
+
+    while (attempts < maxAttempts) {
+      attempts++;
+      const result = await api(`/api/sqllab/results/${queryId}`);
+      const status = result.status || '';
+
+      if (status === 'success') {
+        renderQueryResult(container, result);
+        return;
+      } else if (status === 'failed' || status === 'error') {
+        container.innerHTML = `<div class="error">❌ 查询失败: ${escapeHtml(result.error_message || result.errorMessage || '未知错误')}</div>`;
+        return;
+      } else {
+        // pending / running
+        container.innerHTML = `<div class="meta">⏳ 查询进行中... (${attempts}s)</div>`;
+        await new Promise(r => setTimeout(r, 1000));
+      }
+    }
+    container.innerHTML = `<div class="error">⏰ 轮询超时</div>`;
+  } catch (e) {
+    container.innerHTML = `<div class="error">❌ ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+function renderQueryResult(container, result) {
+  const rawCols = result.columns || [];
+  const data = result.data || [];
+  const rowCount = result.row_count || result.rowCount || data.length;
+
+  // 兼容两种 columns 格式：
+  //   Superset 4.x: [{name: "col1", type: "INTEGER", ...}, ...]
+  //   旧格式:        ["col1", "col2", ...]
+  const colNames = rawCols.length > 0 && typeof rawCols[0] === 'object'
+    ? rawCols.map(c => c.name || c.column_name || '')
+    : rawCols;
+
+  let html = `<div class="meta">✅ 查询成功 &middot; ${rowCount} 行 &middot; ${colNames.length} 列</div>`;
+
+  if (data.length === 0) {
+    html += '<div class="panel-body empty">无数据</div>';
+    container.innerHTML = html;
+    return;
+  }
+
+  html += `<table><thead><tr>`;
+  for (const col of colNames) {
+    html += `<th>${escapeHtml(col)}</th>`;
+  }
+  html += `</tr></thead><tbody>`;
+  const showRows = Math.min(data.length, 50);
+  for (let i = 0; i < showRows; i++) {
+    html += `<tr>`;
+    for (const col of colNames) {
+      const val = data[i][col];
+      html += `<td>${val === null || val === undefined ? '<span style="color:#bbb">NULL</span>' : escapeHtml(String(val))}</td>`;
+    }
+    html += `</tr>`;
+  }
+  if (data.length > 50) {
+    html += `<tr><td colspan="${colNames.length}" style="color:#8e9aab;text-align:center">... 仅显示前 50 行</td></tr>`;
+  }
+  html += `</tbody></table>`;
+  container.innerHTML = html;
+}
+
+// ============================================================
+// Dashboards
+// ============================================================
+async function loadDashboards() {
+  const body = document.getElementById('dashboardsBody');
+  body.innerHTML = '<div class="panel-body loading"></div>';
+  try {
+    const data = await api('/api/dashboards');
+    if (!data.result || data.result.length === 0) {
+      body.innerHTML = '<div class="panel-body empty">暂无仪表盘</div>';
+      return;
+    }
+    let html = `<table><thead><tr><th>ID</th><th>标题</th><th>状态</th><th>操作</th></tr></thead><tbody>`;
+    for (const d of data.result) {
+      html += `<tr>
+        <td>${d.id}</td>
+        <td>${escapeHtml(d.dashboard_title || d.dashboardTitle || '')}</td>
+        <td>${d.status || '-'}</td>
+        <td>
+          <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showDashboardDetail(${d.id})">详情</button>
+          <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showDashboardCharts(${d.id})">图表</button>
+        </td>
+      </tr>`;
+    }
+    html += '</tbody></table>';
+    body.innerHTML = html;
+  } catch (e) {
+    showError(body, e.message);
+  }
+}
+
+async function showDashboardDetail(id) {
+  try {
+    const d = await api(`/api/dashboards/${id}`);
+    alert(JSON.stringify(d, null, 2));
+  } catch (e) {
+    alert('获取失败: ' + e.message);
+  }
+}
+
+async function showDashboardCharts(id) {
+  try {
+    const charts = await api(`/api/dashboards/${id}/charts`);
+    if (!Array.isArray(charts) || charts.length === 0) {
+      alert('该仪表盘无图表');
+      return;
+    }
+    alert(JSON.stringify(charts.map(c => ({ id: c.id, name: c.slice_name || c.sliceName })), null, 2));
+  } catch (e) {
+    alert('获取失败: ' + e.message);
+  }
+}
+
+// ============================================================
+// Charts
+// ============================================================
+async function loadCharts() {
+  const body = document.getElementById('chartsBody');
+  body.innerHTML = '<div class="panel-body loading"></div>';
+  try {
+    const data = await api('/api/charts');
+    if (!data.result || data.result.length === 0) {
+      body.innerHTML = '<div class="panel-body empty">暂无图表</div>';
+      return;
+    }
+    let html = `<table><thead><tr><th>ID</th><th>名称</th><th>类型</th><th>操作</th></tr></thead><tbody>`;
+    for (const c of data.result) {
+      html += `<tr>
+        <td>${c.id}</td>
+        <td>${escapeHtml(c.slice_name || c.sliceName || '')}</td>
+        <td><span class="code">${escapeHtml(c.viz_type || c.vizType || '')}</span></td>
+        <td>
+          <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showChartDetail(${c.id})">详情</button>
+          <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showChartData(${c.id})">数据</button>
+        </td>
+      </tr>`;
+    }
+    html += '</tbody></table>';
+    body.innerHTML = html;
+  } catch (e) {
+    showError(body, e.message);
+  }
+}
+
+async function showChartDetail(id) {
+  try {
+    const c = await api(`/api/charts/${id}`);
+    alert(JSON.stringify(c, null, 2));
+  } catch (e) {
+    alert('获取失败: ' + e.message);
+  }
+}
+
+async function showChartData(id) {
+  try {
+    const data = await api(`/api/charts/${id}/data`);
+    alert(JSON.stringify(data, null, 2));
+  } catch (e) {
+    alert('获取失败: ' + e.message);
+  }
+}
+
+// ============================================================
+// Datasets
+// ============================================================
+async function loadDatasets() {
+  const body = document.getElementById('datasetsBody');
+  body.innerHTML = '<div class="panel-body loading"></div>';
+  try {
+    const data = await api('/api/datasets');
+    if (!data.result || data.result.length === 0) {
+      body.innerHTML = '<div class="panel-body empty">暂无数据集</div>';
+      return;
+    }
+    let html = `<table><thead><tr><th>ID</th><th>表名</th><th>Schema</th><th>数据库 ID</th><th>操作</th></tr></thead><tbody>`;
+    for (const ds of data.result) {
+      html += `<tr>
+        <td>${ds.id}</td>
+        <td>${escapeHtml(ds.table_name || ds.tableName || '')}</td>
+        <td>${escapeHtml(ds.schema || '')}</td>
+        <td>${ds.database_id || ds.databaseId || '-'}</td>
+        <td><button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showDatasetDetail(${ds.id})">详情</button></td>
+      </tr>`;
+    }
+    html += '</tbody></table>';
+    body.innerHTML = html;
+  } catch (e) {
+    showError(body, e.message);
+  }
+}
+
+async function showDatasetDetail(id) {
+  try {
+    const ds = await api(`/api/datasets/${id}`);
+    alert(JSON.stringify(ds, null, 2));
+  } catch (e) {
+    alert('获取失败: ' + e.message);
+  }
+}
+
+// ============================================================
+// Saved Queries
+// ============================================================
+async function loadSavedQueries() {
+  const body = document.getElementById('savedQueriesBody');
+  body.innerHTML = '<div class="panel-body loading"></div>';
+  try {
+    const data = await api('/api/saved-queries');
+    if (!data.result || data.result.length === 0) {
+      body.innerHTML = '<div class="panel-body empty">暂无已保存查询</div>';
+      return;
+    }
+    let html = `<table><thead><tr><th>ID</th><th>标签</th><th>数据库 ID</th><th>操作</th></tr></thead><tbody>`;
+    for (const q of data.result) {
+      html += `<tr>
+        <td>${q.id}</td>
+        <td>${escapeHtml(q.label || '')}</td>
+        <td>${q.db_id || q.dbId || '-'}</td>
+        <td><button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showSavedQueryDetail(${q.id})">详情</button></td>
+      </tr>`;
+    }
+    html += '</tbody></table>';
+    body.innerHTML = html;
+  } catch (e) {
+    showError(body, e.message);
+  }
+}
+
+async function showSavedQueryDetail(id) {
+  try {
+    const q = await api(`/api/saved-queries/${id}`);
+    alert(JSON.stringify(q, null, 2));
+  } catch (e) {
+    alert('获取失败: ' + e.message);
+  }
+}
+
+// ============================================================
+// Engines / Cross-DB Comparison
+// ============================================================
+async function loadEngines() {
+  try {
+    const data = await api('/api/engines');
+    // Populate cross-db selects
+    const selA = document.getElementById('crossDbA');
+    const selB = document.getElementById('crossDbB');
+    selA.innerHTML = '<option value="">-- 选择数据库 A --</option>';
+    selB.innerHTML = '<option value="">-- 选择数据库 B --</option>';
+
+    const allDbs = [];
+    for (const [backend, dbs] of Object.entries(data)) {
+      for (const db of dbs) {
+        allDbs.push(db);
+        const label = `${db.name} (${backend})`;
+        selA.innerHTML += `<option value="${db.id}">${escapeHtml(label)}</option>`;
+        selB.innerHTML += `<option value="${db.id}">${escapeHtml(label)}</option>`;
+      }
+    }
+  } catch (e) {
+    console.error('加载引擎失败', e);
+  }
+}
+
+async function crossDbCompare() {
+  const dbIdA = document.getElementById('crossDbA').value;
+  const dbIdB = document.getElementById('crossDbB').value;
+  const sql = document.getElementById('crossSqlInput').value.trim();
+
+  if (!dbIdA || !dbIdB) { alert('请选择两个数据库'); return; }
+  if (!sql) { alert('请输入 SQL'); return; }
+
+  const resultDiv = document.getElementById('crossDbResult');
+  resultDiv.style.display = 'block';
+  resultDiv.innerHTML = '<div class="meta">⏳ 执行中...</div>';
+
+  try {
+    const data = await api('/api/cross-db/compare', {
+      method: 'POST',
+      body: JSON.stringify({ dbIdA: parseInt(dbIdA), dbIdB: parseInt(dbIdB), sql })
+    });
+
+    let html = `<div class="meta">✅ 对比完成</div><table><thead><tr><th></th><th>数据库 A</th><th>数据库 B</th></tr></thead><tbody>`;
+    html += `<tr><td>Query ID</td><td><span class="code">${data.dbA.query_id || data.dbA.queryId || '-'}</span></td><td><span class="code">${data.dbB.query_id || data.dbB.queryId || '-'}</span></td></tr>`;
+    html += `<tr><td>状态</td><td>${data.dbA.status || data.dbA.resultStatus || '-'}</td><td>${data.dbB.status || data.dbB.resultStatus || '-'}</td></tr>`;
+    html += `<tr><td>行数</td><td>${data.dbA.row_count ?? data.dbA.rowCount ?? '-'}</td><td>${data.dbB.row_count ?? data.dbB.rowCount ?? '-'}</td></tr>`;
+
+    const colsA = data.dbA.columns || [];
+    const dA = data.dbA.data || [];
+    const colsB = data.dbB.columns || [];
+    const dB = data.dbB.data || [];
+
+    if (dA.length > 0 && colsA.length > 0) {
+      html += `<tr><td colspan="3"><strong>A 数据 (${dA.length} 行)</strong></td></tr>`;
+    }
+    if (dB.length > 0 && colsB.length > 0) {
+      html += `<tr><td colspan="3"><strong>B 数据 (${dB.length} 行)</strong></td></tr>`;
+    }
+
+    html += `</tbody></table>`;
+
+    if (data.dbA.error || data.dbB.error) {
+      html += `<div class="error">${escapeHtml(data.dbA.error || '')} ${escapeHtml(data.dbB.error || '')}</div>`;
+    }
+
+    html += `<details style="margin-top:8px"><summary style="cursor:pointer;font-size:12px;color:#1a73e8">查看原始 JSON</summary><pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre></details>`;
+
+    resultDiv.innerHTML = html;
+  } catch (e) {
+    resultDiv.innerHTML = `<div class="error">❌ ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+// ============================================================
+// Raw JSON
+// ============================================================
+async function loadRawJson() {
+  const endpoint = document.getElementById('rawEndpoint').value;
+  const pre = document.getElementById('rawJsonContent');
+  pre.textContent = '⏳ 请求中...';
+  try {
+    const data = await api(endpoint);
+    pre.textContent = JSON.stringify(data, null, 2);
+  } catch (e) {
+    pre.textContent = '❌ ' + e.message;
+  }
+}
+
+// ============================================================
+// Embedding (Superset Embedded SDK)
+// ============================================================
+let embedTriedLoad = false;
+
+/** 加载可用仪表盘列表，填充嵌入下拉框 */
+async function loadEmbedDashboards() {
+  const sel = document.getElementById('embedDashboardSelect');
+  try {
+    const data = await api('/api/dashboards');
+    if (!data.result || data.result.length === 0) return;
+    sel.innerHTML = '<option value="">-- 选择仪表盘 --</option>';
+    for (const d of data.result) {
+      sel.innerHTML += `<option value="${d.id}">${escapeHtml(d.dashboard_title || d.dashboardTitle || 'ID: ' + d.id)}</option>`;
+    }
+  } catch (e) {
+    console.error('加载仪表盘列表失败', e);
+  }
+}
+
+/** 使用 Superset Embedded SDK 嵌入选中仪表盘 */
+async function loadEmbedDashboard() {
+  const sel = document.getElementById('embedDashboardSelect');
+  const dashboardId = sel.value;
+  if (!dashboardId) { alert('请选择一个仪表盘'); return; }
+
+  const container = document.getElementById('embedContainer');
+  const btn = document.getElementById('embedBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ 加载中...';
+  embedTriedLoad = true;
+
+  try {
+    // 1) 从后端获取仪表盘元数据和 Guest Token
+    const embedInfo = await api(`/api/embed/dashboard/${dashboardId}`);
+
+    if (!embedInfo.guestToken) {
+      throw new Error('后端未返回 Guest Token，请确认 Superset 版本 3.0+ 并启用了嵌入支持');
+    }
+
+    const id = embedInfo.dashboard.id || embedInfo.dashboard.uuid;
+    const uuid = embedInfo.dashboard.uuid || id;
+    const supersetDomain = embedInfo.supersetDomain || '';
+
+    // 2) 清空容器，创建挂载点
+    container.innerHTML = `<div id="superset-embed-mount" style="width:100%;height:700px;position:relative;"></div>
+      <div style="padding:8px 12px;font-size:12px;color:#5f6b7a;background:#f8f9fb;border-top:1px solid #eef1f5">
+        仪表盘 ID: ${dashboardId} &middot; 嵌入模式
+        <span style="float:right">由 @superset-ui/embedded-sdk 渲染</span>
+      </div>`;
+
+    // 3) 动态导入 @superset-ui/embedded-sdk 并嵌入
+    const { embedDashboard } = await import('@superset-ui/embedded-sdk');
+    await embedDashboard({
+      id: uuid,
+      supersetDomain: supersetDomain,
+      mountPoint: document.getElementById('superset-embed-mount'),
+      fetchGuestToken: () => Promise.resolve(embedInfo.guestToken),
+      dashboardUiConfig: {
+        hideTitle: document.getElementById('embedHideTitle').checked,
+        hideTab: false,
+        hideChartControls: true,
+      },
+      debounceDelay: 300,
+    });
+
+    container.querySelector('.panel-body.empty')?.classList.remove('active');
+    btn.textContent = '✅ 已嵌入';
+    setTimeout(() => { btn.textContent = '📥 重新嵌入'; }, 2000);
+  } catch (e) {
+    container.innerHTML = `<div class="panel-body error">❌ 嵌入失败: ${escapeHtml(e.message)}
+      <details style="margin-top:8px"><summary style="cursor:pointer;font-size:12px;color:#1a73e8">详细信息</summary>
+      <pre style="margin-top:8px;font-size:11px">${escapeHtml(e.stack || e.message)}</pre></details>
+    </div>`;
+    console.error('Embedding failed:', e);
+  }
+
+  btn.disabled = false;
+}
+
+/** 清除嵌入的仪表盘 */
+function clearEmbed() {
+  const container = document.getElementById('embedContainer');
+  const btn = document.getElementById('embedBtn');
+  container.innerHTML = `<div class="panel-body empty" style="padding:60px">
+    <div style="font-size:32px;margin-bottom:12px">📊</div>
+    <div>选择一个仪表盘并点击「嵌入仪表盘」</div>
+    <div style="font-size:12px;color:#8e9aab;margin-top:4px">需要启用 Superset Guest Token 功能 (Superset 3.0+)</div>
+  </div>`;
+  btn.textContent = '📥 嵌入仪表盘';
+  embedTriedLoad = false;
+}
+
+// 页面加载时也加载仪表盘列表供嵌入使用
+document.addEventListener('DOMContentLoaded', () => {
+  // 在 loadDashboards 之外额外加载嵌入下拉框
+  setTimeout(loadEmbedDashboards, 500);
+});
+</script>
+</body>
+</html>

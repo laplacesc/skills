@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "namespace": "ips_icloud",
+  "name": "fast_pattern_report",
+  "fields": [
+    {
+      "doc": "rule_id with fast pattern checked",
+      "type": "long",
+      "name": "rule_id"
+    },
+    {
+      "default": 0,
+      "doc": "fast pattern matched times",
+      "type": "long",
+      "name": "hit_time"
+    }
+  ],
+  "doc": "Converted from 'ips_icloud.xml' by xml2json.py"
+}

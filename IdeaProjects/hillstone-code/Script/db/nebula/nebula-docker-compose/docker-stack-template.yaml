@@ -1,0 +1,423 @@
+version: '3.8'
+services:
+  metad0:
+    image: vesoft/nebula-metad:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --local_ip=${NODE1_IP}
+      - --ws_ip=${NODE1_IP}
+      - --port=9559
+      - --data_path=/data/meta
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE1_NAME}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE1_IP}:19559/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9559
+        published: 9559
+        protocol: tcp
+        mode: host
+      - target: 19559
+        published: 19559
+        protocol: tcp
+        mode: host
+    volumes:
+      - data-metad0:/data/meta
+      - logs-metad0:/logs
+    networks:
+      - nebula-net
+
+  metad1:
+    image: vesoft/nebula-metad:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --local_ip=${NODE2_IP}
+      - --ws_ip=${NODE2_IP}
+      - --port=9559
+      - --data_path=/data/meta
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE2_NAME}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE2_IP}:19559/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9559
+        published: 9559
+        protocol: tcp
+        mode: host
+      - target: 19559
+        published: 19559
+        protocol: tcp
+        mode: host
+    volumes:
+      - data-metad1:/data/meta
+      - logs-metad1:/logs
+    networks:
+      - nebula-net
+
+  metad2:
+    image: vesoft/nebula-metad:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --local_ip=${NODE3_IP}
+      - --ws_ip=${NODE3_IP}
+      - --port=9559
+      - --data_path=/data/meta
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE3_NAME}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE3_IP}:19559/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9559
+        published: 9559
+        protocol: tcp
+        mode: host
+      - target: 19559
+        published: 19559
+        protocol: tcp
+        mode: host
+    volumes:
+      - data-metad2:/data/meta
+      - logs-metad2:/logs
+    networks:
+      - nebula-net
+
+  storaged0:
+    image: vesoft/nebula-storaged:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --local_ip=${NODE1_IP}
+      - --ws_ip=${NODE1_IP}
+      - --port=9779
+      - --data_path=/data/storage
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE1_NAME}
+    depends_on:
+      - metad0
+      - metad1
+      - metad2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE1_IP}:19779/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9779
+        published: 9779
+        protocol: tcp
+        mode: host
+      - target: 19779
+        published: 19779
+        protocol: tcp
+        mode: host
+    volumes:
+      - data-storaged0:/data/storage
+      - logs-storaged0:/logs
+    networks:
+      - nebula-net
+
+  storaged1:
+    image: vesoft/nebula-storaged:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --local_ip=${NODE2_IP}
+      - --ws_ip=${NODE2_IP}
+      - --port=9779
+      - --data_path=/data/storage
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE2_NAME}
+    depends_on:
+      - metad0
+      - metad1
+      - metad2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE2_IP}:19779/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9779
+        published: 9779
+        protocol: tcp
+        mode: host
+      - target: 19779
+        published: 19779
+        protocol: tcp
+        mode: host
+    volumes:
+      - data-storaged1:/data/storage
+      - logs-storaged1:/logs
+    networks:
+      - nebula-net
+
+  storaged2:
+    image: vesoft/nebula-storaged:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --local_ip=${NODE3_IP}
+      - --ws_ip=${NODE3_IP}
+      - --port=9779
+      - --data_path=/data/storage
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE3_NAME}
+    depends_on:
+      - metad0
+      - metad1
+      - metad2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE3_IP}:19779/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9779
+        published: 9779
+        protocol: tcp
+        mode: host
+      - target: 19779
+        published: 19779
+        protocol: tcp
+        mode: host
+    volumes:
+      - data-storaged2:/data/storage
+      - logs-storaged2:/logs
+    networks:
+      - nebula-net
+
+  graphd0:
+    image: vesoft/nebula-graphd:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --port=9669
+      - --local_ip=${NODE1_IP}
+      - --ws_ip=${NODE1_IP}
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+      - --max_sessions_per_ip_per_user=500000
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE1_NAME}
+    depends_on:
+      - metad0
+      - metad1
+      - metad2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE1_IP}:19669/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9669
+        published: 9669
+        protocol: tcp
+        mode: host
+      - target: 19669
+        published: 19669
+        protocol: tcp
+        mode: host
+    volumes:
+      - logs-graphd0:/logs
+    networks:
+      - nebula-net
+
+  graphd1:
+    image: vesoft/nebula-graphd:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --port=9669
+      - --local_ip=${NODE2_IP}
+      - --ws_ip=${NODE2_IP}
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+      - --max_sessions_per_ip_per_user=500000
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE2_NAME}
+    depends_on:
+      - metad0
+      - metad1
+      - metad2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE2_IP}:19669/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9669
+        published: 9669
+        protocol: tcp
+        mode: host
+      - target: 19669
+        published: 19669
+        protocol: tcp
+        mode: host
+    volumes:
+      - logs-graphd1:/logs
+    networks:
+      - nebula-net
+
+  graphd2:
+    image: vesoft/nebula-graphd:${NEBULA_TAG}
+    environment:
+      TZ: "${TZ}"
+      USER: "${USER}"
+    command:
+      - --meta_server_addrs=${NODE1_IP}:9559,${NODE2_IP}:9559,${NODE3_IP}:9559
+      - --port=9669
+      - --local_ip=${NODE3_IP}
+      - --ws_ip=${NODE3_IP}
+      - --log_dir=/logs
+      - --v=0
+      - --minloglevel=2
+      - --max_sessions_per_ip_per_user=500000
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == ${NODE3_NAME}
+    depends_on:
+      - metad0
+      - metad1
+      - metad2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://${NODE3_IP}:19669/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 9669
+        published: 9669
+        protocol: tcp
+        mode: host
+      - target: 19669
+        published: 19669
+        protocol: tcp
+        mode: host
+    volumes:
+      - logs-graphd2:/logs
+    networks:
+      - nebula-net
+
+networks:
+  nebula-net:
+    external: true
+    attachable: true
+    name: host
+
+volumes:
+  data-metad0:
+  logs-metad0:
+  data-metad1:
+  logs-metad1:
+  data-metad2:
+  logs-metad2:
+  data-storaged0:
+  logs-storaged0:
+  data-storaged1:
+  logs-storaged1:
+  data-storaged2:
+  logs-storaged2:
+  logs-graphd0:
+  logs-graphd1:
+  logs-graphd2:

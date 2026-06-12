@@ -1,0 +1,17 @@
+### 下载提示词 97
+GET https://ti.hillstonenet.com.cn/api/ai/prompts/download?type=system-report
+X-Auth-Token: 42f089377dfc6838d3c217ab084a996604514ce33e152cfb5f55c1e5392c1268
+Accept: application/octet-stream
+
+>> ./prompt.md
+
+### 上传提示词 97
+POST https://ti.hillstonenet.com.cn/api/ai/prompts/upload?type=system-report
+X-Auth-Token: 42f089377dfc6838d3c217ab084a996604514ce33e152cfb5f55c1e5392c1268
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="ioc-system-report.md"
+
+< ./prompts/ioc-system-report.md
+--WebAppBoundary--

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: application-service
+  namespace: cloud-vod
+data:
+  application-service.yml: |
+    cloud:
+      platform:
+        service:
+          cloud-vod:
+            vod-gateway:
+              host: vod-gateway.cloud-vod.svc.cluster.local
+              port: 80
+              url: http://${cloud.platform.service.cloud-vod.vod-gateway.host}:${cloud.platform.service.cloud-vod.vod-gateway.port}
+          cloud-common:
+            oauth-service:
+              host: oauth-service.cloud-common.svc.cluster.local
+              port: 80
+              url: http://${cloud.platform.service.cloud-common.oauth-service.host}:${cloud.platform.service.cloud-common.oauth-service.port}
+    spring:
+      profiles:
+        active: china,beta

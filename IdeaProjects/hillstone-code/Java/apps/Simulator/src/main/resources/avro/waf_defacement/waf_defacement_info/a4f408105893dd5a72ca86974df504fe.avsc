@@ -1,0 +1,37 @@
+{
+  "type": "record",
+  "namespace": "waf_defacement",
+  "name": "waf_defacement",
+  "fields": [
+    {
+      "type": "int",
+      "name": "action"
+    },
+    {
+      "type": {
+        "fields": [
+          {
+            "type": "int",
+            "name": "id"
+          },
+          {
+            "type": "string",
+            "name": "site_name"
+          },
+          {
+            "type": "string",
+            "name": "path"
+          },
+          {
+            "type": "string",
+            "name": "time"
+          }
+        ],
+        "type": "record",
+        "name": "waf_defacement.waf_defacement_info"
+      },
+      "name": "waf_defacement_info"
+    }
+  ],
+  "doc": "Converted from 'waf_defacement.xml' by xml2json.py"
+}

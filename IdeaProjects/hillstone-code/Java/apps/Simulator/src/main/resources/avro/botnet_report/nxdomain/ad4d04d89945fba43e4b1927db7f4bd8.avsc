@@ -1,0 +1,44 @@
+{
+  "type": "record",
+  "namespace": "botnet_icloud",
+  "name": "report_nxdomain",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "database"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "long",
+              "name": "zone_id"
+            },
+            {
+              "type": "string",
+              "name": "src_addr"
+            },
+            {
+              "type": "string",
+              "name": "domain"
+            },
+            {
+              "type": "long",
+              "name": "timestamp"
+            }
+          ],
+          "type": "record",
+          "name": "report_nxdomain.info"
+        },
+        "type": "array"
+      },
+      "name": "info"
+    }
+  ],
+  "doc": "Converted from 'botnet_icloud.xml' by xml2json.py"
+}

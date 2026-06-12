@@ -1,0 +1,7 @@
+superset:
+  base-url: http://localhost:8088
+  username: admin
+  password: admin
+  # access-token: optional, if you already have a JWT token
+  connect-timeout: 10000
+  read-timeout: 30000

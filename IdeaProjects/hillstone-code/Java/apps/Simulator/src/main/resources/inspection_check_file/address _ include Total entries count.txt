@@ -1,0 +1,3 @@
+# show address | include Total entries count
+
+Total entries count: 2.

@@ -1,0 +1,108 @@
+{
+  "type": "record",
+  "namespace": "app_icloud",
+  "name": "report",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "engine_version"
+    },
+    {
+      "type": "string",
+      "name": "signature_version"
+    },
+    {
+      "type": "string",
+      "name": "release_time"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "dstip"
+            },
+            {
+              "type": "int",
+              "name": "dport"
+            },
+            {
+              "type": "int",
+              "name": "protocol"
+            },
+            {
+              "type": "string",
+              "name": "domain"
+            },
+            {
+              "type": "long",
+              "name": "bytes"
+            }
+          ],
+          "type": "record",
+          "name": "report.bw_top"
+        },
+        "type": "array"
+      },
+      "name": "bw_top"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "string",
+              "name": "dstip"
+            },
+            {
+              "type": "int",
+              "name": "dport"
+            },
+            {
+              "type": "int",
+              "name": "protocol"
+            },
+            {
+              "type": "string",
+              "name": "domain"
+            },
+            {
+              "type": "long",
+              "name": "connections"
+            }
+          ],
+          "type": "record",
+          "name": "report.connect_top"
+        },
+        "type": "array"
+      },
+      "name": "connect_top"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "long",
+              "name": "id"
+            },
+            {
+              "type": "long",
+              "name": "hits"
+            }
+          ],
+          "type": "record",
+          "name": "report.application"
+        },
+        "type": "array"
+      },
+      "name": "application"
+    }
+  ],
+  "doc": "Converted from 'app_icloud.xml' by xml2json.py"
+}

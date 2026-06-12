@@ -1,0 +1,5 @@
+SG-6000# show url-db info
+
+DB vendor: Hillstone Networks
+Current version: 2.0.230602
+Release date: 2023-06-02 10:40:54

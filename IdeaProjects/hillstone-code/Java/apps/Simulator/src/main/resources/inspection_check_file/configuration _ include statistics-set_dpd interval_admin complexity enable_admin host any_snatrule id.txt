@@ -1,0 +1,11 @@
+SG-6000# show configuration | include statistics-set|dpd interval|admin complexity enable|admin host any|snatrule id
+
+Running configuration:
+statistics-set "predef_dip_bw"
+statistics-set "predef_zone_bw"
+statistics-set "predef_if_bw"
+statistics-set "predef_user_bw"
+
+dpd interval 10 retry 3
+
+snatrule id 1 from ip 192.168.10.2 to address-book "Any" service "Any" trans-to ip 10.182.138.103 mode static

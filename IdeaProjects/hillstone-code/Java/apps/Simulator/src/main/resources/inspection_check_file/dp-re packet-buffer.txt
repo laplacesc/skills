@@ -1,0 +1,37 @@
+SG-6000# show dp-re packet-buffer
+
+Dataplane packet buffer:
+Failed allocate: 0
+FPA pool 0:
+  Buffer size: 2176
+  Buffer number:11616
+  Buffer total number:11744
+FPA pool 1:
+  Buffer size: 128
+  Buffer number:11679
+  Buffer total number:11744
+FPA pool 2:
+  Buffer size: 1024
+  Buffer number:1995
+  Buffer total number:2048
+FPA pool 3:
+  Buffer size: 1024
+  Buffer number:15
+  Buffer total number:16
+FPA pool 4:
+  Buffer size: 2176
+  Buffer number:256
+  Buffer total number:256
+FPA pool 5:
+  Buffer size: 0
+  Buffer number:0
+  Buffer total number:0
+FPA pool 6:
+  Buffer size: 10240
+  Buffer number:500
+  Buffer total number:500
+FPA pool 7:
+  Buffer size: 0
+  Buffer number:0
+  Buffer total number:0
+Non-pool0 packet buffer used by software queue:0

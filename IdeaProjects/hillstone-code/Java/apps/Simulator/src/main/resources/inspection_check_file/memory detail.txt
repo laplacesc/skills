@@ -1,0 +1,6 @@
+SG-6000# show memory detail
+The percentage of CP memory utilization: 22.3% DP memory utilization: 33.4%
+   total(KB)    used(KB)   free(KB)
+CP 5440512      1211640    4228872
+DP 27418624     9152937    18265687
+

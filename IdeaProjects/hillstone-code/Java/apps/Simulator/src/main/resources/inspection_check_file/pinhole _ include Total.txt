@@ -1,0 +1,2 @@
+SG-6000# show pinhole | include Total
+Total pinhole count in D-Plane: 10

@@ -1,0 +1,4 @@
+SG-6000# show clock
+
+Current time zone: China
+2023-07-27 11:24:24 Thursday

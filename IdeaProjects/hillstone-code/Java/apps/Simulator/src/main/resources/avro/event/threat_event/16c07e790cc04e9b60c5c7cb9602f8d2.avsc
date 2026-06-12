@@ -1,0 +1,273 @@
+{
+  "type": "record",
+  "namespace": "threat_event_icloud",
+  "name": "threat_event",
+  "fields": [
+    {
+      "default": 0,
+      "type": "long",
+      "name": "id"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "flag_mask"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "defender_id"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "pri_type"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "sec_type"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "action_id"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "begin_time"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "end_time"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "severity"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "confidence"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "aggregation_id"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "protocol"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "policy_id"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "app_id"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "profile_id"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "src_vsysid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "src_vrid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "src_interfaceid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "src_zoneid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "src_port"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_ip"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "src_ip_mask_len"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "src_hostindex"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "dst_vsysid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "dst_vrid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "dst_interfaceid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "dst_zoneid"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "dst_port"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_ip"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "dst_ip_mask_len"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "dst_hostindex"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "event_name"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "app_name"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_hostname"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_vsysname"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_vrname"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_interfacename"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_zonename"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_country"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_region"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "src_city"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_hostname"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_vsysname"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_vrname"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_interfacename"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_zonename"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_country"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_region"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "dst_city"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "stage_id"
+    },
+    {
+      "default": 0,
+      "type": "int",
+      "name": "count"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "attacksource"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "priv_data"
+    }
+  ],
+  "doc": "Converted from 'threat_event_icloud.xml' by xml2json.py"
+}

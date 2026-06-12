@@ -1,0 +1,60 @@
+{
+  "type": "record",
+  "namespace": "ips_icloud",
+  "name": "ips_status",
+  "fields": [
+    {
+      "type": "string",
+      "name": "device_sn"
+    },
+    {
+      "type": "string",
+      "name": "license_expire_time"
+    },
+    {
+      "type": "string",
+      "name": "database_version"
+    },
+    {
+      "type": "int",
+      "name": "feature_status"
+    },
+    {
+      "type": "int",
+      "name": "ips_engine_version"
+    },
+    {
+      "type": "long",
+      "name": "flash_memory_size"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "int",
+              "name": "type"
+            },
+            {
+              "type": "long",
+              "name": "using_mem"
+            },
+            {
+              "type": "long",
+              "name": "max_mem"
+            },
+            {
+              "type": "long",
+              "name": "longest_mem"
+            }
+          ],
+          "type": "record",
+          "name": "ips_status.idp_scan_algor"
+        },
+        "type": "array"
+      },
+      "name": "idp_scan_algor"
+    }
+  ],
+  "doc": "Converted from 'ips_icloud.xml' by xml2json.py"
+}

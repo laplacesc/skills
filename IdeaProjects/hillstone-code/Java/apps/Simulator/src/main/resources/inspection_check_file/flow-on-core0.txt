@@ -1,0 +1,3 @@
+SG-6000# show flow-on-core0
+
+flow on core0 is off

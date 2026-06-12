@@ -1,0 +1,33 @@
+{"type": "record",
+  "name": "stats_threat",
+  "fields": [
+    {
+      "name": "threat_type",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "threat_type",
+          "type": "record",
+          "fields": [
+            {"name": "threat_type","type":"int"},
+            {"name": "time_range","type":"int"},
+            {"name": "data",
+              "type": {
+                "type": "array",
+                "items": {
+                  "name": "threat_type.data",
+                  "type": "record",
+                  "fields": [
+                    {"name": "attack_type","type":"int"},
+                    {"name": "count","type": "long"}
+                  ]
+                }
+            }
+            },
+            {"name": "total_count","type":"long"}
+          ]
+        }
+      }
+    }
+  ]
+}

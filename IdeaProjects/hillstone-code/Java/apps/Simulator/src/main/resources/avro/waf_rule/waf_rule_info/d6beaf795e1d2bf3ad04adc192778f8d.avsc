@@ -1,0 +1,44 @@
+{
+  "type": "record",
+  "namespace": "waf_rule_icloud",
+  "name": "waf_rule",
+  "fields": [
+    {
+      "type": "string",
+      "name": "waf_rule_version"
+    },
+    {
+      "type": "string",
+      "name": "waf_engine_version"
+    },
+    {
+      "type": "long",
+      "name": "date_start"
+    },
+    {
+      "type": "long",
+      "name": "date_end"
+    },
+    {
+      "type": {
+        "items": {
+          "fields": [
+            {
+              "type": "long",
+              "name": "rule_id"
+            },
+            {
+              "type": "long",
+              "name": "hit_counts"
+            }
+          ],
+          "type": "record",
+          "name": "waf_rule.waf_rule_info"
+        },
+        "type": "array"
+      },
+      "name": "waf_rule_info"
+    }
+  ],
+  "doc": "Converted from 'waf_rule_icloud.xml' by xml2json.py"
+}

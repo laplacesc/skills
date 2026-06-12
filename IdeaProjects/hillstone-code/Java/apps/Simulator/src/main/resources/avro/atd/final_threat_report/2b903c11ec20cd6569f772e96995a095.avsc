@@ -1,0 +1,63 @@
+{
+  "type": "record",
+  "namespace": "atd_threat_icloud",
+  "name": "atd_threat",
+  "fields": [
+    {
+      "default": 0,
+      "type": "long",
+      "name": "uid"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "malware_family_id"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "malware_family_distance"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "malware_family_name"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "domain_name"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "http_uri"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "http_uri_match"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "http_ua"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "http_ua_match"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "malware_family_sig"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "malware_family_hash"
+    }
+  ],
+  "doc": "Converted from 'atd_threat_icloud.xml' by xml2json.py"
+}

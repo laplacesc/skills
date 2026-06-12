@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "namespace": "tifd_icloud",
+  "name": "token_query",
+  "fields": [
+    {
+      "type": "long",
+      "name": "timestamp"
+    }
+  ],
+  "doc": "Converted from 'tifd_icloud.xml' by xml2json.py"
+}

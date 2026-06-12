@@ -1,0 +1,15 @@
+SG-6000# show botnet-c2-prevention signature update
+
+Botnet C&C Prevention signature update options:
+protocol: HTTPS
+server1: update1.hillstonenet.com, 443, trust-vr
+server2: update2.hillstonenet.com, 443, trust-vr
+server3:
+proxy server status: disable
+main proxy server:
+backup proxy server:
+mode: auto
+schedule: daily 02:14
+current status: normal
+last update result: success
+last update time: Thu Jul 27 02:43:04 2023

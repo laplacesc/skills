@@ -1,0 +1,16 @@
+###  AI IOC 分析
+POST https://ti.hillstonenet.com.cn/api/report/ai-analysis/stream
+Cookie: {{Cookie}}
+Content-Type: application/json
+Accept: text/event-stream
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "baidu.com"
+    }
+  ]
+}
+
+###

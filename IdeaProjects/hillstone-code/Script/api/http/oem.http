@@ -1,0 +1,85 @@
+# address
+# 数据库存储加密与控制TDE              https://10.182.63.224    SysAdmin SecAdmin Auditor/hillstone@2023
+# 山石网科数据库运维安全防护网关系统DOG  https://10.182.63.222    SysAdmin SecAdmin Auditor/hillstone@2018
+# 山石网科数据库动态脱敏系统DMD         https://10.182.63.223    SysAdmin SecAdmin Auditor/hillstone@2018
+# 数据安全治理平台DSGP                 https://10.182.62.160    SecAdmin/Hillstone4Ever
+
+### 基本信息 cn.datafort.nm.controller.device.DeviceController.getDeviceInfoById
+POST https://10.182.62.160/api/Device/getDeviceById
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+{
+  "deviceId": 4
+}
+
+<> 2024-05-15T150106.200.json
+
+### 系统时间 cn.datafort.nm.controller.deviceconfig.DevSysConfController.getSystemTime
+POST https://10.182.62.160/api/devSysConf/getsystime
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+{
+  "deviceId": 4
+}
+
+### 当前系统状态 cn.datafort.nm.controller.device.DeviceController.getDeviceSysConfig
+POST https://10.182.62.160/api/Device/getDeviceSysConfig
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+{
+  "deviceId": 4
+}
+
+### 机器SN码获取授权信息 cn.datafort.nm.controller.deviceconfig.DevSysConfController.getCpuSerialize
+GET https://10.182.62.160/api/devSysConf/getCpuSerialize?sn=DMS0202-RD&deviceId=4
+Accept: application/octet-stream
+Cookie: {{Cookie}}
+
+### License授权 cn.datafort.nm.controller.deviceconfig.DevSysConfController.upActiveFile
+POST https://10.182.62.160/api/devSysConf/active
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Cookie: {{Cookie}}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="upfile"; filename="DMS0202-RD.cpu"
+
+< DMS0202-RD.cpu
+--WebAppBoundary--
+Content-Disposition: form-data; name="deviceId";
+
+4
+--WebAppBoundary--
+
+### 上传升级文件 cn.datafort.nm.controller.deviceconfig.DevSysConfController.uploadFile
+POST https://10.182.62.160/api/devSysConf/deviceUploadFile
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Cookie: {{Cookie}}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="upfile"; filename="DMS0202-RD.cpu"
+
+< DMS0202-RD.cpu
+--WebAppBoundary--
+Content-Disposition: form-data; name="deviceId";
+
+4
+--WebAppBoundary--
+
+### 升级版本查询 cn.datafort.nm.controller.deviceconfig.DevSysConfController.getUpgradeList
+POST https://10.182.62.160/api/devSysConf/getUpgradeList
+Content-Type: application/json
+Cookie: {{Cookie}}
+
+{
+  "deviceId": 4
+}
+
+### 系统监控 cn.datafort.nm.controller.device.DeviceController.queryDeviceRunStatus
+GET https://10.182.62.160/api/Device/run-status/4
+Accept: application/json
+Cookie: {{Cookie}}
+
+###

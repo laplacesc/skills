@@ -1,0 +1,10 @@
+{
+  "hbaseUrl": "tip-hadoop-hmaster:2181",
+  "jobName": "HbaseQuery",
+  "windowMinutes": 1,
+  "triggerCount": 1000,
+  "triggerMinutes": 1,
+  "output": "output",
+  "type": "domain",
+  "input": "Java/HbaseQuery/input/domain.txt"
+}

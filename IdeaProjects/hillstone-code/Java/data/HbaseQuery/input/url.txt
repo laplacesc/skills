@@ -1,0 +1,10 @@
+2 0 http://120.61.28.166:38184/bin.sh Botnet 2469 - - - -
+2 0 http://103.130.214.198/jackmymips Botnet 8531 - - - -
+2 0 http://103.131.60.178:50865/bin.sh Botnet 2469 - - - -
+2 0 http://103.195.25.5:41483/i Botnet 2469 - - - -
+2 0 http://103.219.219.241/vendor/phpunit/phpunit/Util/PHP/eval-stdin.php Miner 381 - - - -
+2 0 http://103.94.142.45:53515/i Botnet 2469 - - - -
+2 0 http://104.87.64.235/admin/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php Miner 381 - - - -
+2 0 http://106.59.100.45:56676/bin.sh Botnet 2469 - - - -
+2 0 http://110.177.165.22:27213/.i Botnet 1709 - - - -
+2 0 http://110.182.102.198:57232/.i Botnet 1709 - - - -

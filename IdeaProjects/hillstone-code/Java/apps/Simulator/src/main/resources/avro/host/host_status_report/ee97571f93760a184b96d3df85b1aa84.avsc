@@ -1,0 +1,38 @@
+{
+  "type": "record",
+  "namespace": "host_status_icloud",
+  "name": "host_status",
+  "fields": [
+    {
+      "default": 0,
+      "type": "long",
+      "name": "ip"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "vsys"
+    },
+    {
+      "default": "0",
+      "type": "string",
+      "name": "vr"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "severity"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "confidence"
+    },
+    {
+      "default": 0,
+      "type": "long",
+      "name": "status"
+    }
+  ],
+  "doc": "Converted from 'host_status_icloud.xml' by xml2json.py"
+}

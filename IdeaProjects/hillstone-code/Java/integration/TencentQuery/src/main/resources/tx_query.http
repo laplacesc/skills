@@ -1,0 +1,30 @@
+### tencent api
+GET http://{{ip}}:8080/tx/api/query?key=188.190.10.197&type=ip
+
+###
+GET http://{{ip}}:8080/tx/api/query?key=www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com&type=domain
+
+###
+GET http://{{ip}}:8080/tx/api/query?key=c23de67e44692ed0b139d1168b6637b0&type=file
+
+
+
+### tencent sdk
+GET http://{{ip}}:8080/tx/sdk/query?key=1.1.1.1&type=ip
+
+###
+GET http://{{ip}}:8080/tx/sdk/query?key=www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com&type=domain
+
+###
+GET http://{{ip}}:8080/tx/sdk/query?key=c23de67e44692ed0b139d1168b6637b0&type=file
+
+
+
+### tencent sdk upgrade ALL
+GET http://{{ip}}:8080/tx/sdk/upgrade?mod=ALL
+
+### tencent sdk upgrade INCR
+GET http://{{ip}}:8080/tx/sdk/upgrade?mod=INCR
+
+### tencent file query
+GET http://{{ip}}:8080/tx/file/query?path=domain_1w.txt

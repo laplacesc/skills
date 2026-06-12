@@ -1,0 +1,87 @@
+{
+    "name" : "session_rank",
+    "namespace" : "com.hillstone.simulator.entity.avro.model.statistics_set.session_rank",
+    "type" : "record",
+    "fields" : [
+        {
+            "name" : "user_session_rank",
+            "type" : {
+                "name" : "session_rank_record",
+                "type" : "record",
+                "fields" : [
+                    {
+                        "name" : "total_session",
+                        "type" : "long",
+                        "doc"  : "The total sessions number of all sset items in the device."
+
+                    },
+
+                    {
+                        "name" : "session_rank_items",
+                        "type" : {
+                            "type" : "array",
+                            "items" : {
+                                "name" : "session_rank_item",
+                                "type" : "record",
+                                "fields" : [
+                                    {
+                                        "name" : "item_name",
+                                        "type" : "string"
+                                    },
+
+                                    {
+                                        "name" : "value",
+                                        "type" : "long"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+
+                    {
+                        "name": "join_control_info",
+                        "type": {
+                            "name": "control_info",
+                            "type": "record",
+                            "fields": [
+                                {
+                                    "name": "interval",
+                                    "doc" : "time granularity is minute.",
+                                    "type": "int"
+                                },
+                                {
+                                    "name": "end_time",
+                                    "doc" : "A timestamp in UTC format that expresses the point in time as of the collected data",
+                                    "type": "long"
+                                },
+                                {
+                                    "name": "collect_data_status",
+                                    "type": {
+                                        "name": "status",
+                                        "type": "enum",
+                                        "symbols": [
+                                            "SUCCESS",
+                                            "FAILURE"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "additional_info",
+                                    "doc": "Most of time this field records error info.",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+
+        {
+            "name" : "app_session_rank",
+            "type" : "session_rank_record"
+        }
+
+
+    ]
+}

@@ -1,0 +1,10 @@
+SG-6000# show controller slot 0 index 0 statistic
+Port     Name                 In Pkts       In Bytes       Out Pkts      Out Bytes
+ 0(24)   ethernet0/0            27761        2020608          11630         852362
+ 25(0)    ethernet0/1                0              0              0              0
+ 2(1)    ethernet0/2                0              0              0              0
+ 3(2)    ethernet0/3                0              0              0              0
+ 5(16)   ethernet0/5                0              0              0              0
+ 6(17)   ethernet0/6                0              0              0              0
+ 7(18)   ethernet0/7                0              0              0              0
+ 8(19)   ethernet0/8                0              0              0              0

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # pvc的名字
+  name: ti-library-ali-nas-pvc
+  # 命名空间名字
+  namespace: cloud-ti
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      # 向pv申领的资源大小
+      storage: 500Gi
+  # SC的名称，填开发环境中已有的SC名字。
+  storageClassName: inexpensive-nas
+  volumeMode: Filesystem
+  # 指定pv的名字
+  volumeName: ti-library-ali-nas-pv

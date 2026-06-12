@@ -1,0 +1,17 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: AiIocAnalyzer
+
+ai:
+  base-url: ${AI_BASE_URL:https://open.bigmodel.cn/api/paas/v4}
+  api-key: ${AI_API_KEY:9b5b31c5e703455a8d3dbd4570b8fd0e.z7tvYkeSCEYkVrWO}
+  model: ${AI_MODEL:GLM-4.5-Air}
+
+ti:
+  base-url: ${TI_BASE_URL:https://ti.hillstonenet.com.cn/}
+  auth-token: ${TI_AUTH_TOKEN:936a346db999f58270f4e87225537daeeb0ac1dc94a59ced7d4384931750d166}
+  api-version: ${TI_API_VERSION:1.0.0}
+  api-language: ${TI_API_LANGUAGE:en}

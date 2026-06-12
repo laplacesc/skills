@@ -1,0 +1,17 @@
+spring:
+  redis:
+    password: hillstoneHSM4Ever
+    timeout: 2000
+    cluster:
+      nodes: 10.182.139.97:7000
+      max-redirects: 5
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: 2000
+        max-idle: 8
+        min-idle: 0
+  datasource:
+    url: jdbc:mysql://10.182.139.129/tip_db?useSSL=false&characterEncoding=UTF-8
+    username: root
+    password: hillstone
