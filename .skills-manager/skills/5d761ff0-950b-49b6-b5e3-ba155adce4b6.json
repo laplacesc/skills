@@ -5,7 +5,7 @@
   "path_key": "pptx",
   "enabled": true,
   "tags": [
-    "office"
+    "document"
   ],
   "source": {
     "type": "git",

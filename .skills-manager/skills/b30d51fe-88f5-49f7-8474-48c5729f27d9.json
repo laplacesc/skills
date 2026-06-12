@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "b30d51fe-88f5-49f7-8474-48c5729f27d9",
+  "path": "ckm_slides",
+  "path_key": "ckm_slides",
+  "enabled": true,
+  "tags": [
+    "uipro"
+  ],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "subpath": ".claude/skills/slides",
+    "branch": null
+  }
+}

@@ -5,7 +5,7 @@
   "path_key": "docx",
   "enabled": true,
   "tags": [
-    "office"
+    "document"
   ],
   "source": {
     "type": "git",

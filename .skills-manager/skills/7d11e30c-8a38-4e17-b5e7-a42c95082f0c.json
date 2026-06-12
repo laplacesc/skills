@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "7d11e30c-8a38-4e17-b5e7-a42c95082f0c",
+  "path": "ckm_brand",
+  "path_key": "ckm_brand",
+  "enabled": true,
+  "tags": [
+    "uipro"
+  ],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "subpath": ".claude/skills/brand",
+    "branch": null
+  }
+}
