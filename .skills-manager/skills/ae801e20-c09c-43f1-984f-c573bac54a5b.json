@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "ae801e20-c09c-43f1-984f-c573bac54a5b",
+  "path": "workflow-runner",
+  "path_key": "workflow-runner",
+  "enabled": true,
+  "tags": [
+    "superpowers-zh"
+  ],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/jnMetaCode/superpowers-zh",
+    "subpath": "skills/workflow-runner",
+    "branch": null
+  }
+}

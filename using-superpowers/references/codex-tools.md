@@ -1,59 +1,25 @@
-# Codex Tool Mapping
+# Codex 工具映射
 
-Skills use Claude Code tool names. When you encounter these in a skill, use your platform equivalent:
+Skills 使用 Claude Code 的工具名称。在 Codex 中遇到这些名称时，请使用对应的平台等价工具：
 
-| Skill references | Codex equivalent |
-|-----------------|------------------|
-| `Task` tool (dispatch subagent) | `spawn_agent` (see [Subagent dispatch requires multi-agent support](#subagent-dispatch-requires-multi-agent-support)) |
-| Multiple `Task` calls (parallel) | Multiple `spawn_agent` calls |
-| Task returns result | `wait_agent` |
-| Task completes automatically | `close_agent` to free slot |
-| `TodoWrite` (task tracking) | `update_plan` |
-| `Skill` tool (invoke a skill) | Skills load natively — just follow the instructions |
-| `Read`, `Write`, `Edit` (files) | Use your native file tools |
-| `Bash` (run commands) | Use your native shell tools |
+| Skill 中的引用 | Codex 等价工具 |
+|---------------|---------------|
+| `Task` 工具（派遣子 agent） | `spawn_agent` |
+| 多个 `Task` 调用（并行） | 多个 `spawn_agent` 调用 |
+| Task 返回结果 | `wait` |
+| Task 自动完成 | `close_agent` 释放槽位 |
+| `TodoWrite`（任务跟踪） | `update_plan` |
+| `Skill` 工具（调用 skill） | Skills 原生加载——直接按说明操作 |
+| `Read`、`Write`、`Edit`（文件） | 使用原生文件工具 |
+| `Bash`（执行命令） | 使用原生 shell 工具 |
 
-## Subagent dispatch requires multi-agent support
+## 子 Agent 派遣需要多 Agent 支持
 
-Add to your Codex config (`~/.codex/config.toml`):
+在 Codex 配置文件（`~/.codex/config.toml`）中添加：
 
 ```toml
 [features]
 multi_agent = true
 ```
 
-This enables `spawn_agent`, `wait_agent`, and `close_agent` for skills like `dispatching-parallel-agents` and `subagent-driven-development`.
-
-Legacy note: Codex builds before `rust-v0.115.0` exposed spawned-agent
-waiting as `wait`. Current Codex uses `wait_agent` for spawned agents. The
-`wait` name now belongs to code-mode `exec/wait`, which resumes a yielded exec
-cell by `cell_id`; it is not the spawned-agent result tool.
-
-## Environment Detection
-
-Skills that create worktrees or finish branches should detect their
-environment with read-only git commands before proceeding:
-
-```bash
-GIT_DIR=$(cd "$(git rev-parse --git-dir)" 2>/dev/null && pwd -P)
-GIT_COMMON=$(cd "$(git rev-parse --git-common-dir)" 2>/dev/null && pwd -P)
-BRANCH=$(git branch --show-current)
-```
-
-- `GIT_DIR != GIT_COMMON` → already in a linked worktree (skip creation)
-- `BRANCH` empty → detached HEAD (cannot branch/push/PR from sandbox)
-
-See `using-git-worktrees` Step 0 and `finishing-a-development-branch`
-Step 1 for how each skill uses these signals.
-
-## Codex App Finishing
-
-When the sandbox blocks branch/push operations (detached HEAD in an
-externally managed worktree), the agent commits all work and informs
-the user to use the App's native controls:
-
-- **"Create branch"** — names the branch, then commit/push/PR via App UI
-- **"Hand off to local"** — transfers work to the user's local checkout
-
-The agent can still run tests, stage files, and output suggested branch
-names, commit messages, and PR descriptions for the user to copy.
+启用后可使用 `spawn_agent`、`wait` 和 `close_agent`，支持 `dispatching-parallel-agents` 和 `subagent-driven-development` 等 skills。

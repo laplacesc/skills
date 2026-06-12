@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "skill_id": "3f7f4e0d-84bf-4533-9643-27801b987f6b",
+  "path": "mcp-builder",
+  "path_key": "mcp-builder",
+  "enabled": true,
+  "tags": [
+    "superpowers-zh"
+  ],
+  "source": {
+    "type": "git",
+    "ref": "https://github.com/jnMetaCode/superpowers-zh",
+    "subpath": "skills/mcp-builder",
+    "branch": null
+  }
+}
