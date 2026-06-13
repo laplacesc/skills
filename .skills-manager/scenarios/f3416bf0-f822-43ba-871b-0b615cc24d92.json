@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "scenario_id": "f3416bf0-f822-43ba-871b-0b615cc24d92",
-  "name": "Default",
+  "name": "全部",
   "description": "Default startup scenario",
-  "icon": null,
+  "icon": "wrench",
   "sort_order": 0
 }
